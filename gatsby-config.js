@@ -19,7 +19,7 @@ module.exports = {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: 'Felsberg Gartenbau Tägerwilen',
-        short_name: 'Felsberg Gartenbau',
+        short_name: 'Felsberg',
         start_url: '/',
         background_color: '#165f26',
         theme_color: '#165f26',
