@@ -1,31 +1,33 @@
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Default Starter',
+    title: 'Felsberg Gartenbau',
+    siteUrl: 'https://felsberg-gartenbau.netlify.com/', // TODO: change to real URL
+    description: 'Homepage der Gartenbau Felsberg GmbH in Neuwilen',
+    keywords:
+      'Gartenbau Felsberg GmbH, Neuanlagen, Gartenumgestaltung, Grabpflege, Neuwilen',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem', // creating file nodes from the file system
       options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
+        name: `pages`,
+        path: `${__dirname}/src/pages/`,
       },
     },
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-sharp',
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'gatsby-starter-default',
-        short_name: 'starter',
+        name: 'Felsberg Gartenbau Tägerwilen',
+        short_name: 'Felsberg Gartenbau',
         start_url: '/',
-        background_color: '#663399',
-        theme_color: '#663399',
-        display: 'minimal-ui',
-        icon: 'src/images/gatsby-icon.png', // This path is relative to the root of the site.
+        background_color: '#165f26',
+        theme_color: '#165f26',
+        display: 'standalone',
+        icon: 'src/images/gatsby-icon.png', // This path is relative to the root of the site. TODO: Change icon
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
+    // TODO: this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.app/offline
     // 'gatsby-plugin-offline',
   ],
