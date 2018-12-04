@@ -7,12 +7,13 @@ module.exports = {
       'Gartenbau Felsberg GmbH, Neuanlagen, Gartenumgestaltung, Grabpflege, Neuwilen',
   },
   plugins: [
-    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-react-helmet', // lets you control your document head
+    'gatsby-transformer-remark', // parses Markdown files using Remark.
     {
       resolve: 'gatsby-source-filesystem', // creating file nodes from the file system
       options: {
-        name: `pages`,
-        path: `${__dirname}/src/pages/`,
+        name: 'pages',
+        path: `${__dirname}/src/pages`,
       },
     },
     {
