@@ -24,7 +24,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
 
-  // query all markdown pages
+  // query all markdown pages and create files with their data
   return graphql(`
     {
       allMarkdownRemark(limit: 1000) {
@@ -52,9 +52,7 @@ exports.createPages = ({ actions, graphql }) => {
         component: path.resolve(
           `src/templates/${String(node.frontmatter.templateKey)}.js`
         ),
-        // additional data can be passed via context
-        // Data passed to context is available
-        // in page queries as GraphQL variables.
+        // additional data can be passed via context: this.props.pageContext
         context: {
           id: node.id,
           slug: node.fields.slug,
