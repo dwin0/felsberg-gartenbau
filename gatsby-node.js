@@ -13,6 +13,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
   if (node.internal.type === 'MarkdownRemark') {
     const slug = createFilePath({ node, getNode, basePath: 'pages' })
+
     createNodeField({
       node,
       name: 'slug',
@@ -27,7 +28,7 @@ exports.createPages = ({ actions, graphql }) => {
   // query all markdown pages and create files with their data
   return graphql(`
     {
-      allMarkdownRemark(limit: 1000) {
+      allMarkdownRemark {
         edges {
           node {
             id
@@ -50,12 +51,13 @@ exports.createPages = ({ actions, graphql }) => {
       createPage({
         path: node.fields.slug,
         component: path.resolve(
-          `src/templates/${String(node.frontmatter.templateKey)}.js`
+          `src/templates/${String(node.frontmatter.templateKey)}.js`,
         ),
         // additional data can be passed via context: this.props.pageContext
         context: {
           id: node.id,
           slug: node.fields.slug,
+          templateKey: node.frontmatter.templateKey,
         },
       })
     })

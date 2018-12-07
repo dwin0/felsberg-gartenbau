@@ -1,3 +1,5 @@
 ---
-templateKey: gartenbau
+templateKey: gartenBau
+title: Gartenbau
+showOnHomepage: true
 ---
