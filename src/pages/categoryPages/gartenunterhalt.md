@@ -1,5 +1,6 @@
 ---
 templateKey: categoryPage
 title: Gartenunterhalt
-showOnHomepage: true
+categoryOnHomepage: true
+linkInNavigation: true
 ---

@@ -6,15 +6,15 @@ import Layout from '../components/layout'
 
 const IndexPage = ({ data }) => {
   const { title } = data.markdownRemark.frontmatter
-  const pagesOnHomepage = data.allMarkdownRemark.edges.filter(
-    ({ node }) => node.frontmatter.showOnHomepage,
+  const categoriesOnHomePage = data.allMarkdownRemark.edges.filter(
+    ({ node }) => node.frontmatter.categoryOnHomepage,
   )
 
   return (
     <Layout>
       <h1>{title}</h1>
       <h2>Seiten:</h2>
-      {pagesOnHomepage.map(({ node }) => (
+      {categoriesOnHomePage.map(({ node }) => (
         <div key={node.frontmatter.title}>
           <Link to={node.fields.slug}>{node.frontmatter.title}</Link>
         </div>
@@ -39,7 +39,7 @@ export const pageQuery = graphql`
           }
           frontmatter {
             title
-            showOnHomepage
+            categoryOnHomepage
           }
         }
       }
@@ -63,7 +63,7 @@ IndexPage.propTypes = {
             }).isRequired,
             frontmatter: PropTypes.shape({
               title: PropTypes.string.isRequired,
-              showOnHomepage: PropTypes.bool,
+              categoryOnHomepage: PropTypes.bool,
             }).isRequired,
           }).isRequired,
         }).isRequired,

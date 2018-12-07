@@ -33,4 +33,16 @@ collections:
           widget: hidden,
           default: categoryPage,
         }
-      - { label: Titel, name: 'title', widget: string }
+      - { label: Titel, name: title, widget: string }
+      - {
+          label: Kategorie auf Homepage,
+          name: categoryOnHomepage,
+          widget: boolean,
+          default: false,
+        }
+      - {
+          label: Link in Navigation,
+          name: linkInNavigation,
+          widget: boolean,
+          default: false,
+        }
