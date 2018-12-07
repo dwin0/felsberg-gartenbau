@@ -12,7 +12,12 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
 
   if (node.internal.type === 'MarkdownRemark') {
-    const slug = createFilePath({ node, getNode, basePath: 'pages' })
+    let slug = createFilePath({ node, getNode, basePath: 'pages' })
+
+    // category page URL shouldn't be /categoryPages/<pageName>
+    if (node.frontmatter.templateKey === 'categoryPage') {
+      slug = slug.replace('/categoryPages', '')
+    }
 
     createNodeField({
       node,

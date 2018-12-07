@@ -21,3 +21,16 @@ collections:
             name: title
             widget: string
             required: true
+
+  - name: categoryPages
+    label: KategorieSeiten
+    folder: src/pages/categoryPages
+    create: true
+    fields:
+      - {
+          label: Template Key,
+          name: templateKey,
+          widget: hidden,
+          default: categoryPage,
+        }
+      - { label: Titel, name: 'title', widget: string }

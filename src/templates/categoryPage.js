@@ -4,7 +4,7 @@ import { Link, graphql } from 'gatsby'
 
 import Layout from '../components/layout'
 
-const GartenBauPage = ({ data }) => {
+const CategoryPage = ({ data }) => {
   const { title } = data.markdownRemark.frontmatter
 
   return (
@@ -26,7 +26,7 @@ export const pageQuery = graphql`
   }
 `
 
-GartenBauPage.propTypes = {
+CategoryPage.propTypes = {
   data: PropTypes.shape({
     markdownRemark: PropTypes.shape({
       frontmatter: PropTypes.shape({
@@ -36,4 +36,4 @@ GartenBauPage.propTypes = {
   }).isRequired,
 }
 
-export default GartenBauPage
+export default CategoryPage

@@ -1,5 +1,5 @@
 ---
-templateKey: gartenUnterhalt
+templateKey: categoryPage
 title: Gartenunterhalt
 showOnHomepage: true
 ---
