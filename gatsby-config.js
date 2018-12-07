@@ -9,6 +9,7 @@ module.exports = {
   plugins: [
     'gatsby-plugin-react-helmet', // lets you control your document head
     'gatsby-transformer-remark', // parses Markdown files using Remark.
+    'gatsby-plugin-styled-components',
     {
       resolve: 'gatsby-source-filesystem', // creating file nodes from the file system
       options: {

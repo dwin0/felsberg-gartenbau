@@ -5,3 +5,4 @@ categoryOnHomepage: true
 linkInNavigation: true
 ---
 
+Gartenbau Inhalt

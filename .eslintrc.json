@@ -3,13 +3,16 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "prettier",
-    "prettier/react"
+    "prettier/react",
+    "babel"
   ],
   "parserOptions": {
     "ecmaVersion": 2018,
     "sourceType": "module",
     "ecmaFeatures": {
-      "jsx": true
+      "jsx": true,
+      "arrowFunctions": true,
+      "classes": true
     }
   },
   "env": {

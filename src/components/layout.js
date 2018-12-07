@@ -4,6 +4,7 @@ import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 
 import Header from './header'
+import GlobalStyle from '../styles/GlobalStyle'
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -40,6 +41,7 @@ const Layout = ({ children }) => (
           </Helmet>
           <Header siteTitle={title} />
           <div>{children}</div>
+          <GlobalStyle />
         </>
       )
     }}
