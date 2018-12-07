@@ -1,0 +1,5 @@
+---
+templateKey: categoryPage
+title: Gartenbau
+---
+
