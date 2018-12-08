@@ -46,3 +46,4 @@ collections:
           widget: boolean,
           default: false,
         }
+      - { label: Bild, name: image, widget: image }
