@@ -5,12 +5,12 @@
   "author": "david windler",
   "dependencies": {
     "babel-plugin-styled-components": "^1.9.2",
-    "gatsby": "^2.0.63",
+    "gatsby": "^2.0.64",
     "gatsby-plugin-manifest": "^2.0.9",
     "gatsby-plugin-netlify-cms": "^3.0.9",
     "gatsby-plugin-react-helmet": "^3.0.2",
     "gatsby-plugin-styled-components": "^3.0.4",
-    "gatsby-source-filesystem": "^2.0.8",
+    "gatsby-source-filesystem": "^2.0.11",
     "gatsby-transformer-remark": "^2.1.15",
     "netlify-cms": "^2.3.0",
     "prop-types": "^15.6.2",
@@ -32,7 +32,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "eslint": "^5.9.0",
+    "eslint": "^5.10.0",
+    "eslint-config-babel": "^8.0.2",
     "eslint-config-prettier": "^3.3.0",
     "eslint-plugin-babel": "^5.3.0",
     "eslint-plugin-prettier": "^3.0.0",
