@@ -1,11 +1,11 @@
 import { createGlobalStyle } from 'styled-components'
 
-import { COLORS } from './styleguide'
+import { COLORS, FONTS } from './styleguide'
 
 // https://www.styled-components.com/docs/api#createglobalstyle
 const GlobalStyle = createGlobalStyle`
   body {
-    font-family: sans-serif;
+    font: ${FONTS.STANDARD_TEXT};
     color: ${COLORS.GREEN};
   }
 `

@@ -4,7 +4,8 @@ import { StaticQuery, graphql } from 'gatsby'
 
 import HoverHandler from '../../helper/HoverHandler'
 import CategoryContainer from './CategoryContainer'
-import CategoryItem from './CategoryItem'
+import { CategoryItem, CategoryItemText } from './CategoryItem'
+import CategoryText from './CategoryText'
 
 const Categories = ({ defaultCategory }) => (
   <StaticQuery
@@ -36,12 +37,10 @@ const Categories = ({ defaultCategory }) => (
         <HoverHandler defaultItem={defaultCategory}>
           {({ hoveredItem: hoveredCategory, handleHover, handleUnhover }) => (
             <>
-              <div>
-                <h1>{hoveredCategory.frontmatter.title}</h1>
-                <div
-                  dangerouslySetInnerHTML={{ __html: hoveredCategory.html }}
-                />
-              </div>
+              <CategoryText
+                title={hoveredCategory.frontmatter.title}
+                html={hoveredCategory.html}
+              />
 
               <CategoryContainer>
                 {categoriesOnHomePage.map(({ node }) => (
@@ -51,7 +50,9 @@ const Categories = ({ defaultCategory }) => (
                     onMouseEnter={() => handleHover(node)}
                     onMouseLeave={() => handleUnhover()}
                   >
-                    {node.frontmatter.title}
+                    <CategoryItemText>
+                      {node.frontmatter.title}
+                    </CategoryItemText>
                   </CategoryItem>
                 ))}
               </CategoryContainer>
