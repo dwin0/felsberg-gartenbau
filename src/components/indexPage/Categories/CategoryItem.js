@@ -26,4 +26,5 @@ export const CategoryItemText = styled.p`
   border-bottom-width: 5px;
   border-bottom-style: solid;
   padding-bottom: 5px;
+  padding-left: 5px;
 `

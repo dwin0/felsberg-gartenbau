@@ -3,24 +3,27 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import posed from 'react-pose'
 
-const TextContainer = styled(
-  posed.div({
-    hidden: {
-      opacity: 0,
-      transition: { duration: 0 },
-    },
-    visible: {
-      opacity: 1,
-      transition: { duration: 800 },
-    },
-  }),
-)`
+const AnimatedContainer = posed.div({
+  hidden: {
+    opacity: 0,
+    transition: { duration: 0 },
+  },
+  visible: {
+    opacity: 1,
+    transition: { duration: 800 },
+  },
+})
+
+const TextContainer = styled(AnimatedContainer)`
   text-align: center;
   margin-bottom: 50px;
-  margin-top: 200px;
+  margin-top: 100px;
   opacity: 0;
+
+  height: 200px;
 `
 
+// TODO: maximale Anzahl Zeichen festlegen
 class CategoryText extends React.Component {
   state = { title: null, isHidden: false }
 
