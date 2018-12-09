@@ -26,6 +26,7 @@ const Categories = ({ defaultCategory }) => (
                 categoryOnHomepage {
                   order
                 }
+                image
               }
               html
             }
@@ -56,6 +57,7 @@ const Categories = ({ defaultCategory }) => (
                     onMouseEnter={() => handleHover(node)}
                     onMouseLeave={() => handleUnhover()}
                   >
+                    <img src={node.frontmatter.image} />
                     <CategoryItemText>
                       {node.frontmatter.title}
                     </CategoryItemText>

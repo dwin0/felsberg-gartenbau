@@ -5,6 +5,7 @@ categoryOnHomepage:
   visible: true
   order: 3
 linkInNavigation: true
+image: /assets/fahrzeuge.jpg
 ---
 
 Adresse
