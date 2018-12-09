@@ -3,7 +3,7 @@ templateKey: categoryPage
 title: Gartenunterhalt
 categoryOnHomepage:
   visible: true
-  order: 1
+  order: 2
 linkInNavigation: true
 image: /assets/garten.jpg
 ---

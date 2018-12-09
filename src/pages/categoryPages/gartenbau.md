@@ -3,7 +3,7 @@ templateKey: categoryPage
 title: Gartenbau
 categoryOnHomepage:
   visible: true
-  order: 0
+  order: 1
 linkInNavigation: true
 image: /assets/teich.jpg
 ---

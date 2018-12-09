@@ -3,7 +3,7 @@ templateKey: contactPage
 title: Kontakt
 categoryOnHomepage:
   visible: true
-  order: 2
+  order: 3
 linkInNavigation: true
 ---
 
