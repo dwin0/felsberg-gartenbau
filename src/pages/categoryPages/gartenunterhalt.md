@@ -1,8 +1,9 @@
 ---
 templateKey: categoryPage
 title: Gartenunterhalt
-categoryOnHomepage: true
-categoryOnHomepageOrder: 1
+categoryOnHomepage:
+  visible: true
+  order: 1
 linkInNavigation: true
 image: /assets/garten.jpg
 ---

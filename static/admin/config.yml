@@ -59,18 +59,17 @@ collections:
           default: categoryPage,
         }
       - { label: Titel, name: title, widget: string }
-      - {
-          label: Kategorie auf Homepage,
-          name: categoryOnHomepage,
-          widget: boolean,
-          default: false,
-        }
-      - {
-          label: Kategorie auf Homepage Reihenfolge,
-          hint: 'Je tiefer die Zahl, desto weiter vorne die Kategorie',
-          name: categoryOnHomepageOrder,
-          widget: number,
-        }
+      - label: Kategorie auf Homepage
+        name: categoryOnHomepage
+        widget: object
+        fields:
+          - { label: Sichtbar, name: visible, widget: boolean, default: false }
+          - {
+              label: Kategorie auf Homepage Reihenfolge,
+              hint: 'Je tiefer die Zahl, desto weiter vorne die Kategorie',
+              name: order,
+              widget: number,
+            }
       - {
           label: Link in Navigation,
           name: linkInNavigation,

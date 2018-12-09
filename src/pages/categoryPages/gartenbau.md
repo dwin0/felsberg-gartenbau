@@ -1,8 +1,9 @@
 ---
 templateKey: categoryPage
 title: Gartenbau
-categoryOnHomepage: true
-categoryOnHomepageOrder: 0
+categoryOnHomepage:
+  visible: true
+  order: 0
 linkInNavigation: true
 image: /assets/teich.jpg
 ---
