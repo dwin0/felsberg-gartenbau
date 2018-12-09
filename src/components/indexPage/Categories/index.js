@@ -11,7 +11,10 @@ const Categories = ({ defaultCategory }) => (
   <StaticQuery
     query={graphql`
       query {
-        allMarkdownRemark {
+        allMarkdownRemark(
+          filter: { frontmatter: { categoryOnHomepage: { eq: true } } }
+          sort: { fields: frontmatter___categoryOnHomepageOrder, order: ASC }
+        ) {
           edges {
             node {
               id
@@ -28,39 +31,31 @@ const Categories = ({ defaultCategory }) => (
         }
       }
     `}
-    render={({ allMarkdownRemark }) => {
-      const categoriesOnHomePage = allMarkdownRemark.edges.filter(
-        ({ node }) => node.frontmatter.categoryOnHomepage,
-      )
+    render={({ allMarkdownRemark }) => (
+      <HoverHandler defaultItem={defaultCategory}>
+        {({ hoveredItem: hoveredCategory, handleHover, handleUnhover }) => (
+          <>
+            <CategoryText
+              title={hoveredCategory.frontmatter.title}
+              html={hoveredCategory.html}
+            />
 
-      return (
-        <HoverHandler defaultItem={defaultCategory}>
-          {({ hoveredItem: hoveredCategory, handleHover, handleUnhover }) => (
-            <>
-              <CategoryText
-                title={hoveredCategory.frontmatter.title}
-                html={hoveredCategory.html}
-              />
-
-              <CategoryContainer>
-                {categoriesOnHomePage.map(({ node }) => (
-                  <CategoryItem
-                    to={node.fields.slug}
-                    key={node.frontmatter.title}
-                    onMouseEnter={() => handleHover(node)}
-                    onMouseLeave={() => handleUnhover()}
-                  >
-                    <CategoryItemText>
-                      {node.frontmatter.title}
-                    </CategoryItemText>
-                  </CategoryItem>
-                ))}
-              </CategoryContainer>
-            </>
-          )}
-        </HoverHandler>
-      )
-    }}
+            <CategoryContainer>
+              {allMarkdownRemark.edges.map(({ node }) => (
+                <CategoryItem
+                  to={node.fields.slug}
+                  key={node.frontmatter.title}
+                  onMouseEnter={() => handleHover(node)}
+                  onMouseLeave={() => handleUnhover()}
+                >
+                  <CategoryItemText>{node.frontmatter.title}</CategoryItemText>
+                </CategoryItem>
+              ))}
+            </CategoryContainer>
+          </>
+        )}
+      </HoverHandler>
+    )}
   />
 )
 

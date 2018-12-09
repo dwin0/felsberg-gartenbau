@@ -6,7 +6,7 @@ import Layout from '../components/layout'
 import Categories from '../components/indexPage/Categories'
 
 const IndexPage = ({ data }) => {
-  const { title } = data.markdownRemark.frontmatter
+  const { title } = data.site.siteMetadata
 
   return (
     <Layout>
@@ -25,6 +25,11 @@ export const pageQuery = graphql`
       }
       html
     }
+    site {
+      siteMetadata {
+        title
+      }
+    }
   }
 `
 
@@ -35,6 +40,11 @@ IndexPage.propTypes = {
         title: PropTypes.string.isRequired,
       }).isRequired,
       html: PropTypes.string.isRequired,
+    }).isRequired,
+    site: PropTypes.shape({
+      siteMetadata: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+      }).isRequired,
     }).isRequired,
   }).isRequired,
 }

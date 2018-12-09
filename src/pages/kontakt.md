@@ -2,6 +2,7 @@
 templateKey: contactPage
 title: Kontakt
 categoryOnHomepage: true
+categoryOnHomepageOrder: 2
 linkInNavigation: true
 ---
 
