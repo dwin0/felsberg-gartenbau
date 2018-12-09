@@ -1,8 +1,9 @@
 ---
 templateKey: contactPage
 title: Kontakt
-categoryOnHomepage: true
-categoryOnHomepageOrder: 2
+categoryOnHomepage:
+  visible: true
+  order: 2
 linkInNavigation: true
 ---
 
