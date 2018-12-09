@@ -38,7 +38,7 @@ collections:
                   hint: 'Je tiefer die Zahl, desto weiter vorne die Kategorie',
                   name: order,
                   widget: number,
-                  min: 0,
+                  min: 1,
                 }
           - {
               label: Link in Navigation,
@@ -70,7 +70,7 @@ collections:
               hint: 'Je tiefer die Zahl, desto weiter vorne die Kategorie',
               name: order,
               widget: number,
-              min: 0,
+              min: 1,
             }
       - {
           label: Link in Navigation,
