@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
+import Img from 'gatsby-image'
 
 import HoverHandler from '../../helper/HoverHandler'
 import CategoryContainer from './CategoryContainer'
@@ -26,7 +27,13 @@ const Categories = ({ defaultCategory }) => (
                 categoryOnHomepage {
                   order
                 }
-                image
+                image {
+                  childImageSharp {
+                    sizes(maxWidth: 630) {
+                      ...GatsbyImageSharpSizes
+                    }
+                  }
+                }
               }
               html
             }
@@ -35,7 +42,10 @@ const Categories = ({ defaultCategory }) => (
       }
     `}
     render={({ allMarkdownRemark }) => (
-      <HoverHandler defaultItem={defaultCategory}>
+      <HoverHandler
+        defaultItem={defaultCategory}
+        onClick={window.console.log(allMarkdownRemark)}
+      >
         {({ hoveredItem: hoveredCategory, handleHover, handleUnhover }) => (
           <>
             <CategoryText
@@ -57,7 +67,7 @@ const Categories = ({ defaultCategory }) => (
                     onMouseEnter={() => handleHover(node)}
                     onMouseLeave={() => handleUnhover()}
                   >
-                    <img src={node.frontmatter.image} />
+                    {/* <Img fixed={file.childImageSharp.fixed} /> */}
                     <CategoryItemText>
                       {node.frontmatter.title}
                     </CategoryItemText>

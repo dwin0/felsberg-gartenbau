@@ -11,12 +11,21 @@ module.exports = {
     'gatsby-transformer-remark', // parses Markdown files using Remark.
     'gatsby-plugin-styled-components',
     {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'images',
+        path: `${__dirname}/static/assets`,
+      },
+    },
+    {
       resolve: 'gatsby-source-filesystem', // creating file nodes from the file system
       options: {
         name: 'pages',
         path: `${__dirname}/src/pages`,
       },
     },
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
