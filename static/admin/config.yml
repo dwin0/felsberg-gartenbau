@@ -13,14 +13,9 @@ collections:
         label: Homepage # Name in admin UI.
         name: homepage # Post type identifier, used in routes. Must be unique.
         fields:
-          - label: Template Key
-            name: templateKey
-            widget: hidden
-
-          - label: Titel
-            name: title
-            widget: string
-            required: true
+          - { label: Template Key, name: templateKey, widget: hidden }
+          - { label: Titel, name: title, widget: string, required: true }
+          - { label: Seiteninhalt, name: 'html', widget: 'markdown' }
 
   - name: categoryPages
     label: KategorieSeiten
@@ -47,3 +42,4 @@ collections:
           default: false,
         }
       - { label: Bild, name: image, widget: image }
+      - { label: Seiteninhalt, name: 'html', widget: 'markdown' }
