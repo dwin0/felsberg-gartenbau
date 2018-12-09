@@ -18,11 +18,11 @@ export const CategoryImage = styled(Img)`
   ::before {
     content: '';
     position: absolute;
-    background: ${COLORS.WHITE_TRANSPARENT};
-    animation: ${props => props.hovered && removeBackground} 0.5s forwards;
     width: 100%;
     height: 100%;
     z-index: 1;
+    background: ${COLORS.WHITE_TRANSPARENT};
+    animation: ${props => props.hovered && removeBackground} 0.5s forwards;
   }
 `
 

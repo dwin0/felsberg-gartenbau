@@ -21,6 +21,14 @@ const TextContainer = styled(AnimatedContainer)`
   opacity: 0;
 
   height: 200px;
+  max-height: 200px;
+  overflow: hidden;
+
+  p {
+    font-size: 20px;
+    max-width: 800px;
+    margin: auto;
+  }
 `
 
 // TODO: maximale Anzahl Zeichen festlegen

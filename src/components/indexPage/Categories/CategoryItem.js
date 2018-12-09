@@ -7,7 +7,6 @@ export const CategoryItem = styled(Link)`
   display: flex;
   align-items: center;
   text-decoration: none;
-  background: ${COLORS.GREEN};
   width: 250px;
   height: 250px;
   border-radius: 50%;
