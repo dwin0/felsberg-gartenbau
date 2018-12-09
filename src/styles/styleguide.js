@@ -1,6 +1,9 @@
 const COLORS = {
   GREEN: '#194a19',
+  GREEN_TRANSPARENT: '#194a197a',
   WHITE: '#ffffff',
+  YELLOW: '#ffe900',
+  YELLOW_TRANSPARENT: '#ffe9008a',
 }
 
 /**

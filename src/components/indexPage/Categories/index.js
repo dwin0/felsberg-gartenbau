@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
-import Img from 'gatsby-image'
 
 import HoverHandler from '../../helper/HoverHandler'
 import CategoryContainer from './CategoryContainer'
 import { CategoryItem, CategoryItemText } from './CategoryItem'
 import CategoryText from './CategoryText'
+import CategoryImage from './CategoryImage'
 
 const Categories = ({ defaultCategory }) => (
   <StaticQuery
@@ -19,6 +19,7 @@ const Categories = ({ defaultCategory }) => (
         ) {
           edges {
             node {
+              id
               fields {
                 slug
               }
@@ -29,8 +30,8 @@ const Categories = ({ defaultCategory }) => (
                 }
                 image {
                   childImageSharp {
-                    sizes(maxWidth: 630) {
-                      ...GatsbyImageSharpSizes
+                    fixed(width: 250, height: 250) {
+                      ...GatsbyImageSharpFixed_withWebp_tracedSVG
                     }
                   }
                 }
@@ -42,10 +43,7 @@ const Categories = ({ defaultCategory }) => (
       }
     `}
     render={({ allMarkdownRemark }) => (
-      <HoverHandler
-        defaultItem={defaultCategory}
-        onClick={window.console.log(allMarkdownRemark)}
-      >
+      <HoverHandler defaultItem={defaultCategory}>
         {({ hoveredItem: hoveredCategory, handleHover, handleUnhover }) => (
           <>
             <CategoryText
@@ -67,7 +65,11 @@ const Categories = ({ defaultCategory }) => (
                     onMouseEnter={() => handleHover(node)}
                     onMouseLeave={() => handleUnhover()}
                   >
-                    {/* <Img fixed={file.childImageSharp.fixed} /> */}
+                    <CategoryImage
+                      fixed={node.frontmatter.image.childImageSharp.fixed}
+                      style={{ position: 'absolute' }}
+                      hovered={node.id === hoveredCategory.id}
+                    />
                     <CategoryItemText>
                       {node.frontmatter.title}
                     </CategoryItemText>

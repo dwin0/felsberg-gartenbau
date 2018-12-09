@@ -13,6 +13,8 @@ export const CategoryItem = styled(Link)`
   height: 250px;
   border-radius: 50%;
   border: 10px solid ${COLORS.GREEN};
+  position: relative;
+  overflow: hidden;
 
   :hover {
     background: ${COLORS.WHITE};
@@ -27,4 +29,5 @@ export const CategoryItemText = styled.p`
   border-bottom-style: solid;
   padding-bottom: 5px;
   padding-left: 5px;
+  z-index: 2;
 `
