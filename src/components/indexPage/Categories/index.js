@@ -12,18 +12,20 @@ const Categories = ({ defaultCategory }) => (
     query={graphql`
       query {
         allMarkdownRemark(
-          filter: { frontmatter: { categoryOnHomepage: { eq: true } } }
-          sort: { fields: frontmatter___categoryOnHomepageOrder, order: ASC }
+          filter: {
+            frontmatter: { categoryOnHomepage: { visible: { eq: true } } }
+          }
         ) {
           edges {
             node {
-              id
               fields {
                 slug
               }
               frontmatter {
                 title
-                categoryOnHomepage
+                categoryOnHomepage {
+                  order
+                }
               }
               html
             }
@@ -41,16 +43,24 @@ const Categories = ({ defaultCategory }) => (
             />
 
             <CategoryContainer>
-              {allMarkdownRemark.edges.map(({ node }) => (
-                <CategoryItem
-                  to={node.fields.slug}
-                  key={node.frontmatter.title}
-                  onMouseEnter={() => handleHover(node)}
-                  onMouseLeave={() => handleUnhover()}
-                >
-                  <CategoryItemText>{node.frontmatter.title}</CategoryItemText>
-                </CategoryItem>
-              ))}
+              {allMarkdownRemark.edges
+                .sort(
+                  (edgeA, edgeB) =>
+                    edgeA.node.frontmatter.categoryOnHomepage.order -
+                    edgeB.node.frontmatter.categoryOnHomepage.order,
+                )
+                .map(({ node }) => (
+                  <CategoryItem
+                    to={node.fields.slug}
+                    key={node.frontmatter.title}
+                    onMouseEnter={() => handleHover(node)}
+                    onMouseLeave={() => handleUnhover()}
+                  >
+                    <CategoryItemText>
+                      {node.frontmatter.title}
+                    </CategoryItemText>
+                  </CategoryItem>
+                ))}
             </CategoryContainer>
           </>
         )}
