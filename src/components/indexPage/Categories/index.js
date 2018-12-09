@@ -58,23 +58,28 @@ const Categories = ({ defaultCategory }) => (
                     edgeA.node.frontmatter.categoryOnHomepage.order -
                     edgeB.node.frontmatter.categoryOnHomepage.order,
                 )
-                .map(({ node }) => (
-                  <CategoryItem
-                    to={node.fields.slug}
-                    key={node.frontmatter.title}
-                    onMouseEnter={() => handleHover(node)}
-                    onMouseLeave={() => handleUnhover()}
-                  >
-                    <CategoryImage
-                      fixed={node.frontmatter.image.childImageSharp.fixed}
-                      style={{ position: 'absolute' }}
-                      hovered={node.id === hoveredCategory.id}
-                    />
-                    <CategoryItemText>
-                      {node.frontmatter.title}
-                    </CategoryItemText>
-                  </CategoryItem>
-                ))}
+                .map(({ node }) => {
+                  // https://github.com/styled-components/styled-components/issues/1198
+                  const hovered = Number(node.id === hoveredCategory.id)
+
+                  return (
+                    <CategoryItem
+                      to={node.fields.slug}
+                      key={node.frontmatter.title}
+                      onMouseEnter={() => handleHover(node)}
+                      onMouseLeave={() => handleUnhover()}
+                    >
+                      <CategoryImage
+                        fixed={node.frontmatter.image.childImageSharp.fixed}
+                        style={{ position: 'absolute' }}
+                        hovered={hovered}
+                      />
+                      <CategoryItemText hovered={hovered}>
+                        {node.frontmatter.title}
+                      </CategoryItemText>
+                    </CategoryItem>
+                  )
+                })}
             </CategoryContainer>
           </>
         )}

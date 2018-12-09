@@ -1,7 +1,13 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import Img from 'gatsby-image'
 
 import { COLORS } from '../../../styles/styleguide'
+
+const removeBackground = keyframes`
+    to {
+      background: none
+    }
+  `
 
 export const CategoryImage = styled(Img)`
   /*  position: absolute; already set as prop */
@@ -12,8 +18,8 @@ export const CategoryImage = styled(Img)`
   ::before {
     content: '';
     position: absolute;
-    background: ${props =>
-      props.hovered ? COLORS.YELLOW_TRANSPARENT : COLORS.GREEN_TRANSPARENT};
+    background: ${COLORS.WHITE_TRANSPARENT};
+    animation: ${props => props.hovered && removeBackground} 0.5s forwards;
     width: 100%;
     height: 100%;
     z-index: 1;
