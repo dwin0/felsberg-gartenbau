@@ -1,28 +1,19 @@
-import styled, { keyframes } from 'styled-components'
-import Img from 'gatsby-image'
+import styled from 'styled-components'
+import Image from 'gatsby-image'
 
 import { COLORS } from '../../../styles/styleguide'
 
-const removeBackground = keyframes`
-    to {
-      background: none
-    }
-  `
+const CategoryImage = styled(Image)`
+  border-radius: 50%;
+  border: 3px solid ${COLORS.GREEN};
+  position: relative;
 
-export const CategoryImage = styled(Img)`
-  /*  position: absolute; already set as prop */
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-
-  ::before {
+  ::after {
     content: '';
     position: absolute;
     width: 100%;
     height: 100%;
-    z-index: 1;
-    background: ${COLORS.WHITE_TRANSPARENT};
-    animation: ${props => props.hovered && removeBackground} 0.5s forwards;
+    background: ${COLORS.BLACK_TRANSPARENT};
   }
 `
 

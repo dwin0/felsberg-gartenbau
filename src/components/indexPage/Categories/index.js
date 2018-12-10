@@ -3,9 +3,11 @@ import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
 
 import HoverHandler from '../../helper/HoverHandler'
-import CategoryContainer from './CategoryContainer'
-import { CategoryItem, CategoryItemText } from './CategoryItem'
+
 import CategoryText from './CategoryText'
+import CategoriesContainer from './CategoriesContainer'
+import CategoryLink from './CategoryLink'
+import CategoryTitle from './CategoryTitle'
 import CategoryImage from './CategoryImage'
 
 const Categories = ({ defaultCategory }) => (
@@ -45,43 +47,41 @@ const Categories = ({ defaultCategory }) => (
     render={({ allMarkdownRemark }) => (
       <HoverHandler defaultItem={defaultCategory}>
         {({ hoveredItem: hoveredCategory, handleHover, handleUnhover }) => (
-          <>
+          <div onMouseLeave={handleUnhover}>
             <CategoryText
               title={hoveredCategory.frontmatter.title}
               html={hoveredCategory.html}
             />
 
-            <CategoryContainer>
+            <CategoriesContainer>
               {allMarkdownRemark.edges
                 .sort(
                   (edgeA, edgeB) =>
                     edgeA.node.frontmatter.categoryOnHomepage.order -
                     edgeB.node.frontmatter.categoryOnHomepage.order,
                 )
-                .map(({ node }) => {
-                  // https://github.com/styled-components/styled-components/issues/1198
-                  const hovered = Number(node.id === hoveredCategory.id)
-
-                  return (
-                    <CategoryItem
-                      to={node.fields.slug}
-                      key={node.frontmatter.title}
-                      onMouseEnter={() => handleHover(node)}
-                      onMouseLeave={() => handleUnhover()}
+                .map(({ node }) => (
+                  <CategoryLink
+                    key={node.frontmatter.title}
+                    to={node.fields.slug}
+                    onMouseEnter={() => handleHover(node)}
+                  >
+                    <CategoryImage
+                      fixed={node.frontmatter.image.childImageSharp.fixed}
+                    />
+                    <CategoryTitle
+                      hovered={
+                        Number(
+                          node.id === hoveredCategory.id,
+                        ) /* https://github.com/styled-components/styled-components/issues/1198 */
+                      }
                     >
-                      <CategoryImage
-                        fixed={node.frontmatter.image.childImageSharp.fixed}
-                        style={{ position: 'absolute' }}
-                        hovered={hovered}
-                      />
-                      <CategoryItemText hovered={hovered}>
-                        {node.frontmatter.title}
-                      </CategoryItemText>
-                    </CategoryItem>
-                  )
-                })}
-            </CategoryContainer>
-          </>
+                      {node.frontmatter.title}
+                    </CategoryTitle>
+                  </CategoryLink>
+                ))}
+            </CategoriesContainer>
+          </div>
         )}
       </HoverHandler>
     )}
