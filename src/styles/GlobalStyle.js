@@ -7,6 +7,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     font: ${FONTS.STANDARD_TEXT};
     margin: auto;
+    margin-bottom: 200px /* TODO: remove */
   }
 `
 

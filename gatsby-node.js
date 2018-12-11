@@ -5,7 +5,7 @@
  */
 
 const path = require('path')
-const { createFilePath } = require(`gatsby-source-filesystem`)
+const { createFilePath } = require('gatsby-source-filesystem')
 const { fmImagesToRelative } = require('gatsby-remark-relative-images')
 
 // You want to use each markdown file name to create the page slug. So pandas.md will become /pandas/.
