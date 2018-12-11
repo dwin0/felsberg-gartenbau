@@ -7,6 +7,8 @@ const CategoryImage = styled(Image)`
   border-radius: 50%;
   border: 3px solid ${COLORS.GREEN};
   position: relative;
+  transform: ${props => (props.hovered ? 'scale(1.05)' : 'none')};
+  transition: transform 0.3s;
 
   ::after {
     content: '';

@@ -6,7 +6,6 @@ import { FONTS } from './styleguide'
 const GlobalStyle = createGlobalStyle`
   body {
     font: ${FONTS.STANDARD_TEXT};
-    max-width: 1000px;
     margin: auto;
   }
 `

@@ -60,26 +60,27 @@ const Categories = ({ defaultCategory }) => (
                     edgeA.node.frontmatter.categoryOnHomepage.order -
                     edgeB.node.frontmatter.categoryOnHomepage.order,
                 )
-                .map(({ node }) => (
-                  <CategoryLink
-                    key={node.frontmatter.title}
-                    to={node.fields.slug}
-                    onMouseEnter={() => handleHover(node)}
-                  >
-                    <CategoryImage
-                      fixed={node.frontmatter.image.childImageSharp.fixed}
-                    />
-                    <CategoryTitle
-                      hovered={
-                        Number(
-                          node.id === hoveredCategory.id,
-                        ) /* https://github.com/styled-components/styled-components/issues/1198 */
-                      }
+                .map(({ node }) => {
+                  const hovered = Number(
+                    node.id === hoveredCategory.id,
+                  ) /* https://github.com/styled-components/styled-components/issues/1198 */
+
+                  return (
+                    <CategoryLink
+                      key={node.frontmatter.title}
+                      to={node.fields.slug}
+                      onMouseEnter={() => handleHover(node)}
                     >
-                      {node.frontmatter.title}
-                    </CategoryTitle>
-                  </CategoryLink>
-                ))}
+                      <CategoryImage
+                        fixed={node.frontmatter.image.childImageSharp.fixed}
+                        hovered={hovered}
+                      />
+                      <CategoryTitle hovered={hovered}>
+                        {node.frontmatter.title}
+                      </CategoryTitle>
+                    </CategoryLink>
+                  )
+                })}
             </CategoriesContainer>
           </div>
         )}
@@ -92,6 +93,7 @@ Categories.propTypes = {
   defaultCategory: PropTypes.shape({
     frontmatter: PropTypes.shape({
       title: PropTypes.string.isRequired,
+      image: PropTypes.object.isRequired,
     }).isRequired,
     html: PropTypes.string.isRequired,
   }).isRequired,
