@@ -10,6 +10,7 @@ import CategoryLink from './CategoryLink'
 import CategoryTitle from './CategoryTitle'
 import CategoryImage from './CategoryImage'
 
+// TODO: add short description instead of showing html -> Erfahren Sie mehr über...
 const Categories = ({ defaultCategory }) => (
   <StaticQuery
     query={graphql`
