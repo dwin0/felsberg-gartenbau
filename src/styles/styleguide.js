@@ -15,7 +15,7 @@ const COLORS = {
  */
 const FONTS = {
   STANDARD_TEXT: '15px sans-serif',
-  LARGE_LINK: 'bold 25px Helvetica, sans-serif',
+  LARGE: 'bold 25px Helvetica, sans-serif',
 }
 
 export { COLORS, FONTS }

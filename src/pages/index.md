@@ -2,7 +2,6 @@
 templateKey: index
 title: Herzlich Willkommen
 image: /assets/garten-home.jpg
-shortDescription: 'TODO: remove'
 ---
 
 Herzlich willkommen auf der Homepage der Gartenbau Felsberg GmbH in Neuwilen.

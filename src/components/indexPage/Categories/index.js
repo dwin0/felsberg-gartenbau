@@ -1,17 +1,11 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
 
-import HoverHandler from '../../helper/HoverHandler'
-
-import CategoryText from './CategoryText'
-import CategoriesContainer from './CategoriesContainer'
 import CategoryLink from './CategoryLink'
 import CategoryTitle from './CategoryTitle'
 import CategoryImage from './CategoryImage'
 
-// TODO: add short description instead of showing html -> Erfahren Sie mehr über...
-const Categories = ({ defaultCategory }) => (
+const Categories = () => (
   <StaticQuery
     query={graphql`
       query {
@@ -22,7 +16,6 @@ const Categories = ({ defaultCategory }) => (
         ) {
           edges {
             node {
-              id
               fields {
                 slug
               }
@@ -45,59 +38,34 @@ const Categories = ({ defaultCategory }) => (
         }
       }
     `}
-    render={({ allMarkdownRemark }) => (
-      <HoverHandler defaultItem={defaultCategory}>
-        {({ hoveredItem: hoveredCategory, handleHover, handleUnhover }) => (
-          <div onMouseLeave={handleUnhover}>
-            <CategoryText
-              title={hoveredCategory.frontmatter.title}
-              shortDescription={hoveredCategory.frontmatter.shortDescription}
-            />
-
-            <CategoriesContainer>
-              {allMarkdownRemark.edges
-                .sort(
-                  (edgeA, edgeB) =>
-                    edgeA.node.frontmatter.categoryOnHomepage.order -
-                    edgeB.node.frontmatter.categoryOnHomepage.order,
-                )
-                .map(({ node }) => {
-                  const hovered = Number(
-                    node.id === hoveredCategory.id,
-                  ) /* https://github.com/styled-components/styled-components/issues/1198 */
-
-                  return (
-                    <CategoryLink
-                      key={node.frontmatter.title}
-                      to={node.fields.slug}
-                      onMouseEnter={() => handleHover(node)}
-                    >
-                      <CategoryImage
-                        fixed={node.frontmatter.image.childImageSharp.fixed}
-                        hovered={hovered}
-                      />
-                      <CategoryTitle hovered={hovered}>
-                        {node.frontmatter.title}
-                      </CategoryTitle>
-                    </CategoryLink>
-                  )
-                })}
-            </CategoriesContainer>
-          </div>
-        )}
-      </HoverHandler>
-    )}
+    render={({ allMarkdownRemark }) =>
+      allMarkdownRemark.edges
+        .sort(
+          (edgeA, edgeB) =>
+            edgeA.node.frontmatter.categoryOnHomepage.order -
+            edgeB.node.frontmatter.categoryOnHomepage.order,
+        )
+        .map(
+          ({
+            node: {
+              frontmatter: { title, image, shortDescription },
+              fields: { slug },
+            },
+          }) => (
+            <div key={title}>
+              <CategoryImage fixed={image.childImageSharp.fixed} />
+              <div>
+                <CategoryTitle>{title}</CategoryTitle>
+                <p>{shortDescription}</p>
+                <CategoryLink as="button" to={slug}>
+                  Mehr
+                </CategoryLink>
+              </div>
+            </div>
+          ),
+        )
+    }
   />
 )
-
-Categories.propTypes = {
-  defaultCategory: PropTypes.shape({
-    frontmatter: PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      image: PropTypes.object.isRequired,
-      shortDescription: PropTypes.string.isRequired,
-    }).isRequired,
-  }).isRequired,
-}
 
 export default Categories

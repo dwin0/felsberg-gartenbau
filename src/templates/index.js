@@ -16,7 +16,7 @@ const IndexPage = ({ data }) => {
       <Image fluid={image.childImageSharp.fluid} />
 
       <Layout.ContentWrapper>
-        <Categories defaultCategory={data.markdownRemark} />
+        <Categories />
       </Layout.ContentWrapper>
     </Layout>
   )
@@ -36,7 +36,6 @@ export const pageQuery = graphql`
             }
           }
         }
-        shortDescription
       }
       html
     }

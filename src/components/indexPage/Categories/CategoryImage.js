@@ -4,11 +4,8 @@ import Image from 'gatsby-image'
 import { COLORS } from '../../../styles/styleguide'
 
 const CategoryImage = styled(Image)`
-  border-radius: 50%;
-  border: 3px solid ${COLORS.GREEN};
   position: relative;
-  transform: ${props => (props.hovered ? 'scale(1.05)' : 'none')};
-  transition: transform 0.3s;
+  border-radius: 15% 0 0 15%;
 
   ::after {
     content: '';
