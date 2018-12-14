@@ -39,6 +39,7 @@ collections:
                   hint: 'Je tiefer die Zahl, desto weiter vorne die Kategorie',
                   name: order,
                   widget: number,
+                  valueType: int,
                   min: 1,
                 }
           - {
@@ -72,6 +73,7 @@ collections:
               hint: 'Je tiefer die Zahl, desto weiter vorne die Kategorie',
               name: order,
               widget: number,
+              valueType: int,
               min: 1,
             }
       - {
