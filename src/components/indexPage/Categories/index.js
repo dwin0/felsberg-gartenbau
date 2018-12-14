@@ -38,8 +38,8 @@ const Categories = ({ defaultCategory }) => (
                     }
                   }
                 }
+                shortDescription
               }
-              html
             }
           }
         }
@@ -51,7 +51,7 @@ const Categories = ({ defaultCategory }) => (
           <div onMouseLeave={handleUnhover}>
             <CategoryText
               title={hoveredCategory.frontmatter.title}
-              html={hoveredCategory.html}
+              shortDescription={hoveredCategory.frontmatter.shortDescription}
             />
 
             <CategoriesContainer>
@@ -95,8 +95,8 @@ Categories.propTypes = {
     frontmatter: PropTypes.shape({
       title: PropTypes.string.isRequired,
       image: PropTypes.object.isRequired,
+      shortDescription: PropTypes.string.isRequired,
     }).isRequired,
-    html: PropTypes.string.isRequired,
   }).isRequired,
 }
 

@@ -54,7 +54,7 @@ class CategoryText extends React.Component {
     })
 
   render() {
-    const { title, html } = this.props
+    const { title, shortDescription } = this.props
     const { isHidden } = this.state
 
     return (
@@ -63,7 +63,7 @@ class CategoryText extends React.Component {
         onPoseComplete={this.handlePoseComplete}
       >
         <h1>{title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: html }} />
+        <p>{shortDescription}</p>
       </TextContainer>
     )
   }
@@ -71,7 +71,7 @@ class CategoryText extends React.Component {
 
 CategoryText.propTypes = {
   title: PropTypes.string.isRequired,
-  html: PropTypes.string.isRequired,
+  shortDescription: PropTypes.string.isRequired,
 }
 
 export default CategoryText

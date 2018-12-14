@@ -31,10 +31,7 @@ class HoverHandler extends React.Component {
 
 HoverHandler.propTypes = {
   defaultItem: PropTypes.any,
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]).isRequired,
+  children: PropTypes.func.isRequired,
 }
 
 export default HoverHandler
