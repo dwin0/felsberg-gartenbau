@@ -4,7 +4,6 @@ import { Link, graphql } from 'gatsby'
 import Image from 'gatsby-image'
 
 import Layout from '../components/layout'
-import ContentWrapper from '../components/ContentWrapper'
 
 const CategoryPage = ({ data }) => {
   const { title, image } = data.markdownRemark.frontmatter
@@ -14,10 +13,10 @@ const CategoryPage = ({ data }) => {
       <h1>{title}</h1>
       <Image fluid={image.childImageSharp.fluid} />
 
-      <ContentWrapper>
+      <Layout.ContentWrapper>
         <p>Welcome to page 2</p>
         <Link to="/">Go back to the homepage</Link>
-      </ContentWrapper>
+      </Layout.ContentWrapper>
     </Layout>
   )
 }

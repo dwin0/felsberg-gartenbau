@@ -4,7 +4,6 @@ import { graphql } from 'gatsby'
 import Image from 'gatsby-image'
 
 import Layout from '../components/layout'
-import ContentWrapper from '../components/ContentWrapper'
 import Categories from '../components/indexPage/Categories'
 
 const IndexPage = ({ data }) => {
@@ -16,9 +15,9 @@ const IndexPage = ({ data }) => {
       <h1>{title}</h1>
       <Image fluid={image.childImageSharp.fluid} />
 
-      <ContentWrapper>
+      <Layout.ContentWrapper>
         <Categories defaultCategory={data.markdownRemark} />
-      </ContentWrapper>
+      </Layout.ContentWrapper>
     </Layout>
   )
 }

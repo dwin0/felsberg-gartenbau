@@ -6,6 +6,7 @@ categoryOnHomepage:
   order: 1
 linkInNavigation: true
 image: /assets/teich.jpg
+shortDescription: Die Gartenbau Felsberg GmbH verhilft Ihnen zu einem schönen Garten. Als Allrounder übernehmen wir sowohl die Neugestaltung Ihres Gartens sowie Gartengestaltung und Gartenumänderungen.
 ---
 
 Die Gartenbau Felsberg GmbH verhilft Ihnen zu einem schönen Garten. Als Allrounder übernehmen wir sowohl die Neugestaltung Ihres Gartens sowie Gartengestaltung und Gartenumänderungen.

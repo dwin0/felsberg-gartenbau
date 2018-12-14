@@ -4,6 +4,7 @@ import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 
 import Header from './header'
+import ContentWrapper from './ContentWrapper'
 import GlobalStyle from '../styles/GlobalStyle'
 
 const Layout = ({ children }) => (
@@ -47,6 +48,8 @@ const Layout = ({ children }) => (
     }}
   />
 )
+
+Layout.ContentWrapper = ContentWrapper
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,

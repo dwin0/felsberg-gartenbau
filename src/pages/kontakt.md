@@ -1,10 +1,6 @@
 ---
 templateKey: contactPage
 title: Kontakt
-categoryOnHomepage:
-  visible: true
-  order: 3
-linkInNavigation: true
 image: /assets/fahrzeuge.jpg
 ---
 
