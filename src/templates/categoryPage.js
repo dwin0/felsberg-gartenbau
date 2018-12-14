@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
 import Image from 'gatsby-image'
 
-import Layout from '../components/layout'
+import Layout from '../components/Layout'
 
 const CategoryPage = ({ data }) => {
   const { title, image } = data.markdownRemark.frontmatter
