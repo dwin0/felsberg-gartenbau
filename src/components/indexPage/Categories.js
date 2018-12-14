@@ -1,9 +1,7 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 
-import CategoryLink from './CategoryLink'
-import CategoryTitle from './CategoryTitle'
-import CategoryImage from './CategoryImage'
+import Category from './Category'
 
 const Categories = () => (
   <StaticQuery
@@ -46,22 +44,23 @@ const Categories = () => (
             edgeB.node.frontmatter.categoryOnHomepage.order,
         )
         .map(
-          ({
-            node: {
-              frontmatter: { title, image, shortDescription },
-              fields: { slug },
+          (
+            {
+              node: {
+                frontmatter: { title, image, shortDescription },
+                fields: { slug },
+              },
             },
-          }) => (
-            <div key={title}>
-              <CategoryImage fixed={image.childImageSharp.fixed} />
-              <div>
-                <CategoryTitle>{title}</CategoryTitle>
-                <p>{shortDescription}</p>
-                <CategoryLink as="button" to={slug}>
-                  Mehr
-                </CategoryLink>
-              </div>
-            </div>
+            index,
+          ) => (
+            <Category
+              key={title}
+              index={index}
+              title={title}
+              image={image}
+              shortDescription={shortDescription}
+              slug={slug}
+            />
           ),
         )
     }
