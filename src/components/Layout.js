@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
+import { Normalize } from 'styled-normalize'
 
 import Header from './Header'
 import ContentWrapper from './ContentWrapper'
@@ -42,6 +43,7 @@ const Layout = ({ children }) => (
           </Helmet>
           <Header siteTitle={title} />
           <div>{children}</div>
+          <Normalize />
           <GlobalStyle />
         </>
       )
