@@ -3,11 +3,12 @@ import PropTypes from 'prop-types'
 import React from 'react'
 
 const Header = ({ siteTitle }) => (
-  <div>
+  <header>
     <h1>
       <Link to="/">{siteTitle}</Link>
+      <nav>{/* TODO: */}</nav>
     </h1>
-  </div>
+  </header>
 )
 
 Header.propTypes = {

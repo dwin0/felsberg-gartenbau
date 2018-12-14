@@ -4,6 +4,7 @@ import { MEDIA } from '../../../styles/styleguide'
 
 const CategoryContainer = styled.div`
   display: flex;
+  justify-content: space-evenly;
   flex-direction: row;
   margin: 150px 0;
 
@@ -13,14 +14,17 @@ const CategoryContainer = styled.div`
 `
 
 CategoryContainer.ImageContainer = styled.div`
-  flex: 1 1 calc(100% * 1 / 3);
+  flex: 0 1 calc(100% * 1 / 3);
   display: flex;
   justify-content: center;
   align-items: center;
 `
 
 CategoryContainer.TextConainer = styled.div`
-  flex: 1 1 calc(100% * 2 / 3);
+  flex: 0 1 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `
 
 export default CategoryContainer

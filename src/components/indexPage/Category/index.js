@@ -1,30 +1,35 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 
-import CategoryContainer from './CategoryContainer'
-import CategoryLink from './CategoryLink'
-import CategoryTitle from './CategoryTitle'
-import CategoryImage from './CategoryImage'
+import Container from './Container'
+import Title from './Title'
+import Text from './Text'
+import Link from './Link'
+import Image from './Image'
 
 const Category = ({ image, index, shortDescription, slug, title }) => {
-  const Image = (
-    <CategoryContainer.ImageContainer>
-      <CategoryImage fixed={image.childImageSharp.fixed} to={slug} />
-    </CategoryContainer.ImageContainer>
+  const ImageBlock = (
+    <Container.ImageContainer>
+      <Image fixed={image.childImageSharp.fixed} to={slug} />
+    </Container.ImageContainer>
   )
 
-  const Text = (
-    <CategoryContainer.TextConainer>
-      <CategoryTitle>{title}</CategoryTitle>
-      <p>{shortDescription}</p>
-      <CategoryLink to={slug}>Mehr</CategoryLink>
-    </CategoryContainer.TextConainer>
+  const TextBlock = (
+    <Container.TextConainer>
+      <Title>{title}</Title>
+      <Text>{shortDescription}</Text>
+      <Link to={slug}>Mehr</Link>
+    </Container.TextConainer>
   )
 
   return (
-    <CategoryContainer>
-      {index % 2 == 0 ? [Image, Text] : [Text, Image]}
-    </CategoryContainer>
+    <Container>
+      {(index % 2 == 0 ? [ImageBlock, TextBlock] : [TextBlock, ImageBlock]).map(
+        (block, index) => (
+          <Fragment key={index}>{block}</Fragment>
+        ),
+      )}
+    </Container>
   )
 }
 

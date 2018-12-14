@@ -4,6 +4,7 @@ const COLORS = {
   GREEN: '#194a19',
   WHITE: '#ffffff',
   BLACK_TRANSPARENT: '#5f5f5f26',
+  BLACK: '#252525',
 }
 
 /**
@@ -16,8 +17,14 @@ const COLORS = {
  * font-family
  */
 const FONTS = {
-  STANDARD_TEXT: '15px sans-serif',
-  LARGE: 'bold 25px Helvetica, sans-serif',
+  STANDARD_TEXT: css`
+    font: 100 20px sans-serif;
+    letter-spacing: 0.2px;
+    line-height: 1.4;
+  `,
+  LARGE: css`
+    font: 400 40px Helvetica, sans-serif;
+  `,
 }
 
 const sizes = {

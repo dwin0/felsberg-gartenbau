@@ -9,6 +9,7 @@ import { COLORS } from '../../../styles/styleguide'
 const StyledImage = styled(Image)`
   position: relative;
   border-radius: 15%;
+  margin: 0 20px;
 
   ::after {
     content: '';
