@@ -6,7 +6,7 @@ const CategoryContainer = styled.div`
   display: flex;
   justify-content: space-evenly;
   flex-direction: row;
-  margin: 150px 0;
+  padding: 50px 0 100px;
 
   ${MEDIA.TABLET`
     flex-direction: column;

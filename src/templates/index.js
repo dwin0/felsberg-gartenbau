@@ -10,6 +10,23 @@ import {
 } from '../components/indexPage/RevealingTitle'
 import Categories from '../components/indexPage/Categories'
 
+import styled from 'styled-components'
+
+const CMS_HTML = styled.div`
+  max-width: 800px;
+  margin: auto;
+  padding: 100px 0;
+  text-align: center;
+
+  * {
+    margin: 0;
+  }
+
+  p {
+    margin-bottom: 20px;
+  }
+`
+
 const IndexPage = ({ data }) => {
   const { title } = data.site.siteMetadata
   const { image } = data.markdownRemark.frontmatter
@@ -23,7 +40,7 @@ const IndexPage = ({ data }) => {
       </ImageTitleWrapper>
 
       <Layout.ContentWrapper>
-        <div dangerouslySetInnerHTML={{ __html: html }} />
+        <CMS_HTML dangerouslySetInnerHTML={{ __html: html }} />
         <Categories />
       </Layout.ContentWrapper>
     </Layout>
