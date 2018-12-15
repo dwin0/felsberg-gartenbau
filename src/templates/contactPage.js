@@ -1,13 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 import Image from 'gatsby-image'
+
+import Address, { addressPropTypes } from '../components/contactPage/Address'
+import FurtherAddressInformation, {
+  furtherAdressInformationPropTypes,
+} from '../components/contactPage/FurtherAddressInformation'
 
 import Layout from '../components/Layout'
 import CMS_HTML from '../components/CMS_Html'
 
 const ContactPage = ({ data: { markdownRemark } }) => {
-  const { image } = markdownRemark.frontmatter
+  const {
+    image,
+    address,
+    furtherAdressInformation,
+  } = markdownRemark.frontmatter
   const { html } = markdownRemark
 
   return (
@@ -16,7 +25,12 @@ const ContactPage = ({ data: { markdownRemark } }) => {
 
       <Layout.ContentWrapper>
         <CMS_HTML dangerouslySetInnerHTML={{ __html: html }} />
-        <Link to="/">Go back to the homepage</Link>
+        <Address address={address} />
+        {furtherAdressInformation && (
+          <FurtherAddressInformation
+            furtherAdressInformation={furtherAdressInformation}
+          />
+        )}
       </Layout.ContentWrapper>
     </Layout>
   )
@@ -33,6 +47,17 @@ export const pageQuery = graphql`
             }
           }
         }
+        address {
+          name
+          street
+          city
+          googleMapsLink
+        }
+        furtherAdressInformation {
+          name
+          contactInfo
+          type
+        }
       }
       html
     }
@@ -44,6 +69,8 @@ ContactPage.propTypes = {
     markdownRemark: PropTypes.shape({
       frontmatter: PropTypes.shape({
         image: PropTypes.object.isRequired,
+        ...addressPropTypes,
+        ...furtherAdressInformationPropTypes,
       }).isRequired,
       html: PropTypes.string.isRequired,
     }).isRequired,

@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 import Image from 'gatsby-image'
 
 import Layout from '../components/Layout'
@@ -16,7 +16,6 @@ const CategoryPage = ({ data: { markdownRemark } }) => {
 
       <Layout.ContentWrapper>
         <CMS_HTML dangerouslySetInnerHTML={{ __html: html }} />
-        <Link to="/">Go back to the homepage</Link>
       </Layout.ContentWrapper>
     </Layout>
   )

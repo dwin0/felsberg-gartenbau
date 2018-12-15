@@ -52,6 +52,9 @@ collections:
               - label: PLZ und Ort
                 name: city
                 widget: string
+              - label: Google Maps Link
+                name: googleMapsLink
+                widget: string
           - label: Weitere Kontaktmöglichkeiten
             name: furtherAdressInformation
             widget: list
