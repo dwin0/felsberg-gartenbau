@@ -11,6 +11,7 @@ import {
 import Categories from '../components/indexPage/Categories'
 
 import styled from 'styled-components'
+import { FONTS } from '../styles/styleguide'
 
 const CMS_HTML = styled.div`
   max-width: 800px;
@@ -19,11 +20,11 @@ const CMS_HTML = styled.div`
   text-align: center;
 
   * {
-    margin: 0;
+    margin: 0 0 20px 0;
   }
 
-  p {
-    margin-bottom: 20px;
+  h1 {
+    ${FONTS.LARGE}
   }
 `
 

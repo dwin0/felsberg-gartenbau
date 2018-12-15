@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components'
 
-import { COLORS } from '../../styles/styleguide'
+import { COLORS, FONTS } from '../../styles/styleguide'
 
 const fadeIn = keyframes`
   100% {
@@ -13,6 +13,7 @@ export const ImageTitleWrapper = styled.div`
 `
 
 export const RevealingTitle = styled.h1`
+  ${FONTS.LARGE_BOLD}
   position: absolute;
   top: 50%;
   left: 50%;

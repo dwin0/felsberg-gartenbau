@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { COLORS, FONTS } from '../../styles/styleguide'
 
 const Logo = styled(Link)`
-  ${FONTS.LOGO_FONT}
+  ${FONTS.STANDARD_TEXT_BOLD}
   color: ${COLORS.GREEN};
   text-decoration: none;
   display: flex;

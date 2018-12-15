@@ -22,14 +22,16 @@ const FONTS = {
     letter-spacing: 0.2px;
     line-height: 1.4;
   `,
+  STANDARD_TEXT_BOLD: css`
+    font: bold 20px sans-serif;
+    letter-spacing: 0.2px;
+    line-height: 1.4;
+  `,
   LARGE: css`
     font: 400 40px Helvetica, sans-serif;
   `,
-  LOGO_FONT: css`
-    font: 100 20px sans-serif;
-    letter-spacing: 0.2px;
-    line-height: 1.4;
-    font-weight: bold;
+  LARGE_BOLD: css`
+    font: bold 40px Helvetica, sans-serif;
   `,
 }
 
