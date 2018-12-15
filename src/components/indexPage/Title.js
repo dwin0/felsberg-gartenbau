@@ -16,6 +16,7 @@ export const Title = styled.h1`
   display: block;
   padding: 25px 100px;
   color: ${COLORS.GREEN};
+  text-align: center;
 
   ::before {
     content: '';

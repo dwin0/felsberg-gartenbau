@@ -76,9 +76,9 @@ collections:
               valueType: int,
               min: 1,
             }
-      - label: Link in Navigation,
-        name: linkInNavigation,
-        widget: object,
+      - label: Link in Navigation
+        name: linkInNavigation
+        widget: object
         fields:
           - { label: Sichtbar, name: visible, widget: boolean, default: false }
           - {
