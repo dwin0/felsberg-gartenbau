@@ -13,6 +13,7 @@ import Categories from '../components/indexPage/Categories'
 const IndexPage = ({ data }) => {
   const { title } = data.site.siteMetadata
   const { image } = data.markdownRemark.frontmatter
+  const { html } = data.markdownRemark
 
   return (
     <Layout>
@@ -22,6 +23,7 @@ const IndexPage = ({ data }) => {
       </ImageTitleWrapper>
 
       <Layout.ContentWrapper>
+        <div dangerouslySetInnerHTML={{ __html: html }} />
         <Categories />
       </Layout.ContentWrapper>
     </Layout>

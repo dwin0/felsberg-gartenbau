@@ -41,7 +41,7 @@ const Layout = ({ children }) => (
           >
             <html lang="de" />
           </Helmet>
-          <Header siteTitle={title} />
+          <Header />
           <main>{children}</main>
           <footer>{/* TODO: */}</footer>
           <Normalize />

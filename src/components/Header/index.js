@@ -1,14 +1,11 @@
-import PropTypes from 'prop-types'
-import React from 'react'
-import { StaticQuery, graphql, Link } from 'gatsby'
+import React, { Fragment } from 'react'
+import { StaticQuery, graphql } from 'gatsby'
 
-import styled from 'styled-components'
+import Logo from './Logo'
+import { Navigation, NavigationEntry } from './Navigation'
+import { HeaderPlaceholder, HeaderElement } from './HeaderElement'
 
-const Navigation = styled.nav`
-  display: flex;
-`
-
-const Header = ({ siteTitle }) => (
+const Header = () => (
   <StaticQuery
     query={graphql`
       query {
@@ -31,9 +28,14 @@ const Header = ({ siteTitle }) => (
             }
           }
         }
+        site {
+          siteMetadata {
+            title
+          }
+        }
       }
     `}
-    render={({ allMarkdownRemark: { edges } }) => {
+    render={({ allMarkdownRemark: { edges }, site }) => {
       const navigationEntries = edges
         .sort(
           (edgeA, edgeB) =>
@@ -46,29 +48,22 @@ const Header = ({ siteTitle }) => (
         }))
 
       return (
-        <header>
-          <h1>
-            <Link to="/">{siteTitle}</Link>
+        <Fragment>
+          <HeaderPlaceholder />
+          <HeaderElement>
+            <Logo to="/">{site.siteMetadata.title}</Logo>
             <Navigation>
               {navigationEntries.map(({ link, title }) => (
-                <Link key={title} to={link}>
-                  {title} |
-                </Link>
+                <NavigationEntry key={title} to={link}>
+                  {title}
+                </NavigationEntry>
               ))}
             </Navigation>
-          </h1>
-        </header>
+          </HeaderElement>
+        </Fragment>
       )
     }}
   />
 )
-
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: '',
-}
 
 export default Header
