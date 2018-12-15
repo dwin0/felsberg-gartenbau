@@ -52,6 +52,18 @@ collections:
               - label: PLZ und Ort
                 name: city
                 widget: string
+          - label: Weitere Kontaktmöglichkeiten
+            name: furtherAdressInformation
+            widget: list
+            fields:
+              - label: Name
+                name: name
+                hint: z.B. Email
+                widget: string
+              - label: Kontaktinfo
+                name: contactInfo
+                hint: z.B. a@b.com
+                widget: string
           - { label: Seiteninhalt, name: body, widget: markdown }
 
   - name: categoryPages
