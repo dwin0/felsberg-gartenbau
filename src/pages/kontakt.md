@@ -7,6 +7,8 @@ linkInNavigation:
   order: 3
 ---
 
+# Kontakt
+
 Adresse
 Gartenbau Felsberg GmbH
 Greestrasse 26

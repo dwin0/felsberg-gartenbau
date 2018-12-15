@@ -9,6 +9,10 @@ const GlobalStyle = createGlobalStyle`
     margin: auto;
     margin-bottom: 200px /* TODO: remove */
   }
+
+  h1 {
+    ${FONTS.LARGE}
+  }
 `
 
 export default GlobalStyle

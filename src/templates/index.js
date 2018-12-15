@@ -6,24 +6,7 @@ import Image from 'gatsby-image'
 import Layout from '../components/Layout'
 import { ImageTitleWrapper, Title } from '../components/indexPage/Title'
 import Categories from '../components/indexPage/Categories'
-
-import styled from 'styled-components'
-import { FONTS } from '../styles/styleguide'
-
-const CMS_HTML = styled.div`
-  max-width: 800px;
-  margin: auto;
-  padding: 100px 0;
-  text-align: center;
-
-  * {
-    margin: 0 0 20px 0;
-  }
-
-  h1 {
-    ${FONTS.LARGE}
-  }
-`
+import CMS_HTML from '../components/CMS_Html'
 
 const IndexPage = ({ data }) => {
   const { title } = data.site.siteMetadata

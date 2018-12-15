@@ -4,17 +4,18 @@ import { Link, graphql } from 'gatsby'
 import Image from 'gatsby-image'
 
 import Layout from '../components/Layout'
+import CMS_HTML from '../components/CMS_Html'
 
-const ContactPage = ({ data }) => {
-  const { title, image } = data.markdownRemark.frontmatter
+const ContactPage = ({ data: { markdownRemark } }) => {
+  const { image } = markdownRemark.frontmatter
+  const { html } = markdownRemark
 
   return (
     <Layout>
-      <h1>{title}</h1>
       <Image fluid={image.childImageSharp.fluid} />
 
       <Layout.ContentWrapper>
-        <p>Welcome to page 2</p>
+        <CMS_HTML dangerouslySetInnerHTML={{ __html: html }} />
         <Link to="/">Go back to the homepage</Link>
       </Layout.ContentWrapper>
     </Layout>
@@ -25,7 +26,6 @@ export const pageQuery = graphql`
   query($id: String!) {
     markdownRemark(id: { eq: $id }) {
       frontmatter {
-        title
         image {
           childImageSharp {
             fluid(maxWidth: 2000) {
@@ -34,6 +34,7 @@ export const pageQuery = graphql`
           }
         }
       }
+      html
     }
   }
 `
@@ -42,9 +43,9 @@ ContactPage.propTypes = {
   data: PropTypes.shape({
     markdownRemark: PropTypes.shape({
       frontmatter: PropTypes.shape({
-        title: PropTypes.string.isRequired,
         image: PropTypes.object.isRequired,
       }).isRequired,
+      html: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
 }
