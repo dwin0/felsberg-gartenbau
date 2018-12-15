@@ -68,8 +68,8 @@ collections:
                 name: type
                 widget: select
                 options:
-                  - { label: Telefonnummber, value: tel }
-                  - { label: Emnail-Adresse, value: email }
+                  - { label: Telefonnummer, value: tel }
+                  - { label: Email-Adresse, value: email }
                   - { label: Link, value: link }
           - { label: Seiteninhalt, name: body, widget: markdown }
 
