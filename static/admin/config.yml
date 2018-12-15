@@ -69,7 +69,7 @@ collections:
         fields:
           - { label: Sichtbar, name: visible, widget: boolean, default: false }
           - {
-              label: Kategorie auf Homepage Reihenfolge,
+              label: Reihenfolge,
               hint: 'Je tiefer die Zahl, desto weiter vorne die Kategorie',
               name: order,
               widget: number,
@@ -79,8 +79,17 @@ collections:
       - {
           label: Link in Navigation,
           name: linkInNavigation,
-          widget: boolean,
-          default: false,
+          widget: object,
+          fields:
+            - { label: Sichtbar, name: visible, widget: boolean, default: false }
+            - {
+              label: Reihenfolge,
+              hint: 'Je tiefer die Zahl, desto weiter vorne der Link',
+              name: order,
+              widget: number,
+              valueType: int,
+              min: 1,
+            }
         }
       - { label: Bild, name: image, widget: image }
       - { label: Seiteninhalt, name: body, widget: markdown }
