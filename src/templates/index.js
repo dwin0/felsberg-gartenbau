@@ -4,6 +4,10 @@ import { graphql } from 'gatsby'
 import Image from 'gatsby-image'
 
 import Layout from '../components/Layout'
+import {
+  ImageTitleWrapper,
+  RevealingTitle,
+} from '../components/indexPage/RevealingTitle'
 import Categories from '../components/indexPage/Categories'
 
 const IndexPage = ({ data }) => {
@@ -12,8 +16,10 @@ const IndexPage = ({ data }) => {
 
   return (
     <Layout>
-      <h1>{title}</h1>
-      <Image fluid={image.childImageSharp.fluid} />
+      <ImageTitleWrapper>
+        <Image fluid={image.childImageSharp.fluid} />
+        <RevealingTitle>{title}</RevealingTitle>
+      </ImageTitleWrapper>
 
       <Layout.ContentWrapper>
         <Categories />
