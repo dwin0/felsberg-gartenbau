@@ -5,6 +5,7 @@ import { StaticQuery, graphql } from 'gatsby'
 import { Normalize } from 'styled-normalize'
 
 import Header from './Header'
+import Footer from './Footer'
 import ContentWrapper from './ContentWrapper'
 import GlobalStyle from '../styles/GlobalStyle'
 
@@ -43,7 +44,7 @@ const Layout = ({ children }) => (
           </Helmet>
           <Header />
           <main>{children}</main>
-          <footer>{/* TODO: */}</footer>
+          <Footer />
           <Normalize />
           <GlobalStyle />
         </>

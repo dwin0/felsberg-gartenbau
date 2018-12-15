@@ -24,31 +24,34 @@ collections:
         fields:
           - { label: Template Key, name: templateKey, widget: hidden }
           - { label: Titel, name: title, widget: string }
-          - label: Kategorie auf Homepage
-            name: categoryOnHomepage
+          - { label: Bild, name: image, widget: image }
+          - label: Link in Navigation
+            name: linkInNavigation
             widget: object
             fields:
-              - {
-                  label: Sichtbar,
-                  name: visible,
-                  widget: boolean,
-                  default: false,
-                }
-              - {
-                  label: Kategorie auf Homepage Reihenfolge,
-                  hint: 'Je tiefer die Zahl, desto weiter vorne die Kategorie',
-                  name: order,
-                  widget: number,
-                  valueType: int,
-                  min: 1,
-                }
-          - {
-              label: Link in Navigation,
-              name: linkInNavigation,
-              widget: boolean,
-              default: false,
-            }
-          - { label: Bild, name: image, widget: image }
+              - label: Sichtbar
+                name: visible
+                widget: boolean
+                default: false
+              - label: Reihenfolge
+                hint: Je tiefer die Zahl, desto weiter vorne der Link
+                name: order
+                widget: number
+                valueType: int
+                min: 1
+          - label: Adresse
+            name: address
+            widget: object
+            fields:
+              - label: Name
+                name: name
+                widget: string
+              - label: Strasse
+                name: street
+                widget: string
+              - label: PLZ und Ort
+                name: city
+                widget: string
           - { label: Seiteninhalt, name: body, widget: markdown }
 
   - name: categoryPages
