@@ -1,18 +1,12 @@
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 
 import { COLORS, FONTS } from '../../styles/styleguide'
-
-const fadeIn = keyframes`
-  100% {
-    opacity: 1;
-  }
-`
 
 export const ImageTitleWrapper = styled.div`
   position: relative;
 `
 
-export const RevealingTitle = styled.h1`
+export const Title = styled.h1`
   ${FONTS.LARGE_BOLD}
   position: absolute;
   top: 50%;
@@ -22,8 +16,6 @@ export const RevealingTitle = styled.h1`
   display: block;
   padding: 25px 100px;
   color: ${COLORS.GREEN};
-  opacity: 0;
-  animation: ${fadeIn} 0.75s linear 0.5s 1 forwards;
 
   ::before {
     content: '';
