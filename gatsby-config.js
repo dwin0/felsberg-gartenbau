@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'Felsberg Gartenbau',
+    title: 'Gartenbau Felsberg GmbH',
     siteUrl: 'https://felsberg-gartenbau.netlify.com/', // TODO: change to real URL
     description: 'Homepage der Gartenbau Felsberg GmbH in Neuwilen',
     keywords:
