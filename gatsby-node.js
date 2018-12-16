@@ -21,6 +21,10 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       slug = slug.replace('/categoryPages', '')
     }
 
+    if (node.frontmatter.templateKey === 'projectPage') {
+      slug = slug.replace('/projectPages', 'projekt')
+    }
+
     createNodeField({
       node,
       name: 'slug',
