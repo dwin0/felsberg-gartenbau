@@ -81,12 +81,7 @@ collections:
     folder: src/pages/categoryPages
     create: true
     fields:
-      - {
-          label: Template Key,
-          name: templateKey,
-          widget: hidden,
-          default: categoryPage,
-        }
+      - { label: Template Key, name: templateKey, widget: hidden, default: categoryPage }
       - { label: Titel, name: title, widget: string }
       - label: Kategorie auf Homepage
         name: categoryOnHomepage
@@ -128,34 +123,23 @@ collections:
           valueField: title,
           displayFields: [title],
         }
-      - label: Kurzbeschreibung
-        name: shortDescription
-        hint: Beschreibung auf der Homepage
-        widget: text
+      - { label: Kurzbeschreibung, name: shortDescription, hint: Beschreibung auf der Homepage, widget: text }
       - { label: Seiteninhalt, name: body, widget: markdown }
+
+
 
   - name: projectPages
     label: Projektseiten
     folder: src/pages/projectPages
     create: true
     fields:
-      - {
-          label: Template Key,
-          name: templateKey,
-          widget: hidden,
-          default: projectPage,
-        }
+      - { label: Template Key, name: templateKey, widget: hidden, default: projectPage }
       - { label: Titel, name: title, widget: string }
-      - {
-          label: Tags,
-          name: tags,
-          widget: list,
-          fields: {
-            label: Tag,
-            name: tag,
-            widget: string,
-          }
-      }
+      - label: Tags
+        name: tags
+        widget: list
+        fields:
+          - { label: Tag, name: tag, widget: string }
       - { label: Kurzbeschreibung, name: shortDescription, hint: Beschreibung auf den Kategorieseiten, widget: text }
       - { label: Anzeigebild, name: mainImage, widget: image }
       - label: Galleriebilder
