@@ -2,13 +2,15 @@
 templateKey: categoryPage
 title: Gartenbau
 categoryOnHomepage:
-  visible: true
   order: 1
+  visible: true
 linkInNavigation:
-  visible: true
   order: 1
+  visible: true
 image: /assets/teich.jpg
-shortDescription: Die Gartenbau Felsberg GmbH verhilft Ihnen zu einem schönen Garten. Als Allrounder übernehmen wir sowohl die Neugestaltung Ihres Gartens sowie Gartengestaltung und Gartenumänderungen.
+projects:
+  - Testprojekt
+  - Testprojekt 2
 ---
 
 # Gartenbau
