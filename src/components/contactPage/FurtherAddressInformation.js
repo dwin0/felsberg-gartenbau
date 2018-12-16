@@ -15,7 +15,7 @@ const AddressLink = styled.a`
   }
 `
 
-const linkPrefixes = {
+export const linkPrefixes = {
   tel: 'tel:',
   email: 'mailto:',
   link: '',

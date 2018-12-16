@@ -33,6 +33,11 @@ const FONTS = {
   LARGE_BOLD: css`
     font: bold 40px Helvetica, sans-serif;
   `,
+  SMALL: css`
+    font: 100 16px sans-serif;
+    letter-spacing: 0.2px;
+    line-height: 1.4;
+  `,
 }
 
 const sizes = {

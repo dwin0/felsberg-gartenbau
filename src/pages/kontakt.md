@@ -17,7 +17,7 @@ furtherAdressInformation:
   - contactInfo: info@felsberg-gartenbau.ch
     name: Email
     type: email
-  - contactInfo: 'http://www.felsberg-gartenbau.ch'
+  - contactInfo: 'www.felsberg-gartenbau.ch'
     name: Webseite
     type: link
 ---

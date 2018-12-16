@@ -12,6 +12,10 @@ const GlobalStyle = createGlobalStyle`
   h1 {
     ${FONTS.LARGE}
   }
+
+  address {
+    font-style: normal;
+  }
 `
 
 export default GlobalStyle
