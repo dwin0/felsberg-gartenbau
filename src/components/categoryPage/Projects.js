@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { StaticQuery, graphql, Link } from 'gatsby'
+import Image from 'gatsby-image'
 
 const Projects = ({ projects }) => (
   <StaticQuery
@@ -16,6 +17,15 @@ const Projects = ({ projects }) => (
               }
               frontmatter {
                 title
+                tags
+                shortDescription
+                mainImage {
+                  childImageSharp {
+                    fixed(width: 350, height: 350) {
+                      ...GatsbyImageSharpFixed_withWebp_tracedSVG
+                    }
+                  }
+                }
               }
             }
           }
@@ -27,9 +37,21 @@ const Projects = ({ projects }) => (
         projects.includes(node.frontmatter.title),
       )
 
+      // TODO: move into separate component
       return allProjects.map(({ node }) => (
         <div key={node.fields.slug}>
-          <Link to={node.fields.slug}>{node.frontmatter.title}</Link>
+          <Link to={node.fields.slug}>
+            <Image fixed={node.frontmatter.mainImage.childImageSharp.fixed} />
+            <h2>{node.frontmatter.title}</h2>
+          </Link>
+          <p>{node.frontmatter.shortDescription}</p>
+          <div>
+            {node.frontmatter.tags.map(tag => (
+              <Link key={tag} to={`projekte/tags/${tag.toLowerCase()}`}>
+                {tag}
+              </Link>
+            ))}
+          </div>
         </div>
       ))
     }}

@@ -138,8 +138,7 @@ collections:
       - label: Tags
         name: tags
         widget: list
-        fields:
-          - { label: Tag, name: tag, widget: string }
+        field: { label: Tag, name: tag, widget: string }
       - { label: Kurzbeschreibung, name: shortDescription, hint: Beschreibung auf den Kategorieseiten, widget: text }
       - { label: Anzeigebild, name: mainImage, widget: image }
       - label: Galleriebilder
@@ -147,5 +146,5 @@ collections:
         widget: list
         fields:
           - { label: Bild, name: image, widget: image }
-          - { label: Beschreibung, name: description, widget: text }
+          - { label: Beschreibung, name: description, widget: text, required: false }
       - { label: Seiteninhalt, name: body, widget: markdown }
