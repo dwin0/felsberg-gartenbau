@@ -1,21 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql, Link } from 'gatsby'
-import Image from 'gatsby-image'
 
 import Layout from '../components/Layout'
 import CMS_HTML from '../components/CMS_Html'
 
 const ProjectPage = ({ data: { markdownRemark } }) => {
-  const { mainImage, tags } = markdownRemark.frontmatter
+  const { tags } = markdownRemark.frontmatter
   const { html } = markdownRemark
 
   window.console.log(markdownRemark)
+  // TODO: add https://jossmac.github.io/react-images/
 
   return (
     <Layout>
-      <Image fluid={mainImage.childImageSharp.fluid} />
-
       <Layout.ContentWrapper>
         <CMS_HTML dangerouslySetInnerHTML={{ __html: html }} />
         {tags.map(tag => (
@@ -34,13 +32,6 @@ export const pageQuery = graphql`
       frontmatter {
         title
         tags
-        mainImage {
-          childImageSharp {
-            fluid(maxWidth: 2000) {
-              ...GatsbyImageSharpFluid_withWebp_tracedSVG
-            }
-          }
-        }
         galleryImages {
           description
           image {

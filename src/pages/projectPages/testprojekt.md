@@ -7,7 +7,6 @@ tags:
 shortDescription: >-
   Lorem Ipsum is simply dummy text of the printing and typesetting industry.
   Lorem Ipsum has been the industry's standard dummy.
-mainImage: /assets/teich.jpg
 galleryImages:
   - description: >-
       Dies ist Schritt 1: Lorem Ipsum is simply dummy text of the printing and
@@ -25,6 +24,7 @@ galleryImages:
       ipsum' will uncover many web sites still.
     image: /assets/fahrzeuge.jpg
 ---
+
 # Neuer Teich
 
 Grundsätzlich haben Sie die Wahl zwischen einem Folienteich und einem Fertigteich. Beide haben ihre Vorteile und lassen sich mit gewissenhafter Planung hervorragend in Ihren Garten integrieren.

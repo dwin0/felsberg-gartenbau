@@ -19,10 +19,12 @@ const Projects = ({ projects }) => (
                 title
                 tags
                 shortDescription
-                mainImage {
-                  childImageSharp {
-                    fixed(width: 350, height: 350) {
-                      ...GatsbyImageSharpFixed_withWebp_tracedSVG
+                galleryImages {
+                  image {
+                    childImageSharp {
+                      fixed(width: 350, height: 350) {
+                        ...GatsbyImageSharpFixed_withWebp_tracedSVG
+                      }
                     }
                   }
                 }
@@ -41,7 +43,12 @@ const Projects = ({ projects }) => (
       return allProjects.map(({ node }) => (
         <div key={node.fields.slug}>
           <Link to={node.fields.slug}>
-            <Image fixed={node.frontmatter.mainImage.childImageSharp.fixed} />
+            {/* TODO: add check for index 0 */}
+            <Image
+              fixed={
+                node.frontmatter.galleryImages[0].image.childImageSharp.fixed
+              }
+            />
             <h2>{node.frontmatter.title}</h2>
           </Link>
           <p>{node.frontmatter.shortDescription}</p>
