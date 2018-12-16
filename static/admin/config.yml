@@ -115,6 +115,15 @@ collections:
               min: 1,
             }
       - { label: Bild, name: image, widget: image }
+      - {
+          label: Referenzprojekte,
+          name: projects,
+          widget: relation,
+          collection: projectPages,
+          searchFields: [title],
+          valueField: title,
+          displayFields: [title],
+        }
       - { label: Seiteninhalt, name: body, widget: markdown }
 
   - name: projectPages
