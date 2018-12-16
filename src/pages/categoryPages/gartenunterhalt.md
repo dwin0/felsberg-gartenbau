@@ -2,13 +2,16 @@
 templateKey: categoryPage
 title: Gartenunterhalt
 categoryOnHomepage:
-  visible: true
   order: 2
+  visible: true
 linkInNavigation:
-  visible: true
   order: 2
+  visible: true
 image: /assets/garten.jpg
-shortDescription: Für Liegenschaften übernehmen wir den Umgebungs- und Gartenunterhalt im Dauerauftrag. Zu unseren Leistungen gehören die Rabatten- sowie die Rasenpflege.
+shortDescription: >-
+  Für Liegenschaften übernehmen wir den Umgebungs- und Gartenunterhalt im
+  Dauerauftrag. Zu unseren Leistungen gehören die Rabatten- sowie die
+  Rasenpflege.
 ---
 
 # Gartenunterhalt
