@@ -9,7 +9,7 @@ const ProjectPage = ({ data: { markdownRemark } }) => {
   const { tags } = markdownRemark.frontmatter
   const { html } = markdownRemark
 
-  window.console.log(markdownRemark)
+  // window.console.log(markdownRemark)
   // TODO: add https://jossmac.github.io/react-images/
 
   return (
