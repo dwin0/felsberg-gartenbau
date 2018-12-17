@@ -1,29 +1,74 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql, Link } from 'gatsby'
+import Gallery from 'react-photo-gallery'
+import Lightbox from 'react-images'
 
 import Layout from '../components/Layout'
 import CMS_HTML from '../components/CMS_Html'
 
-const ProjectPage = ({ data: { markdownRemark } }) => {
-  const { tags } = markdownRemark.frontmatter
-  const { html } = markdownRemark
+class ProjectPage extends React.Component {
+  state = {
+    currentImage: 0,
+    lightboxIsOpen: false,
+  }
 
-  // window.console.log(markdownRemark)
-  // TODO: add https://jossmac.github.io/react-images/
+  handleLightBoxOpen = (event, obj) =>
+    this.setState({
+      lightboxIsOpen: true,
+      currentImage: obj.index,
+    })
+  handleLightBoxClose = () =>
+    this.setState({
+      lightboxIsOpen: false,
+    })
+  handleLightBoxPrev = () =>
+    this.setState(prevState => ({ currentImage: --prevState.currentImage }))
+  handleLightBoxNext = () =>
+    this.setState(prevState => ({ currentImage: ++prevState.currentImage }))
 
-  return (
-    <Layout>
-      <Layout.ContentWrapper>
-        <CMS_HTML dangerouslySetInnerHTML={{ __html: html }} />
-        {tags.map(tag => (
-          <Link key={tag} to={`projekte/tags/${tag.toLowerCase()}`}>
-            {tag}
-          </Link>
-        ))}
-      </Layout.ContentWrapper>
-    </Layout>
-  )
+  render() {
+    const {
+      data: { markdownRemark },
+    } = this.props
+    const { tags, galleryImages } = markdownRemark.frontmatter
+    const { html } = markdownRemark
+
+    // TODO: not on every render
+    // TODO: image description
+    // TODO: srcset
+    let galleryPhotos = galleryImages
+      .map(galleryImage => galleryImage.image.childImageSharp.fluid)
+      .map(({ src, aspectRatio }) => ({
+        src,
+        width: aspectRatio,
+        height: 1,
+      }))
+
+    return (
+      <Layout>
+        <Layout.ContentWrapper>
+          <CMS_HTML dangerouslySetInnerHTML={{ __html: html }} />
+
+          <Gallery photos={galleryPhotos} onClick={this.handleLightBoxOpen} />
+          <Lightbox
+            images={galleryPhotos}
+            currentImage={this.state.currentImage}
+            isOpen={this.state.lightboxIsOpen}
+            onClose={this.handleLightBoxClose}
+            onClickPrev={this.handleLightBoxPrev}
+            onClickNext={this.handleLightBoxNext}
+          />
+
+          {tags.map(tag => (
+            <Link key={tag} to={`projekte/tags/${tag.toLowerCase()}`}>
+              {tag}
+            </Link>
+          ))}
+        </Layout.ContentWrapper>
+      </Layout>
+    )
+  }
 }
 
 export const pageQuery = graphql`
@@ -36,8 +81,8 @@ export const pageQuery = graphql`
           description
           image {
             childImageSharp {
-              fixed(width: 350, height: 350) {
-                ...GatsbyImageSharpFixed_withWebp_tracedSVG
+              fluid(maxWidth: 700) {
+                ...GatsbyImageSharpFluid_withWebp_tracedSVG
               }
             }
           }
