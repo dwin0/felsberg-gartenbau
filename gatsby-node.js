@@ -25,6 +25,10 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       slug = slug.replace('/projectPages', 'projekt')
     }
 
+    if (node.frontmatter.templateKey === 'allTags') {
+      slug = slug.replace('/projectPages', 'projekte')
+    }
+
     createNodeField({
       node,
       name: 'slug',
@@ -48,6 +52,7 @@ exports.createPages = ({ actions, graphql }) => {
             }
             frontmatter {
               templateKey
+              tags
             }
           }
         }
@@ -58,7 +63,9 @@ exports.createPages = ({ actions, graphql }) => {
       return Promise.reject(result.errors)
     }
 
-    result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+    const pages = result.data.allMarkdownRemark.edges
+
+    pages.forEach(({ node }) => {
       createPage({
         path: node.fields.slug,
         component: path.resolve(
@@ -69,6 +76,28 @@ exports.createPages = ({ actions, graphql }) => {
           id: node.id,
           slug: node.fields.slug,
           templateKey: node.frontmatter.templateKey,
+        },
+      })
+    })
+
+    const tags = pages
+      .filter(
+        ({ node: { frontmatter } }) =>
+          frontmatter.templateKey === 'projectPage' &&
+          frontmatter.tags &&
+          frontmatter.tags.length,
+      )
+      .reduce((acc, { node }) => {
+        const newTags = node.frontmatter.tags.filter(tag => !acc.includes(tag))
+        return [...acc, ...newTags]
+      }, [])
+
+    tags.forEach(tag => {
+      createPage({
+        path: `/projekte/tags/${tag.toLowerCase()}/`,
+        component: path.resolve('src/templates/tagPage.js'),
+        context: {
+          tag,
         },
       })
     })
