@@ -25,10 +25,6 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       slug = slug.replace('/projectPages', 'projekt')
     }
 
-    if (node.frontmatter.templateKey === 'allTags') {
-      slug = slug.replace('/projectPages', 'projekte')
-    }
-
     createNodeField({
       node,
       name: 'slug',
