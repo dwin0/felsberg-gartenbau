@@ -1,7 +1,7 @@
 ---
 templateKey: projectPage
 title: Testprojekt 3
-projectStart: 2018-12-23T23:07:18.062Z
+projectEnd: 2018-12-23T23:07:18.062Z
 tags:
   - Garten
   - Rasen

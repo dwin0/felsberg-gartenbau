@@ -19,6 +19,7 @@ const Projects = ({ projects }) => (
       query {
         allMarkdownRemark(
           filter: { frontmatter: { templateKey: { eq: "projectPage" } } }
+          sort: { fields: frontmatter___projectEnd, order: DESC }
         ) {
           edges {
             node {

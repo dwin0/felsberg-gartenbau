@@ -10,7 +10,7 @@ export const HeaderPlaceholder = styled.div`
 export const HeaderElement = styled.header`
   position: fixed;
   top: 0;
-  z-index: 1;
+  z-index: 10;
   width: 100%;
   height: ${HEADER_HEIGHT};
   background: ${COLORS.WHITE};

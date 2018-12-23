@@ -14,7 +14,7 @@ export const Card = styled.div`
   overflow: hidden;
   border: 1px solid ${COLORS.GREY};
   box-shadow: ${props =>
-    props.hovered ? '0px 0px 97px -22px rgba(170,170,170,0.5)' : 'none'};
+    props.hovered ? '0px 0px 97px 5px rgba(170,170,170,0.5)' : 'none'};
   transition: box-shadow ${TRANSITION_DURATION} ease-in;
   margin: 50px 20px;
 `
