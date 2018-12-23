@@ -5,7 +5,7 @@ import Image from 'gatsby-image'
 
 import Layout from '../components/Layout'
 import CMS_HTML from '../components/CMS_Html'
-import Projects from '../components/categoryPage/Projects'
+import Projects from '../components/common/Projects'
 
 const CategoryPage = ({ data: { markdownRemark } }) => {
   const { image, projects } = markdownRemark.frontmatter

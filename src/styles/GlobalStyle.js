@@ -13,6 +13,10 @@ const GlobalStyle = createGlobalStyle`
     ${FONTS.LARGE}
   }
 
+  h2 {
+    ${FONTS.MEDIUM}
+  }
+
   address {
     font-style: normal;
   }

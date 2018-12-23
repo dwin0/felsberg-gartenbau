@@ -1,7 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { StaticQuery, graphql, Link } from 'gatsby'
-import Image from 'gatsby-image'
+import { StaticQuery, graphql } from 'gatsby'
+import styled from 'styled-components'
+
+import SingleProject from './SingleProject'
+
+const ProjectsWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  max-width: 1000px;
+  margin: auto;
+`
 
 const Projects = ({ projects }) => (
   <StaticQuery
@@ -34,34 +43,22 @@ const Projects = ({ projects }) => (
         }
       }
     `}
-    render={({ allMarkdownRemark: { edges } }) => {
-      const allProjects = edges.filter(({ node }) =>
-        projects.includes(node.frontmatter.title),
-      )
-
-      // TODO: move into separate component
-      return allProjects.map(({ node }) => (
-        <div key={node.fields.slug}>
-          <Link to={node.fields.slug}>
-            {/* TODO: add check for index 0 */}
-            <Image
-              fixed={
-                node.frontmatter.galleryImages[0].image.childImageSharp.fixed
-              }
+    render={({ allMarkdownRemark: { edges } }) => (
+      <ProjectsWrapper>
+        {edges
+          .filter(({ node }) => projects.includes(node.frontmatter.title))
+          .map(({ node }) => (
+            <SingleProject
+              key={node.fields.slug}
+              slug={node.fields.slug}
+              title={node.frontmatter.title}
+              images={node.frontmatter.galleryImages}
+              shortDescription={node.frontmatter.shortDescription}
+              tags={node.frontmatter.tags}
             />
-            <h2>{node.frontmatter.title}</h2>
-          </Link>
-          <p>{node.frontmatter.shortDescription}</p>
-          <div>
-            {node.frontmatter.tags.map(tag => (
-              <Link key={tag} to={`projekte/tags/${tag.toLowerCase()}`}>
-                {tag}
-              </Link>
-            ))}
-          </div>
-        </div>
-      ))
-    }}
+          ))}
+      </ProjectsWrapper>
+    )}
   />
 )
 
