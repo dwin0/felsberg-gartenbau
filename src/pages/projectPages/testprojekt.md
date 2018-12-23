@@ -1,12 +1,14 @@
 ---
 templateKey: projectPage
 title: Testprojekt
+projectStart: 2018-09-03T22:05:13.003Z
 tags:
   - Teich
   - Garten
 shortDescription: >-
   Lorem Ipsum is simply dummy text of the printing and typesetting industry.
   Lorem Ipsum has been the industry's standard dummy.
+mainImage: /assets/teich.jpg
 galleryImages:
   - description: >-
       Dies ist Schritt 1: Lorem Ipsum is simply dummy text of the printing and
