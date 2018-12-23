@@ -4,8 +4,10 @@ const COLORS = {
   GREEN: '#194a19',
   WHITE: '#ffffff',
   BLACK_TRANSPARENT: '#5f5f5f26',
+  BLACK_TRANSPARENT_IMAGE: '#2525255e',
   BLACK: '#252525',
-  GREY: '#aaaaaa',
+  GREY: '#8d8c8c',
+  RED: '#B21C0E',
 }
 
 const LINE_HEIGHTS = {
@@ -43,12 +45,17 @@ const FONTS = {
     font: bold 40px Helvetica, sans-serif;
     line-height: ${LINE_HEIGHTS.LARGE_LH};
   `,
-  MEDIUM: css`
-    font: 400 32px Helvetica, sans-serif;
+  MEDIUM_BOLD: css`
+    font: bold 32px Helvetica, sans-serif;
     line-height: ${LINE_HEIGHTS.MEDIUM_LH};
   `,
   SMALL: css`
     font: 100 16px sans-serif;
+    letter-spacing: 0.2px;
+    line-height: ${LINE_HEIGHTS.SMALL_LH};
+  `,
+  SMALL_BOLD: css`
+    font: bold 16px sans-serif;
     letter-spacing: 0.2px;
     line-height: ${LINE_HEIGHTS.SMALL_LH};
   `,
