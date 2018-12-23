@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 import SingleProject from './SingleProject'
 
-const ProjectsWrapper = styled.div`
+export const ProjectsWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;

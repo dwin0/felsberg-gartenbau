@@ -10,7 +10,7 @@ export const Card = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  min-width: 350px;
+  width: 350px;
   overflow: hidden;
   border: 1px solid ${COLORS.GREY};
   box-shadow: ${props =>

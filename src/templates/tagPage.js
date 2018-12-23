@@ -3,29 +3,34 @@ import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
 
 import Layout from '../components/Layout'
+import SingleProject from '../components/common/SingleProject'
+import { ProjectsWrapper } from '../components/common/Projects'
 
 const Tags = ({ pageContext, data }) => {
   const { tag } = pageContext
   const { edges, totalCount } = data.allMarkdownRemark
-  const tagHeader = `${totalCount} post${
-    totalCount === 1 ? '' : 's'
-  } tagged with "${tag}"`
+  const tagHeader = `${totalCount} Projekt${
+    totalCount === 1 ? '' : 'e'
+  } mit dem Stichwort "${tag}"`
 
   return (
     <Layout>
       <Layout.ContentWrapper>
         <h1>{tagHeader}</h1>
-        <ul>
+        <ProjectsWrapper>
           {edges.map(({ node }) => {
-            const { title } = node.frontmatter
-            const { slug } = node.fields
             return (
-              <li key={slug}>
-                <Link to={slug}>{title}</Link>
-              </li>
+              <SingleProject
+                key={node.fields.slug}
+                slug={node.fields.slug}
+                title={node.frontmatter.title}
+                images={node.frontmatter.galleryImages}
+                shortDescription={node.frontmatter.shortDescription}
+                tags={node.frontmatter.tags}
+              />
             )
           })}
-        </ul>
+        </ProjectsWrapper>
         <Link to="/projekte/tags">All tags</Link>
       </Layout.ContentWrapper>
     </Layout>
@@ -47,6 +52,17 @@ Tags.propTypes = {
             }).isRequired,
             frontmatter: PropTypes.shape({
               title: PropTypes.string.isRequired,
+              tags: PropTypes.arrayOf(PropTypes.string.isRequired),
+              shortDescription: PropTypes.string.isRequired,
+              galleryImages: PropTypes.arrayOf(
+                PropTypes.shape({
+                  image: PropTypes.shape({
+                    childImageSharp: PropTypes.shape({
+                      fixed: PropTypes.object.isRequired,
+                    }).isRequired,
+                  }).isRequired,
+                }),
+              ),
             }),
           }),
         }).isRequired,
@@ -59,7 +75,14 @@ export default Tags
 
 export const pageQuery = graphql`
   query($tag: String) {
-    allMarkdownRemark(filter: { frontmatter: { tags: { in: [$tag] } } }) {
+    allMarkdownRemark(
+      filter: {
+        frontmatter: {
+          tags: { in: [$tag] }
+          templateKey: { eq: "projectPage" }
+        }
+      }
+    ) {
       totalCount
       edges {
         node {
@@ -68,6 +91,17 @@ export const pageQuery = graphql`
           }
           frontmatter {
             title
+            tags
+            shortDescription
+            galleryImages {
+              image {
+                childImageSharp {
+                  fixed(width: 350, height: 350) {
+                    ...GatsbyImageSharpFixed_withWebp_tracedSVG
+                  }
+                }
+              }
+            }
           }
         }
       }
