@@ -10,17 +10,13 @@ export const Card = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  max-width: 350px;
+  min-width: 350px;
   overflow: hidden;
   border: 1px solid ${COLORS.GREY};
   box-shadow: ${props =>
     props.hovered ? '0px 0px 97px -22px rgba(170,170,170,0.5)' : 'none'};
   transition: box-shadow ${TRANSITION_DURATION} ease-in;
-  float: left;
-
-  :not(:first-of-type) {
-    margin-left: 150px;
-  }
+  margin: 50px 20px;
 `
 
 export const CardImageLink = styled(Link)`

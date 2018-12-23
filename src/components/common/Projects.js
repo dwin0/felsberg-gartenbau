@@ -7,7 +7,8 @@ import SingleProject from './SingleProject'
 
 const ProjectsWrapper = styled.div`
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
   max-width: 1000px;
   margin: auto;
 `

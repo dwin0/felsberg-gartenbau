@@ -11,6 +11,7 @@ image: /assets/teich.jpg
 projects:
   - Testprojekt
   - Testprojekt 2
+  - Testprojekt 3
 shortDescription: >-
   Die Gartenbau Felsberg GmbH verhilft Ihnen zu einem schönen Garten. Als
   Allrounder übernehmen wir sowohl die Neugestaltung Ihres Gartens sowie
