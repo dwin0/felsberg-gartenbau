@@ -59,6 +59,12 @@ export const CardTitle = styled.h2`
   color: ${COLORS.GREEN};
 `
 
+export const CardTitleLink = styled(Link)`
+  text-decoration: none;
+  font: inherit;
+  color: inherit;
+`
+
 export const CardText = styled.p`
   ${FONTS.SMALL}
   margin: 0;

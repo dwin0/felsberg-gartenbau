@@ -8,6 +8,7 @@ import {
   CardImage,
   CardContent,
   CardTitle,
+  CardTitleLink,
   CardText,
   TagsContainer,
   Tag,
@@ -49,7 +50,9 @@ class SingleProject extends React.Component {
           />
         </CardImageLink>
         <CardContent>
-          <CardTitle>{title}</CardTitle>
+          <CardTitle>
+            <CardTitleLink to={slug}>{title}</CardTitleLink>
+          </CardTitle>
           <CardText hovered={hovered}>{shortDescription}</CardText>
         </CardContent>
         {!isEmpty(tags) && (
