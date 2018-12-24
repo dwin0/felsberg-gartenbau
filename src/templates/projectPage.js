@@ -8,9 +8,22 @@ import Layout from '../components/Layout'
 import CMS_HTML from '../components/CMS_Html'
 
 class ProjectPage extends React.Component {
-  state = {
-    currentImage: 0,
-    lightboxIsOpen: false,
+  constructor(props) {
+    super(props)
+
+    // TODO: image description
+    // TODO: srcset
+    this.state = {
+      currentImage: 0,
+      lightboxIsOpen: false,
+      galleryImages: this.props.data.markdownRemark.frontmatter.galleryImages
+        .map(galleryImage => galleryImage.image.childImageSharp.fluid)
+        .map(({ src, aspectRatio }) => ({
+          src,
+          width: aspectRatio,
+          height: 1,
+        })),
+    }
   }
 
   handleLightBoxOpen = (event, obj) =>
@@ -28,33 +41,22 @@ class ProjectPage extends React.Component {
     this.setState(prevState => ({ currentImage: ++prevState.currentImage }))
 
   render() {
-    const {
-      data: { markdownRemark },
-    } = this.props
-    const { tags, galleryImages } = markdownRemark.frontmatter
+    const { markdownRemark } = this.props.data
+    const { tags } = markdownRemark.frontmatter
     const { html } = markdownRemark
 
-    // TODO: not on every render
-    // TODO: image description
-    // TODO: srcset
-    let galleryPhotos = galleryImages
-      .map(galleryImage => galleryImage.image.childImageSharp.fluid)
-      .map(({ src, aspectRatio }) => ({
-        src,
-        width: aspectRatio,
-        height: 1,
-      }))
+    const { galleryImages, lightboxIsOpen, currentImage } = this.state
 
     return (
       <Layout>
         <Layout.ContentWrapper>
           <CMS_HTML dangerouslySetInnerHTML={{ __html: html }} />
 
-          <Gallery photos={galleryPhotos} onClick={this.handleLightBoxOpen} />
+          <Gallery photos={galleryImages} onClick={this.handleLightBoxOpen} />
           <Lightbox
-            images={galleryPhotos}
-            currentImage={this.state.currentImage}
-            isOpen={this.state.lightboxIsOpen}
+            images={galleryImages}
+            currentImage={currentImage}
+            isOpen={lightboxIsOpen}
             onClose={this.handleLightBoxClose}
             onClickPrev={this.handleLightBoxPrev}
             onClickNext={this.handleLightBoxNext}
@@ -98,6 +100,16 @@ ProjectPage.propTypes = {
     markdownRemark: PropTypes.shape({
       frontmatter: PropTypes.shape({
         title: PropTypes.string.isRequired,
+        tags: PropTypes.arrayOf(PropTypes.string),
+        galleryImages: PropTypes.arrayOf(
+          PropTypes.shape({
+            image: PropTypes.shape({
+              childImageSharp: PropTypes.shape({
+                fluid: PropTypes.object.isRequired,
+              }).isRequired,
+            }).isRequired,
+          }),
+        ).isRequired,
       }).isRequired,
     }).isRequired,
   }).isRequired,

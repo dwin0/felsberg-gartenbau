@@ -31,7 +31,7 @@ const Tags = ({ pageContext, data }) => {
             )
           })}
         </ProjectsWrapper>
-        <Link to="/projekte/tags">All tags</Link>
+        <Link to="/projekte/tags">Alle Stichwörter</Link>
       </Layout.ContentWrapper>
     </Layout>
   )
@@ -62,7 +62,7 @@ Tags.propTypes = {
                     }).isRequired,
                   }).isRequired,
                 }),
-              ),
+              ).isRequired,
             }),
           }),
         }).isRequired,
