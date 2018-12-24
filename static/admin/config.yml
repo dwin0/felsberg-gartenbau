@@ -147,5 +147,6 @@ collections:
         widget: list
         fields:
           - { label: Bild, name: image, widget: image }
-          - { label: Beschreibung, name: description, widget: text, required: false }
+          - { label: Bildbeschreibung, name: imageDescription, hint: "Was ist auf dem Bild zu sehen? Text für Screenreader", widget: string }
+          - { label: Text unter Bild, name: imageText, widget: text, required: false }
       - { label: Seiteninhalt, name: body, widget: markdown }

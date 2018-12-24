@@ -12,7 +12,9 @@ shortDescription: >-
 mainImage: /assets/teich.jpg
 galleryImages:
   - image: /assets/teich.jpg
+    imageDescription: Teich alt-Text
   - image: /assets/fahrzeuge.jpg
+    imageDescription: Fahrzeuge alt-Text
 ---
 
 # Rasenpflege

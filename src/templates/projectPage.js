@@ -2,71 +2,106 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql, Link } from 'gatsby'
 import Gallery from 'react-photo-gallery'
-import Lightbox from 'react-images'
+import isEmpty from 'lodash/fp/isEmpty'
+import Image from 'gatsby-image'
 
 import Layout from '../components/Layout'
 import CMS_HTML from '../components/CMS_Html'
+
+// https://github.com/neptunian/react-photo-gallery
+// http://neptunian.github.io/react-photo-gallery/
+const ImageComponent = ({ index, onClick, photo, margin, top, left }) => (
+  <div style={{ margin, top, left, height: photo.height, width: photo.width }}>
+    <Image
+      fluid={photo}
+      alt={photo.alt}
+      title={photo.alt}
+      onClick={() => onClick({ index, photo })}
+    />
+  </div>
+)
+
+ImageComponent.propTypes = {
+  index: PropTypes.number.isRequired,
+  onClick: PropTypes.func.isRequired,
+  photo: PropTypes.shape({
+    aspectRatio: PropTypes.number.isRequired,
+    sizes: PropTypes.string.isRequired,
+    src: PropTypes.string.isRequired,
+    srcSet: PropTypes.string.isRequired,
+    srcWebp: PropTypes.string.isRequired,
+    srcSetWebp: PropTypes.string.isRequired,
+    tracedSVG: PropTypes.string.isRequired,
+    width: PropTypes.number.isRequired,
+    height: PropTypes.number.isRequired,
+    alt: PropTypes.string.isRequired,
+  }).isRequired,
+  margin: PropTypes.number,
+  top: PropTypes.number,
+  left: PropTypes.number,
+}
 
 class ProjectPage extends React.Component {
   constructor(props) {
     super(props)
 
-    // TODO: image description
-    // TODO: srcset
+    const { galleryImages } = this.props.data.markdownRemark.frontmatter
+
     this.state = {
-      currentImage: 0,
-      lightboxIsOpen: false,
-      galleryImages: this.props.data.markdownRemark.frontmatter.galleryImages
-        .map(galleryImage => galleryImage.image.childImageSharp.fluid)
-        .map(({ src, aspectRatio }) => ({
-          src,
-          width: aspectRatio,
+      photos: galleryImages.map(galleryImage => {
+        const image = galleryImage.image.childImageSharp.fluid
+
+        return {
+          aspectRatio: image.aspectRatio,
+          sizes: image.sizes,
+          src: image.src,
+          srcSet: image.srcSet,
+          srcWebp: image.srcWebp,
+          srcSetWebp: image.srcSetWebp,
+          tracedSVG: image.tracedSVG,
+          width: image.aspectRatio,
           height: 1,
-        })),
+          alt: galleryImage.imageDescription,
+        }
+      }),
     }
   }
 
-  handleLightBoxOpen = (event, obj) =>
-    this.setState({
-      lightboxIsOpen: true,
-      currentImage: obj.index,
-    })
-  handleLightBoxClose = () =>
-    this.setState({
-      lightboxIsOpen: false,
-    })
-  handleLightBoxPrev = () =>
-    this.setState(prevState => ({ currentImage: --prevState.currentImage }))
-  handleLightBoxNext = () =>
-    this.setState(prevState => ({ currentImage: ++prevState.currentImage }))
-
   render() {
-    const { markdownRemark } = this.props.data
-    const { tags } = markdownRemark.frontmatter
-    const { html } = markdownRemark
+    const {
+      html,
+      frontmatter: { tags },
+    } = this.props.data.markdownRemark
 
-    const { galleryImages, lightboxIsOpen, currentImage } = this.state
+    const { photos } = this.state
 
     return (
       <Layout>
         <Layout.ContentWrapper>
+          {isEmpty(tags) ? (
+            <div>
+              <p>Keine Stichwörter</p>
+            </div>
+          ) : (
+            <div>
+              <p>Stichwörter</p>
+              <ul>
+                {tags.map(tag => (
+                  <li key={tag}>
+                    <Link to={`projekte/tags/${tag.toLowerCase()}`}>{tag}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
           <CMS_HTML dangerouslySetInnerHTML={{ __html: html }} />
 
-          <Gallery photos={galleryImages} onClick={this.handleLightBoxOpen} />
-          <Lightbox
-            images={galleryImages}
-            currentImage={currentImage}
-            isOpen={lightboxIsOpen}
-            onClose={this.handleLightBoxClose}
-            onClickPrev={this.handleLightBoxPrev}
-            onClickNext={this.handleLightBoxNext}
+          <Gallery
+            photos={photos}
+            ImageComponent={ImageComponent}
+            onClick={() => {}}
           />
-
-          {tags.map(tag => (
-            <Link key={tag} to={`projekte/tags/${tag.toLowerCase()}`}>
-              {tag}
-            </Link>
-          ))}
         </Layout.ContentWrapper>
       </Layout>
     )
@@ -80,7 +115,8 @@ export const pageQuery = graphql`
         title
         tags
         galleryImages {
-          description
+          imageText
+          imageDescription
           image {
             childImageSharp {
               fluid(maxWidth: 700) {
@@ -108,9 +144,12 @@ ProjectPage.propTypes = {
                 fluid: PropTypes.object.isRequired,
               }).isRequired,
             }).isRequired,
+            imageText: PropTypes.string,
+            imageDescription: PropTypes.string.isRequired,
           }),
         ).isRequired,
       }).isRequired,
+      html: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
 }

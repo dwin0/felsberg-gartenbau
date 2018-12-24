@@ -10,20 +10,23 @@ shortDescription: >-
   Lorem Ipsum has been the industry's standard dummy.
 mainImage: /assets/teich.jpg
 galleryImages:
-  - description: >-
+  - imageText: >-
       Dies ist Schritt 1: Lorem Ipsum is simply dummy text of the printing and
       typesetting industry. Lorem Ipsum has been the industry's standard dummy
       text ever since.
+    imageDescription: Teich alt-Text
     image: /assets/teich.jpg
-  - description: >-
+  - imageText: >-
       Hier ist Schritt 2: or randomised words which don't look even slightly
       believable. If you are going to use a passage of Lorem Ipsum, you need to
       be sure there isn't anything embarrassing hidden in the middle of text.
+    imageDescription: Garten alt-Text
     image: /assets/garten.jpg
-  - description: >-
+  - imageText: >-
       Und Schritt 3: Many desktop publishing packages and web page editors now
       use Lorem Ipsum as their default model text, and a search for 'lorem
       ipsum' will uncover many web sites still.
+    imageDescription: Fahrzeuge alt-Text
     image: /assets/fahrzeuge.jpg
 ---
 
