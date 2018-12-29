@@ -1,5 +1,5 @@
 import React from 'react'
-import { navigateTo } from 'gatsby'
+import { navigate } from 'gatsby'
 
 const encode = data => {
   return Object.keys(data)
@@ -24,7 +24,7 @@ class ContactForm extends React.Component {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({ 'form-name': 'contact', ...this.state }),
     })
-      .then(() => navigateTo(form.getAttribute('action')))
+      .then(() => navigate(form.getAttribute('action')))
       .catch(error => alert(error))
 
     e.preventDefault()
@@ -36,12 +36,12 @@ class ContactForm extends React.Component {
     const { name, email, message } = this.state
     return (
       <form
-        name="contact-recaptcha"
+        name="contact"
         action="/thanks/"
         data-netlify="true"
-        data-netlify-recaptcha="true"
         onSubmit={this.handleSubmit}
       >
+        <input type="hidden" name="form-name" value="contact" />
         <p>
           <label htmlFor="name">
             Your Name:{' '}
