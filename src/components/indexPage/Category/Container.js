@@ -1,16 +1,10 @@
 import styled from 'styled-components'
 
-import { MEDIA } from '../../../styles/styleguide'
-
 const CategoryContainer = styled.div`
   display: flex;
   justify-content: space-evenly;
   flex-direction: row;
   padding: 50px 0 100px;
-
-  ${MEDIA.TABLET`
-    flex-direction: column;
-  `}
 `
 
 CategoryContainer.ImageContainer = styled.div`

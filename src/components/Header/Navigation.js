@@ -1,22 +1,95 @@
+import React, { Fragment } from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 
-import { COLORS } from '../../styles/styleguide'
+import { COLORS, media, BREAKPOINTS } from '../../styles/styleguide'
+import { HEADER_HEIGHT } from '../../styles/constants'
 
-export const Navigation = styled.nav`
+const NavigationWrapper = styled.nav`
   display: flex;
-  height: 100%;
+
+  ${media.lessThan(BREAKPOINTS.MEDIUM_MINUS_ONE)`
+    position: absolute;
+    top: ${HEADER_HEIGHT};
+    height: calc(100vh - ${HEADER_HEIGHT});
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    background: ${COLORS.WHITE};
+    transform: ${props => (props.isVisible ? 'none' : 'translateX(100%)')};
+    transition: transform 0.3s ease-out;
+  `}
+
+  ${media.greaterThan(BREAKPOINTS.MEDIUM)`
+    height: 100%;
+  `}
 `
-export const NavigationEntry = styled(Link)`
+const NavigationEntry = styled(Link)`
   color: ${COLORS.BLACK};
   text-decoration: none;
-  display: flex;
-  align-items: center;
-  padding: 0 20px;
-  border-left: 1px solid ${COLORS.BLACK_TRANSPARENT};
 
-  :hover {
-    margin-bottom: -3px;
-    border-bottom: 3px solid ${COLORS.GREEN};
-  }
+  ${media.lessThan(BREAKPOINTS.MEDIUM_MINUS_ONE)`
+    padding: 20px;
+  `}
+
+  ${media.greaterThan(BREAKPOINTS.MEDIUM)`
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    border-left: 1px solid ${COLORS.BLACK_TRANSPARENT};
+
+    :hover {
+      margin-bottom: -3px;
+      border-bottom: 3px solid ${COLORS.GREEN};
+    }
+  `}
 `
+
+const HamburgerButton = styled.button`
+  border: 1px solid black;
+
+  ${media.greaterThan(BREAKPOINTS.MEDIUM)`
+    display: none;
+  `}
+`
+
+class Navigation extends React.Component {
+  state = {
+    isVisible: false,
+  }
+
+  toggleNavigation = () =>
+    this.setState(prevState => ({
+      isVisible: !prevState.isVisible,
+    }))
+
+  render() {
+    const { navigationEntries } = this.props
+    const { isVisible } = this.state
+
+    return (
+      <Fragment>
+        <HamburgerButton onClick={this.toggleNavigation}>MENU</HamburgerButton>
+        <NavigationWrapper isVisible={isVisible}>
+          {navigationEntries.map(({ link, title }) => (
+            <NavigationEntry key={title} to={link}>
+              {title}
+            </NavigationEntry>
+          ))}
+        </NavigationWrapper>
+      </Fragment>
+    )
+  }
+}
+
+Navigation.propTypes = {
+  navigationEntries: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      link: PropTypes.string.isRequired,
+    }).isRequired,
+  ).isRequired,
+}
+
+export default Navigation

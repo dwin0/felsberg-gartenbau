@@ -1,4 +1,5 @@
 import { css } from 'styled-components'
+import { generateMedia } from 'styled-media-query'
 
 const COLORS = {
   GREEN: '#194a19',
@@ -61,23 +62,14 @@ const FONTS = {
   `,
 }
 
-const sizes = {
-  // TODO: define
-  GIANT: 1170,
-  DESKTOP: 992,
-  TABLET: 768,
-  PHONE: 376,
+const BREAKPOINTS = {
+  SMALL: '300px',
+  MEDIUM_MINUS_ONE: '699px',
+  MEDIUM: '700px',
+  LARGE_MINUS_ONE: '1199px',
+  LARGE: '1200px',
 }
 
-// https://github.com/styled-components/styled-components/blob/master/docs/tips-and-tricks.md
-const MEDIA = Object.keys(sizes).reduce((accumulator, label) => {
-  const emSize = sizes[label] / 16 // browser support
-  accumulator[label] = (...args) => css`
-    @media (max-width: ${emSize}em) {
-      ${css(...args)};
-    }
-  `
-  return accumulator
-}, {})
+const media = generateMedia(BREAKPOINTS)
 
-export { COLORS, FONTS, MEDIA, LINE_HEIGHTS }
+export { COLORS, FONTS, media, BREAKPOINTS, LINE_HEIGHTS }

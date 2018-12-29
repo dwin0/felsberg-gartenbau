@@ -1,9 +1,9 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 
 import Logo from './Logo'
-import { Navigation, NavigationEntry } from './Navigation'
-import { HeaderPlaceholder, HeaderElement } from './HeaderElement'
+import HeaderElement from './HeaderElement'
+import Navigation from './Navigation'
 
 const Header = () => (
   <StaticQuery
@@ -35,8 +35,8 @@ const Header = () => (
         }
       }
     `}
-    render={({ allMarkdownRemark: { edges }, site }) => {
-      const navigationEntries = edges
+    render={({ allMarkdownRemark, site }) => {
+      const navigationEntries = allMarkdownRemark.edges
         .sort(
           (edgeA, edgeB) =>
             edgeA.node.frontmatter.linkInNavigation.order -
@@ -48,19 +48,10 @@ const Header = () => (
         }))
 
       return (
-        <Fragment>
-          <HeaderPlaceholder />
-          <HeaderElement>
-            <Logo to="/">{site.siteMetadata.title}</Logo>
-            <Navigation>
-              {navigationEntries.map(({ link, title }) => (
-                <NavigationEntry key={title} to={link}>
-                  {title}
-                </NavigationEntry>
-              ))}
-            </Navigation>
-          </HeaderElement>
-        </Fragment>
+        <HeaderElement>
+          <Logo to="/">{site.siteMetadata.title}</Logo>
+          <Navigation navigationEntries={navigationEntries} />
+        </HeaderElement>
       )
     }}
   />
