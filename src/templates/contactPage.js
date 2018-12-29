@@ -7,6 +7,7 @@ import Address, { addressPropTypes } from '../components/contactPage/Address'
 import FurtherAddressInformation, {
   furtherAdressInformationPropTypes,
 } from '../components/contactPage/FurtherAddressInformation'
+import ContactForm from '../components/contactPage/ContactForm'
 
 import Layout from '../components/Layout'
 import CMS_HTML from '../components/CMS_Html'
@@ -24,6 +25,8 @@ const ContactPage = ({ data: { markdownRemark } }) => {
       <Image fluid={image.childImageSharp.fluid} />
 
       <Layout.ContentWrapper>
+        <ContactForm />
+
         <CMS_HTML dangerouslySetInnerHTML={{ __html: html }} />
         <Address address={address} />
         {furtherAdressInformation && (
