@@ -18,18 +18,16 @@ const Tags = ({ pageContext, data }) => {
       <Layout.ContentWrapper>
         <h1>{tagHeader}</h1>
         <ProjectsWrapper>
-          {edges.map(({ node }) => {
-            return (
-              <SingleProject
-                key={node.fields.slug}
-                slug={node.fields.slug}
-                title={node.frontmatter.title}
-                images={node.frontmatter.galleryImages}
-                shortDescription={node.frontmatter.shortDescription}
-                tags={node.frontmatter.tags}
-              />
-            )
-          })}
+          {edges.map(({ node }) => (
+            <SingleProject
+              key={node.fields.slug}
+              slug={node.fields.slug}
+              title={node.frontmatter.title}
+              images={node.frontmatter.galleryImages}
+              shortDescription={node.frontmatter.shortDescription}
+              tags={node.frontmatter.tags}
+            />
+          ))}
         </ProjectsWrapper>
         <Link to="/projekte/tags">Alle Stichwörter</Link>
       </Layout.ContentWrapper>
