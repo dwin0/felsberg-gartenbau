@@ -7,6 +7,7 @@ const Logo = styled(Link)`
   ${FONTS.STANDARD_TEXT_BOLD}
   color: ${COLORS.GREEN};
   text-decoration: none;
+  text-align: center;
   display: flex;
   align-items: center;
   height: 100%;
