@@ -1,27 +1,29 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import Image from 'gatsby-image'
 
 import Layout from '../components/Layout'
 import CMS_HTML from '../components/CMS_Html'
+import HeaderImage from '../components/common/HeaderImage'
 import Projects from '../components/common/Projects'
 
-const CategoryPage = ({ data: { markdownRemark } }) => {
-  const { image, projects } = markdownRemark.frontmatter
-  const { html } = markdownRemark
+const CategoryPage = ({
+  data: {
+    markdownRemark: {
+      html,
+      frontmatter: { image, projects },
+    },
+  },
+}) => (
+  <Layout>
+    <HeaderImage fluid={image.childImageSharp.fluid} />
 
-  return (
-    <Layout>
-      <Image fluid={image.childImageSharp.fluid} />
-
-      <Layout.ContentWrapper>
-        <CMS_HTML dangerouslySetInnerHTML={{ __html: html }} />
-        {projects && projects.length && <Projects projects={projects} />}
-      </Layout.ContentWrapper>
-    </Layout>
-  )
-}
+    <Layout.ContentWrapper>
+      <CMS_HTML dangerouslySetInnerHTML={{ __html: html }} />
+      {projects && projects.length && <Projects projects={projects} />}
+    </Layout.ContentWrapper>
+  </Layout>
+)
 
 export const pageQuery = graphql`
   query($id: String!) {
