@@ -9,8 +9,6 @@ export const ProjectsWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  max-width: 1000px;
-  margin: auto;
 `
 
 const Projects = ({ projects }) => (
@@ -49,16 +47,23 @@ const Projects = ({ projects }) => (
       <ProjectsWrapper>
         {edges
           .filter(({ node }) => projects.includes(node.frontmatter.title))
-          .map(({ node }) => (
-            <SingleProject
-              key={node.fields.slug}
-              slug={node.fields.slug}
-              title={node.frontmatter.title}
-              images={node.frontmatter.galleryImages}
-              shortDescription={node.frontmatter.shortDescription}
-              tags={node.frontmatter.tags}
-            />
-          ))}
+          .map(
+            ({
+              node: {
+                fields: { slug },
+                frontmatter: { title, galleryImages, shortDescription, tags },
+              },
+            }) => (
+              <SingleProject
+                key={slug}
+                slug={slug}
+                title={title}
+                images={galleryImages}
+                shortDescription={shortDescription}
+                tags={tags}
+              />
+            ),
+          )}
       </ProjectsWrapper>
     )}
   />

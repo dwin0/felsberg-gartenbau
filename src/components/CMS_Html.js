@@ -1,13 +1,17 @@
 import styled from 'styled-components'
 
 const CMS_HTML = styled.div`
-  max-width: 800px;
-  margin: auto;
-  padding: 100px 0;
   text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
 
-  * {
-    margin: 0 0 20px 0;
+  h1,
+  h2 {
+    margin: 20px 0;
+  }
+
+  p {
+    margin-bottom: 40px;
   }
 `
 

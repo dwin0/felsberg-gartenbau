@@ -11,6 +11,16 @@ const COLORS = {
   RED: '#B21C0E',
 }
 
+const BREAKPOINTS = {
+  SMALL: '300px',
+  MEDIUM_MINUS_ONE: '699px',
+  MEDIUM: '700px',
+  LARGE_MINUS_ONE: '1199px',
+  LARGE: '1200px',
+}
+
+const media = generateMedia(BREAKPOINTS)
+
 const LINE_HEIGHTS = {
   STANDARD_TEXT_LH: 1.4,
   LARGE_LH: 1.2,
@@ -29,9 +39,16 @@ const LINE_HEIGHTS = {
  */
 const FONTS = {
   STANDARD_TEXT: css`
-    font: 100 20px sans-serif;
     letter-spacing: 0.2px;
     line-height: ${LINE_HEIGHTS.STANDARD_TEXT_LH};
+
+    ${media.lessThan(BREAKPOINTS.MEDIUM_MINUS_ONE)`
+      font: 400 18px sans-serif;
+    `}
+
+    ${media.greaterThan(BREAKPOINTS.MEDIUM)`
+      font: 100 20px sans-serif;
+    `}
   `,
   STANDARD_TEXT_BOLD: css`
     font: bold 20px sans-serif;
@@ -61,15 +78,5 @@ const FONTS = {
     line-height: ${LINE_HEIGHTS.SMALL_LH};
   `,
 }
-
-const BREAKPOINTS = {
-  SMALL: '300px',
-  MEDIUM_MINUS_ONE: '699px',
-  MEDIUM: '700px',
-  LARGE_MINUS_ONE: '1199px',
-  LARGE: '1200px',
-}
-
-const media = generateMedia(BREAKPOINTS)
 
 export { COLORS, FONTS, media, BREAKPOINTS, LINE_HEIGHTS }

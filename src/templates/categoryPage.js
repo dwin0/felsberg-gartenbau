@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
+import isEmpty from 'lodash/fp/isEmpty'
 
 import Layout from '../components/Layout'
 import CMS_HTML from '../components/CMS_Html'
@@ -20,7 +21,7 @@ const CategoryPage = ({
 
     <Layout.ContentWrapper>
       <CMS_HTML dangerouslySetInnerHTML={{ __html: html }} />
-      {projects && projects.length && <Projects projects={projects} />}
+      {!isEmpty(projects) && <Projects projects={projects} />}
     </Layout.ContentWrapper>
   </Layout>
 )

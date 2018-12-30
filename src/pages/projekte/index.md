@@ -1,6 +1,6 @@
 ---
 templateKey: allProjects
-title: Alle Projekte
+title: Projekte
 linkInNavigation:
   order: 3
   visible: true
