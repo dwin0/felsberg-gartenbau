@@ -43,6 +43,7 @@ class SingleProject extends React.Component {
       >
         <CardImageLink to={slug}>
           <CardImage
+            style={{ width: '100%', height: '100%' }}
             fixed={
               !isEmpty(images) ? images[0].image.childImageSharp.fixed : null
             }
@@ -50,9 +51,9 @@ class SingleProject extends React.Component {
           />
         </CardImageLink>
         <CardContent>
-          <CardTitle>
-            <CardTitleLink to={slug}>{title}</CardTitleLink>
-          </CardTitle>
+          <CardTitleLink to={slug}>
+            <CardTitle>{title}</CardTitle>
+          </CardTitleLink>
           <CardText hovered={hovered}>{shortDescription}</CardText>
         </CardContent>
         {!isEmpty(tags) && (

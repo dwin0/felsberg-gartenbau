@@ -64,8 +64,15 @@ const FONTS = {
     line-height: ${LINE_HEIGHTS.LARGE_LH};
   `,
   MEDIUM_BOLD: css`
-    font: bold 32px Helvetica, sans-serif;
     line-height: ${LINE_HEIGHTS.MEDIUM_LH};
+
+    ${media.lessThan(BREAKPOINTS.MEDIUM_MINUS_ONE)`
+      font: bold 24px Helvetica, sans-serif;
+    `}
+
+    ${media.greaterThan(BREAKPOINTS.MEDIUM)`
+      font: bold 32px Helvetica, sans-serif;
+    `}
   `,
   SMALL: css`
     font: 100 16px sans-serif;
