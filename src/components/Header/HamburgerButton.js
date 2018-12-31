@@ -10,6 +10,7 @@ const Button = styled.button`
   margin: 10px;
   border: none;
   background: none;
+  outline: none;
 
   ${media.greaterThan(BREAKPOINTS.MEDIUM)`
     display: none;
