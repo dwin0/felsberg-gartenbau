@@ -10,10 +10,10 @@ export const NavigationWrapper = styled.nav`
   display: flex;
 
   ${media.lessThan(BREAKPOINTS.MEDIUM_MINUS_ONE)`
-    position: absolute;
+    position: fixed;
+    overflow: auto;
     top: ${HEADER_HEIGHT};
     height: calc(100vh - ${HEADER_HEIGHT});
-    padding-top: 30px;
     width: 100%;
     flex-direction: column;
     align-items: center;
@@ -40,6 +40,13 @@ export const NavigationEntry = styled(Link)`
     width: 100%;
     text-align: center;
     padding: 20px 0;
+
+    :first-of-type {
+      margin-top: 30px;
+    }
+    :last-of-type {
+      margin-bottom: 30px;
+    }
   `}
 
   ${media.greaterThan(BREAKPOINTS.MEDIUM)`

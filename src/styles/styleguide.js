@@ -22,7 +22,7 @@ const BREAKPOINTS = {
 const media = generateMedia(BREAKPOINTS)
 
 const LINE_HEIGHTS = {
-  STANDARD_TEXT_LH: 1.4,
+  STANDARD_TEXT_LH: 1.2,
   LARGE_LH: 1.2,
   MEDIUM_LH: 1.2,
   SMALL_LH: 1.5,
