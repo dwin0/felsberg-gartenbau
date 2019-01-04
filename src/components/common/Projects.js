@@ -1,14 +1,32 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 
 import SingleProject from './SingleProject'
+import { media, BREAKPOINTS } from '../../styles/styleguide'
 
 export const ProjectsWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: center;
+
+  ${media.lessThan(BREAKPOINTS.MEDIUM_MINUS_ONE)`
+    max-width: 500px;
+    margin: auto;
+  `}
+`
+
+const ProjectTitle = styled.h2`
+  text-align: center;
+
+  ${media.lessThan(BREAKPOINTS.MEDIUM_MINUS_ONE)`
+    margin: 50px 0 20px;
+  `}
+
+  ${media.greaterThan(BREAKPOINTS.MEDIUM)`
+    margin: 100px 0 20px;
+  `}
 `
 
 const Projects = ({ projects }) => (
@@ -44,27 +62,30 @@ const Projects = ({ projects }) => (
       }
     `}
     render={({ allMarkdownRemark: { edges } }) => (
-      <ProjectsWrapper>
-        {edges
-          .filter(({ node }) => projects.includes(node.frontmatter.title))
-          .map(
-            ({
-              node: {
-                fields: { slug },
-                frontmatter: { title, galleryImages, shortDescription, tags },
-              },
-            }) => (
-              <SingleProject
-                key={slug}
-                slug={slug}
-                title={title}
-                images={galleryImages}
-                shortDescription={shortDescription}
-                tags={tags}
-              />
-            ),
-          )}
-      </ProjectsWrapper>
+      <Fragment>
+        <ProjectTitle>Projekte</ProjectTitle>
+        <ProjectsWrapper>
+          {edges
+            .filter(({ node }) => projects.includes(node.frontmatter.title))
+            .map(
+              ({
+                node: {
+                  fields: { slug },
+                  frontmatter: { title, galleryImages, shortDescription, tags },
+                },
+              }) => (
+                <SingleProject
+                  key={slug}
+                  slug={slug}
+                  title={title}
+                  images={galleryImages}
+                  shortDescription={shortDescription}
+                  tags={tags}
+                />
+              ),
+            )}
+        </ProjectsWrapper>
+      </Fragment>
     )}
   />
 )

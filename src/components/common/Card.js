@@ -17,11 +17,15 @@ export const Card = styled.div`
   flex: 0 1 300px;
 
   ${media.lessThan(BREAKPOINTS.MEDIUM_MINUS_ONE)`
-    margin: 0 10px 50px;
+    margin: 0 0 50px;
   `}
 
   ${media.greaterThan(BREAKPOINTS.MEDIUM)`
-    margin: 50px 20px;
+    margin: 30px 0 30px 4%;
+
+    :first-of-type {
+      margin-left: 0;
+    }
   `}
 `
 
@@ -71,7 +75,8 @@ export const CardContent = styled.div`
   `}
 `
 
-export const CardTitle = styled.h2`
+export const CardTitle = styled.h3`
+  ${FONTS.MEDIUM_BOLD}
   color: ${COLORS.GREEN};
 
   ${media.lessThan(BREAKPOINTS.MEDIUM_MINUS_ONE)`

@@ -20,7 +20,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h2 {
-    ${FONTS.MEDIUM_BOLD}
+    ${FONTS.MEDIUM}
   }
 
   address {

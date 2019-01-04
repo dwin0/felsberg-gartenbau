@@ -63,6 +63,17 @@ const FONTS = {
     font: bold 40px Helvetica, sans-serif;
     line-height: ${LINE_HEIGHTS.LARGE_LH};
   `,
+  MEDIUM: css`
+    line-height: ${LINE_HEIGHTS.MEDIUM_LH};
+
+    ${media.lessThan(BREAKPOINTS.MEDIUM_MINUS_ONE)`
+      font: 400 24px Helvetica, sans-serif;
+    `}
+
+    ${media.greaterThan(BREAKPOINTS.MEDIUM)`
+      font: 400 28px Helvetica, sans-serif;
+    `}
+  `,
   MEDIUM_BOLD: css`
     line-height: ${LINE_HEIGHTS.MEDIUM_LH};
 
@@ -71,7 +82,7 @@ const FONTS = {
     `}
 
     ${media.greaterThan(BREAKPOINTS.MEDIUM)`
-      font: bold 32px Helvetica, sans-serif;
+      font: bold 28px Helvetica, sans-serif;
     `}
   `,
   SMALL: css`
