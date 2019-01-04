@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import { media, BREAKPOINTS } from '../styles/styleguide'
+import { media, BREAKPOINTS } from '../../styles/styleguide'
 
 const ContentStyle = styled.div`
   max-width: 1200px;

@@ -3,16 +3,17 @@ import PropTypes from 'prop-types'
 import { Normalize } from 'styled-normalize'
 
 import Helmet from './Helmet'
-import Header from './Header'
-import Footer from './Footer'
+import Header from '../Header'
+import Footer from '../Footer'
 import ContentWrapper from './ContentWrapper'
-import GlobalStyle from '../styles/GlobalStyle'
+import Main from './Main'
+import GlobalStyle from '../../styles/GlobalStyle'
 
 const Layout = ({ children }) => (
   <>
     <Helmet />
     <Header />
-    <main>{children}</main>
+    <Main>{children}</Main>
     <Footer />
     <Normalize />
     <GlobalStyle />

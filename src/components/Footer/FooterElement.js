@@ -3,7 +3,6 @@ import { COLORS, FONTS } from '../../styles/styleguide'
 
 const FooterElement = styled.footer`
   ${FONTS.SMALL}
-  margin-top: 200px;
   padding: 50px 0;
   background: ${COLORS.GREEN};
   color: ${COLORS.WHITE};

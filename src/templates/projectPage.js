@@ -6,7 +6,7 @@ import isEmpty from 'lodash/fp/isEmpty'
 import Image from 'gatsby-image'
 
 import Layout from '../components/Layout'
-import CMS_HTML from '../components/CMS_Html'
+import CMS_HTML from '../components/common/CMS_Html'
 
 // https://github.com/neptunian/react-photo-gallery
 // http://neptunian.github.io/react-photo-gallery/

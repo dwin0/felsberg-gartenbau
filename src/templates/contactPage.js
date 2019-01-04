@@ -10,7 +10,7 @@ import FurtherAddressInformation, {
 import ContactForm from '../components/contactPage/ContactForm'
 
 import Layout from '../components/Layout'
-import CMS_HTML from '../components/CMS_Html'
+import CMS_HTML from '../components/common/CMS_Html'
 
 const ContactPage = ({ data: { markdownRemark } }) => {
   const {

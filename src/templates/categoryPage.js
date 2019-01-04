@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 import isEmpty from 'lodash/fp/isEmpty'
 
 import Layout from '../components/Layout'
-import CMS_HTML from '../components/CMS_Html'
+import CMS_HTML from '../components/common/CMS_Html'
 import HeaderImage from '../components/common/HeaderImage'
 import Projects from '../components/common/Projects'
 

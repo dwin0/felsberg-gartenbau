@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 import Image from 'gatsby-image'
 
 import Layout from '../components/Layout'
-import CMS_HTML from '../components/CMS_Html'
+import CMS_HTML from '../components/common/CMS_Html'
 
 const AboutUsPage = ({ data: { markdownRemark } }) => {
   const { image } = markdownRemark.frontmatter

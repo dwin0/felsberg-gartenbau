@@ -6,7 +6,7 @@ import Image from 'gatsby-image'
 import Layout from '../components/Layout'
 import { ImageTitleWrapper, Title } from '../components/indexPage/Title'
 import Categories from '../components/indexPage/Categories'
-import CMS_HTML from '../components/CMS_Html'
+import CMS_HTML from '../components/common/CMS_Html'
 
 const IndexPage = ({ data }) => {
   const { title } = data.site.siteMetadata
