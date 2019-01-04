@@ -95,6 +95,18 @@ const FONTS = {
     letter-spacing: 0.2px;
     line-height: ${LINE_HEIGHTS.SMALL_LH};
   `,
+  FOOTER: css`
+    letter-spacing: 0.2px;
+    line-height: ${LINE_HEIGHTS.SMALL_LH};
+
+    ${media.lessThan(BREAKPOINTS.MEDIUM_MINUS_ONE)`
+      font: 100 16px sans-serif;
+    `}
+
+    ${media.greaterThan(BREAKPOINTS.MEDIUM)`
+      font: 100 18px sans-serif;
+    `}
+  `,
 }
 
 export { COLORS, FONTS, media, BREAKPOINTS, LINE_HEIGHTS }

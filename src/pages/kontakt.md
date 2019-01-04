@@ -12,7 +12,7 @@ address:
   googleMapsLink: https://goo.gl/maps/hgvNTrwkDu52
 furtherAdressInformation:
   - contactInfo: 071 699 21 10
-    name: Tel
+    name: Telefon
     type: tel
   - contactInfo: info@felsberg-gartenbau.ch
     name: Email

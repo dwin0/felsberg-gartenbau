@@ -2,8 +2,12 @@ import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 
 import { linkPrefixes } from '../contactPage/FurtherAddressInformation'
-import FooterElement from './FooterElement'
-import FooterLink from './FooterLink'
+import {
+  FooterElement,
+  Address,
+  AddressItem,
+  FooterLink,
+} from './FooterElements'
 
 const Footer = () => (
   <StaticQuery
@@ -15,6 +19,7 @@ const Footer = () => (
               name
               street
               city
+              googleMapsLink
             }
             furtherAdressInformation {
               contactInfo
@@ -27,32 +32,29 @@ const Footer = () => (
     `}
     render={({
       markdownRemark: {
-        frontmatter: { address, furtherAdressInformation },
+        frontmatter: {
+          address: { name, street, city, googleMapsLink },
+          furtherAdressInformation,
+        },
       },
     }) => (
       <FooterElement>
-        <address>
-          {Object.values(address).map((addressLine, index) => (
-            <span key={addressLine}>
-              {index !== 0 && ' | '}
-              {addressLine}
-            </span>
-          ))}
-        </address>
-        <div>
-          {furtherAdressInformation.map(addressInfo => (
-            <p key={addressInfo.contactInfo}>
-              {addressInfo.name}:&nbsp;
-              <FooterLink
-                href={`${linkPrefixes[addressInfo.type]}${
-                  addressInfo.contactInfo
-                }`}
-              >
-                {addressInfo.contactInfo}
-              </FooterLink>
-            </p>
-          ))}
-        </div>
+        <FooterLink href={googleMapsLink} target="_blank" rel="noopener">
+          <Address>
+            <AddressItem>{name}</AddressItem>
+            <AddressItem>{street}</AddressItem>
+            <AddressItem>{city}</AddressItem>
+          </Address>
+        </FooterLink>
+
+        {furtherAdressInformation.map(addressInfo => (
+          <FooterLink
+            key={addressInfo.contactInfo}
+            href={`${linkPrefixes[addressInfo.type]}${addressInfo.contactInfo}`}
+          >
+            {addressInfo.name}: {addressInfo.contactInfo}
+          </FooterLink>
+        ))}
       </FooterElement>
     )}
   />
