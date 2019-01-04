@@ -25,7 +25,7 @@ const LINE_HEIGHTS = {
   STANDARD_TEXT_LH: 1.4,
   LARGE_LH: 1.2,
   MEDIUM_LH: 1.2,
-  SMALL_LH: 1.4,
+  SMALL_LH: 1.5,
 }
 
 /**
@@ -39,72 +39,100 @@ const LINE_HEIGHTS = {
  */
 const FONTS = {
   STANDARD_TEXT: css`
+    font-family: sans-serif;
     letter-spacing: 0.2px;
     line-height: ${LINE_HEIGHTS.STANDARD_TEXT_LH};
 
     ${media.lessThan(BREAKPOINTS.MEDIUM_MINUS_ONE)`
-      font: 400 18px sans-serif;
+      font-weight: 400;
+      font-size: 18px;
     `}
 
     ${media.greaterThan(BREAKPOINTS.MEDIUM)`
-      font: 100 20px sans-serif;
+      font-weight: 100;
+      font-size: 20px;
     `}
   `,
   STANDARD_TEXT_BOLD: css`
-    font: bold 20px sans-serif;
-    letter-spacing: 0.2px;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 20px;
     line-height: ${LINE_HEIGHTS.STANDARD_TEXT_LH};
   `,
   LARGE: css`
-    font: 400 40px Helvetica, sans-serif;
+    font-family: Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 40px;
     line-height: ${LINE_HEIGHTS.LARGE_LH};
   `,
   LARGE_BOLD: css`
-    font: bold 40px Helvetica, sans-serif;
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 40px;
     line-height: ${LINE_HEIGHTS.LARGE_LH};
   `,
   MEDIUM: css`
+    font-family: Helvetica, sans-serif;
+    font-weight: 400;
     line-height: ${LINE_HEIGHTS.MEDIUM_LH};
 
     ${media.lessThan(BREAKPOINTS.MEDIUM_MINUS_ONE)`
-      font: 400 24px Helvetica, sans-serif;
+      font-size: 24px;
     `}
 
     ${media.greaterThan(BREAKPOINTS.MEDIUM)`
-      font: 400 28px Helvetica, sans-serif;
+      font-size: 28px;
     `}
   `,
   MEDIUM_BOLD: css`
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
     line-height: ${LINE_HEIGHTS.MEDIUM_LH};
 
     ${media.lessThan(BREAKPOINTS.MEDIUM_MINUS_ONE)`
-      font: bold 24px Helvetica, sans-serif;
+      font-size: 24px;
     `}
 
     ${media.greaterThan(BREAKPOINTS.MEDIUM)`
-      font: bold 28px Helvetica, sans-serif;
+      font-size: 28px;
     `}
   `,
   SMALL: css`
-    font: 100 16px sans-serif;
+    font-family: sans-serif;
     letter-spacing: 0.2px;
-    line-height: ${LINE_HEIGHTS.SMALL_LH};
-  `,
-  SMALL_BOLD: css`
-    font: bold 16px sans-serif;
-    letter-spacing: 0.2px;
-    line-height: ${LINE_HEIGHTS.SMALL_LH};
-  `,
-  FOOTER: css`
-    letter-spacing: 0.2px;
-    line-height: ${LINE_HEIGHTS.SMALL_LH};
 
     ${media.lessThan(BREAKPOINTS.MEDIUM_MINUS_ONE)`
-      font: 100 16px sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.5;
     `}
 
     ${media.greaterThan(BREAKPOINTS.MEDIUM)`
-      font: 100 18px sans-serif;
+      font-weight: 100;
+      font-size: 16px;
+      line-height: 1.4;
+    `}
+  `,
+  SMALL_BOLD: css`
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    letter-spacing: 0.2px;
+    line-height: 1.5;
+  `,
+  FOOTER: css`
+    font-family: sans-serif;
+    letter-spacing: 0.2px;
+    line-height: 1.4;
+
+    ${media.lessThan(BREAKPOINTS.MEDIUM_MINUS_ONE)`
+      font-weight: 400;
+      font-size: 16px;
+    `}
+
+    ${media.greaterThan(BREAKPOINTS.MEDIUM)`
+      font-weight: 100;
+      font-size: 18px;
     `}
   `,
 }
