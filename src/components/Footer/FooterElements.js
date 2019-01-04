@@ -34,5 +34,12 @@ export const AddressItem = styled.span`
 export const FooterLink = styled.a`
   text-decoration: none;
   color: ${COLORS.WHITE};
-  padding: 10px 0;
+
+  ${media.lessThan(BREAKPOINTS.MEDIUM_MINUS_ONE)`
+    padding: 10px 0;
+  `}
+
+  ${media.greaterThan(BREAKPOINTS.MEDIUM)`
+    padding: 5px 0;
+  `}
 `
