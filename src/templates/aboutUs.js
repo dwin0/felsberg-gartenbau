@@ -1,25 +1,27 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import Image from 'gatsby-image'
 
 import Layout from '../components/Layout'
 import CMS_HTML from '../components/common/CMS_Html'
+import HeaderImage from '../components/common/HeaderImage'
 
-const AboutUsPage = ({ data: { markdownRemark } }) => {
-  const { image } = markdownRemark.frontmatter
-  const { html } = markdownRemark
+const AboutUsPage = ({
+  data: {
+    markdownRemark: {
+      html,
+      frontmatter: { image },
+    },
+  },
+}) => (
+  <Layout>
+    <HeaderImage fluid={image.childImageSharp.fluid} />
 
-  return (
-    <Layout>
-      <Image fluid={image.childImageSharp.fluid} />
-
-      <Layout.ContentWrapper>
-        <CMS_HTML dangerouslySetInnerHTML={{ __html: html }} />
-      </Layout.ContentWrapper>
-    </Layout>
-  )
-}
+    <Layout.ContentWrapper>
+      <CMS_HTML dangerouslySetInnerHTML={{ __html: html }} />
+    </Layout.ContentWrapper>
+  </Layout>
+)
 
 export const pageQuery = graphql`
   query($id: String!) {

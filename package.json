@@ -5,7 +5,7 @@
   "author": "david windler",
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.0",
-    "gatsby": "^2.0.83",
+    "gatsby": "^2.0.85",
     "gatsby-image": "^2.0.25",
     "gatsby-plugin-manifest": "^2.0.13",
     "gatsby-plugin-netlify-cms": "^3.0.9",
@@ -41,14 +41,14 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
-    "eslint": "^5.11.1",
+    "eslint": "^5.12.0",
     "eslint-config-babel": "^8.0.2",
     "eslint-config-prettier": "^3.3.0",
     "eslint-plugin-babel": "^5.3.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-prettier": "^3.0.1",
-    "eslint-plugin-react": "^7.12.2",
+    "eslint-plugin-react": "^7.12.3",
     "prettier": "^1.15.2"
   },
   "repository": {
