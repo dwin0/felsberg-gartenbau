@@ -68,8 +68,15 @@ const FONTS = {
   LARGE_BOLD: css`
     font-family: Helvetica, sans-serif;
     font-weight: bold;
-    font-size: 40px;
     line-height: ${LINE_HEIGHTS.LARGE_LH};
+
+    ${media.lessThan(BREAKPOINTS.MEDIUM_MINUS_ONE)`
+      font-size: 7vw;
+    `}
+
+    ${media.greaterThan(BREAKPOINTS.MEDIUM)`
+      font-size: 40px;
+    `}
   `,
   MEDIUM: css`
     font-family: Helvetica, sans-serif;

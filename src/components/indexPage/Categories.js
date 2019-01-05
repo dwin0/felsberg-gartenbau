@@ -11,6 +11,7 @@ const Categories = () => (
           filter: {
             frontmatter: { categoryOnHomepage: { visible: { eq: true } } }
           }
+          sort: { fields: frontmatter___categoryOnHomepage___order, order: ASC }
         ) {
           edges {
             node {
@@ -36,33 +37,23 @@ const Categories = () => (
         }
       }
     `}
-    render={({ allMarkdownRemark }) =>
-      allMarkdownRemark.edges
-        .sort(
-          (edgeA, edgeB) =>
-            edgeA.node.frontmatter.categoryOnHomepage.order -
-            edgeB.node.frontmatter.categoryOnHomepage.order,
-        )
-        .map(
-          (
-            {
-              node: {
-                frontmatter: { title, image, shortDescription },
-                fields: { slug },
-              },
-            },
-            index,
-          ) => (
-            <Category
-              key={title}
-              index={index}
-              title={title}
-              image={image}
-              shortDescription={shortDescription}
-              slug={slug}
-            />
-          ),
-        )
+    render={({ allMarkdownRemark: { edges } }) =>
+      edges.map(
+        ({
+          node: {
+            frontmatter: { title, image, shortDescription },
+            fields: { slug },
+          },
+        }) => (
+          <Category
+            key={title}
+            title={title}
+            image={image}
+            shortDescription={shortDescription}
+            slug={slug}
+          />
+        ),
+      )
     }
   />
 )

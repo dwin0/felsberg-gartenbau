@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import Image from 'gatsby-image'
 
 import Layout from '../components/Layout'
 import { ImageTitleWrapper, Title } from '../components/indexPage/Title'
 import Categories from '../components/indexPage/Categories'
 import CMS_HTML from '../components/common/CMS_Html'
+import HeaderImage from '../components/common/HeaderImage'
 
 const IndexPage = ({ data }) => {
   const { title } = data.site.siteMetadata
@@ -16,7 +16,7 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <ImageTitleWrapper>
-        <Image fluid={image.childImageSharp.fluid} />
+        <HeaderImage fluid={image.childImageSharp.fluid} />
         <Title>{title}</Title>
       </ImageTitleWrapper>
 
@@ -29,7 +29,6 @@ const IndexPage = ({ data }) => {
 }
 
 // id is provided by the context set in gatsby-node.js
-// TODO: extrace headerImageQuery to separate Fragement and create PropTypes check
 export const pageQuery = graphql`
   query($id: String!) {
     markdownRemark(id: { eq: $id }) {
