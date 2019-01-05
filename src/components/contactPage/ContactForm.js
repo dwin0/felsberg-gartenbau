@@ -34,15 +34,15 @@ class ContactForm extends React.Component {
   handleSubmit = e => {
     // TODO: check if either phone or email
 
-    e.preventDefault()
-
-    fetch('/kontakt?no-cache=1', {
+    fetch('/?no-cache=1', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({ 'form-name': 'kontaktV1', ...this.state }),
+      body: encode({ 'form-name': 'kontaktV2', ...this.state }),
     })
       .then(() => this.setState({ formSuccess: true }))
       .catch(() => this.setState({ formError: true }))
+
+    e.preventDefault()
   }
 
   handleChange = e => this.setState({ [e.target.name]: e.target.value })
