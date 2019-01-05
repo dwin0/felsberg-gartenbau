@@ -12,7 +12,8 @@ const COLORS = {
 }
 
 const BREAKPOINTS = {
-  SMALL: '300px',
+  SMALL_MINUS_ONE: '349px',
+  SMALL: '350px',
   MEDIUM_MINUS_ONE: '699px',
   MEDIUM: '700px',
   LARGE_MINUS_ONE: '1199px',
@@ -70,8 +71,12 @@ const FONTS = {
     font-weight: bold;
     line-height: ${LINE_HEIGHTS.LARGE_LH};
 
-    ${media.lessThan(BREAKPOINTS.MEDIUM_MINUS_ONE)`
+    ${media.lessThan(BREAKPOINTS.SMALL_MINUS_ONE)`
       font-size: 7vw;
+    `}
+
+    ${media.between(BREAKPOINTS.SMALL, BREAKPOINTS.MEDIUM_MINUS_ONE)`
+      font-size: 6vw;
     `}
 
     ${media.greaterThan(BREAKPOINTS.MEDIUM)`

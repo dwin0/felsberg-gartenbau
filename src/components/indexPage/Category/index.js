@@ -1,23 +1,25 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Container from './Container'
-import Title from './Title'
-import Text from './Text'
-import Link from './Link'
-import Image from './Image'
+import { CategoryContainer, InnerContainer } from './Container'
+import { MobileImageLink, DesktopImageLink, ButtonLink } from './Links'
+import { CategoryTitle, CategoryText } from './TextElements'
+import CategoryImage from './CategoryImage'
 
 const Category = ({ image, shortDescription, slug, title }) => (
-  <Container>
-    <Container.ImageContainer>
-      <Image fixed={image.childImageSharp.fixed} to={slug} />
-    </Container.ImageContainer>
-    <Container.TextConainer>
-      <Title>{title}</Title>
-      <Text>{shortDescription}</Text>
-      <Link to={slug}>Mehr</Link>
-    </Container.TextConainer>
-  </Container>
+  <CategoryContainer>
+    <InnerContainer>
+      <CategoryTitle>{title}</CategoryTitle>
+      <MobileImageLink to={slug}>
+        <CategoryImage fluid={image.childImageSharp.fluid} />
+      </MobileImageLink>
+      <CategoryText>{shortDescription}</CategoryText>
+      <ButtonLink to={slug}>Mehr</ButtonLink>
+    </InnerContainer>
+    <DesktopImageLink to={slug}>
+      <CategoryImage fluid={image.childImageSharp.fluid} />
+    </DesktopImageLink>
+  </CategoryContainer>
 )
 
 Category.propTypes = {

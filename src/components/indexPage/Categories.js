@@ -25,8 +25,8 @@ const Categories = () => (
                 }
                 image {
                   childImageSharp {
-                    fixed(width: 350, height: 350) {
-                      ...GatsbyImageSharpFixed_withWebp_tracedSVG
+                    fluid(maxWidth: 350, maxHeight: 350) {
+                      ...GatsbyImageSharpFluid_withWebp_tracedSVG
                     }
                   }
                 }

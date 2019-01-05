@@ -14,10 +14,12 @@ export const Title = styled.h1`
   transform: translate(-50%, -50%);
   margin: 0;
   display: block;
-  padding: 25px 100px;
+  padding: 25px 0;
   color: ${COLORS.GREEN};
   text-align: center;
   white-space: nowrap;
+  width: 100%;
+  max-width: 800px;
 
   ::before {
     content: '';
