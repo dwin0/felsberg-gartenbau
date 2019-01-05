@@ -1,5 +1,8 @@
 import React from 'react'
 
+import InputField from './InputField'
+import { Form, SubmitButton } from './FormElements'
+
 const encode = data =>
   Object.keys(data)
     .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
@@ -17,6 +20,15 @@ class ContactForm extends React.Component {
     message: '',
     formSuccess: null, // disable form elements and green
     formError: null, // contact us via phone and red
+    currentFocus: null,
+  }
+
+  handleFocus = e => {
+    this.setState({ currentFocus: e.target.name })
+  }
+
+  handleBlur = () => {
+    this.setState({ currentFocus: null })
   }
 
   handleSubmit = e => {
@@ -45,55 +57,74 @@ class ContactForm extends React.Component {
       message,
       formSuccess,
       formError,
+      currentFocus,
     } = this.state
 
-    return (
-      <form
+    const commonProps = {
+      onChange: this.handleChange,
+      onFocus: this.handleFocus,
+      onBlur: this.handleBlur,
+      currentFocus: currentFocus,
+    }
+
+    return formSuccess ? (
+      <p>Success</p>
+    ) : (
+      <Form
         data-netlify="true"
         data-netlify-honeypot="bot"
         onSubmit={this.handleSubmit}
       >
-        {/* <input type="hidden" name="form-name" value="contact" /> */}
-        <p>
-          <label htmlFor="name">
-            Your Name:{' '}
-            <input
-              type="text"
-              name="name"
-              id="name"
-              value={name}
-              onChange={this.handleChange}
-            />
-          </label>
-        </p>
-        <p>
-          <label htmlFor="email">
-            Your Email:{' '}
-            <input
-              type="email"
-              name="email"
-              id="email"
-              value={email}
-              onChange={this.handleChange}
-            />
-          </label>
-        </p>
-        <p>
-          <label htmlFor="message">
-            Message:{' '}
-            <textarea
-              name="message"
-              id="message"
-              value={message}
-              onChange={this.handleChange}
-            />
-          </label>
-        </p>
-
-        <p>
-          <button type="submit">Send</button>
-        </p>
-      </form>
+        <InputField
+          text="Name"
+          id="surname"
+          value={surname}
+          required
+          {...commonProps}
+        />
+        <InputField
+          text="Vorname"
+          id="name"
+          value={name}
+          required
+          {...commonProps}
+        />
+        <InputField
+          type="email"
+          text="Email"
+          id="email"
+          value={email}
+          {...commonProps}
+        />
+        <InputField
+          type="tel"
+          text="Telefonnummer"
+          id="phone"
+          value={phone}
+          {...commonProps}
+        />
+        <InputField
+          text="Betreff"
+          id="subject"
+          value={subject}
+          required
+          {...commonProps}
+        />
+        <InputField
+          type="textarea"
+          text="Mitteilung"
+          id="message"
+          value={message}
+          required
+          {...commonProps}
+        />
+        <SubmitButton type="submit">Senden</SubmitButton>
+        {formError && (
+          <p style={{ background: 'red', color: 'white' }}>
+            Es ist ein Fehler aufgetreten.
+          </p>
+        )}
+      </Form>
     )
   }
 }

@@ -3,6 +3,7 @@ import { generateMedia } from 'styled-media-query'
 
 const COLORS = {
   GREEN: '#194a19',
+  GREEN_LIGHT: '#cfdecf',
   WHITE: '#ffffff',
   BLACK_TRANSPARENT: '#5f5f5f26',
   BLACK_TRANSPARENT_IMAGE: '#2525255e',
