@@ -18,8 +18,8 @@ class ContactForm extends React.Component {
     phone: '',
     subject: '',
     message: '',
-    formSuccess: null, // disable form elements and green
-    formError: null, // contact us via phone and red
+    formSuccess: false, // disable form elements and green
+    formError: false, // contact us via phone and red
     currentFocus: null,
   }
 
@@ -41,7 +41,7 @@ class ContactForm extends React.Component {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({ 'form-name': 'contact', ...this.state }),
     })
-      .then(() => () => this.setState({ formSuccess: true }))
+      .then(() => this.setState({ formSuccess: true }))
       .catch(() => this.setState({ formError: true }))
   }
 
