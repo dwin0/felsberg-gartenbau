@@ -34,7 +34,7 @@ class ContactForm extends React.Component {
   handleSubmit = e => {
     // TODO: check if either phone or email
 
-    fetch('/?no-cache=1', {
+    fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({ 'form-name': 'kontaktV2', ...this.state }),
