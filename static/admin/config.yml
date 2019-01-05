@@ -29,44 +29,48 @@ collections:
             name: linkInNavigation
             widget: object
             fields:
-              - label: Sichtbar
-                name: visible
-                widget: boolean
-                default: false
-              - label: Reihenfolge
-                hint: Je tiefer die Zahl, desto weiter vorne der Link
-                name: order
-                widget: number
-                valueType: int
-                min: 1
+              - {
+                  label: Sichtbar,
+                  name: visible,
+                  widget: boolean,
+                  default: false,
+                }
+              - {
+                  label: Reihenfolge,
+                  name: order,
+                  widget: number,
+                  valueType: int,
+                  min: 1,
+                  hint: 'Je tiefer die Zahl, desto weiter vorne der Link',
+                }
           - label: Adresse
             name: address
             widget: object
             fields:
-              - label: Name
-                name: name
-                widget: string
-              - label: Strasse
-                name: street
-                widget: string
-              - label: PLZ und Ort
-                name: city
-                widget: string
-              - label: Google Maps Link
-                name: googleMapsLink
-                widget: string
+              - { label: Name, name: name, widget: string }
+              - { label: Strasse, name: street, widget: string }
+              - { label: PLZ und Ort, name: city, widget: string }
+              - {
+                  label: Google Maps Link,
+                  name: googleMapsLink,
+                  widget: string,
+                }
           - label: Weitere Kontaktmöglichkeiten
             name: furtherAdressInformation
             widget: list
             fields:
-              - label: Name
-                name: name
-                hint: z.B. Tel. Mobile
-                widget: string
-              - label: Kontaktinfo
-                name: contactInfo
-                hint: z.B. 071 699 21 10
-                widget: string
+              - {
+                  label: Name,
+                  name: name,
+                  hint: z.B. Tel. Mobile,
+                  widget: string,
+                }
+              - {
+                  label: Kontaktinfo,
+                  name: contactInfo,
+                  hint: z.B. 071 699 21 10,
+                  widget: string,
+                }
               - label: Typ
                 name: type
                 widget: select
@@ -76,12 +80,44 @@ collections:
                   - { label: Link, value: link }
           - { label: Seiteninhalt, name: body, widget: markdown }
 
+      - file: src/pages/about-us.md
+        label: Über uns
+        name: aboutuspage
+        fields:
+          - { label: Template Key, name: templateKey, widget: hidden }
+          - { label: Titel, name: title, widget: string }
+          - { label: Bild, name: image, widget: image }
+          - label: Link in Navigation
+            name: linkInNavigation
+            widget: object
+            fields:
+              - {
+                  label: Sichtbar,
+                  name: visible,
+                  widget: boolean,
+                  default: false,
+                }
+              - {
+                  label: Reihenfolge,
+                  name: order,
+                  widget: number,
+                  valueType: int,
+                  min: 1,
+                  hint: 'Je tiefer die Zahl, desto weiter vorne der Link',
+                }
+          - { label: Seiteninhalt, name: body, widget: markdown }
+
   - name: categoryPages
     label: Kategorieseiten
     folder: src/pages/categoryPages
     create: true
     fields:
-      - { label: Template Key, name: templateKey, widget: hidden, default: categoryPage }
+      - {
+          label: Template Key,
+          name: templateKey,
+          widget: hidden,
+          default: categoryPage,
+        }
       - { label: Titel, name: title, widget: string }
       - label: Kategorie auf Homepage
         name: categoryOnHomepage
@@ -90,11 +126,11 @@ collections:
           - { label: Sichtbar, name: visible, widget: boolean, default: false }
           - {
               label: Reihenfolge,
-              hint: 'Je tiefer die Zahl, desto weiter vorne die Kategorie',
               name: order,
               widget: number,
               valueType: int,
               min: 1,
+              hint: 'Je tiefer die Zahl, desto weiter vorne die Kategorie',
             }
       - label: Link in Navigation
         name: linkInNavigation
@@ -103,50 +139,74 @@ collections:
           - { label: Sichtbar, name: visible, widget: boolean, default: false }
           - {
               label: Reihenfolge,
-              hint: 'Je tiefer die Zahl, desto weiter vorne der Link',
               name: order,
               widget: number,
               valueType: int,
               min: 1,
+              hint: 'Je tiefer die Zahl, desto weiter vorne der Link',
             }
       - { label: Bild, name: image, widget: image }
       - label: Referenzprojekte
         name: projects
         required: false
         widget: list
-        field: {
-          label: Projekt,
-          name: project,
-          widget: relation,
-          collection: projectPages,
-          searchFields: [title],
-          valueField: title,
-          displayFields: [title],
+        field:
+          {
+            label: Projekt,
+            name: project,
+            widget: relation,
+            collection: projectPages,
+            searchFields: [title],
+            valueField: title,
+            displayFields: [title],
+          }
+      - {
+          label: Kurzbeschreibung,
+          name: shortDescription,
+          hint: Beschreibung auf der Homepage,
+          widget: text,
         }
-      - { label: Kurzbeschreibung, name: shortDescription, hint: Beschreibung auf der Homepage, widget: text }
       - { label: Seiteninhalt, name: body, widget: markdown }
-
-
 
   - name: projectPages
     label: Projektseiten
     folder: src/pages/projectPages
     create: true
     fields:
-      - { label: Template Key, name: templateKey, widget: hidden, default: projectPage }
+      - {
+          label: Template Key,
+          name: templateKey,
+          widget: hidden,
+          default: projectPage,
+        }
       - { label: Titel, name: title, widget: string }
       - { label: Projektfertigstellung, name: projectEnd, widget: date }
       - label: Tags
         name: tags
         widget: list
         field: { label: Tag, name: tag, widget: string }
-      - { label: Kurzbeschreibung, name: shortDescription, hint: Beschreibung auf den Kategorieseiten, widget: text }
+      - {
+          label: Kurzbeschreibung,
+          name: shortDescription,
+          hint: Beschreibung auf den Kategorieseiten,
+          widget: text,
+        }
       - { label: Anzeigebild, name: mainImage, widget: image }
       - label: Galleriebilder
         name: galleryImages
         widget: list
         fields:
           - { label: Bild, name: image, widget: image }
-          - { label: Bildbeschreibung, name: imageDescription, hint: "Was ist auf dem Bild zu sehen? Text für Screenreader", widget: string }
-          - { label: Text unter Bild, name: imageText, widget: text, required: false }
+          - {
+              label: Bildbeschreibung,
+              name: imageDescription,
+              hint: 'Was ist auf dem Bild zu sehen? Text für Screenreader',
+              widget: string,
+            }
+          - {
+              label: Text unter Bild,
+              name: imageText,
+              widget: text,
+              required: false,
+            }
       - { label: Seiteninhalt, name: body, widget: markdown }
