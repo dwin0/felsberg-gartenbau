@@ -39,7 +39,7 @@ class ContactForm extends React.Component {
     fetch('/kontakt?no-cache=1', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({ 'form-name': 'contact', ...this.state }),
+      body: encode({ 'form-name': 'kontaktV1', ...this.state }),
     })
       .then(() => this.setState({ formSuccess: true }))
       .catch(() => this.setState({ formError: true }))
@@ -118,6 +118,7 @@ class ContactForm extends React.Component {
           required
           {...commonProps}
         />
+        <div data-netlify-recaptcha="true" />
         <SubmitButton type="submit">Senden</SubmitButton>
         {formError && (
           <p style={{ background: 'red', color: 'white' }}>
