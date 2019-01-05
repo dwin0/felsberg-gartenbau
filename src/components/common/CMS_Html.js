@@ -1,5 +1,8 @@
 import styled from 'styled-components'
 
+import { FONTS } from '../../styles/styleguide'
+import { LinkStyle } from './Link'
+
 const CMS_HTML = styled.div`
   text-align: center;
   max-width: 800px;
@@ -12,6 +15,15 @@ const CMS_HTML = styled.div`
 
   p {
     margin-bottom: 40px;
+  }
+
+  a {
+    ${LinkStyle};
+  }
+
+  strong,
+  b {
+    ${FONTS.STANDARD_TEXT_BOLD};
   }
 `
 
