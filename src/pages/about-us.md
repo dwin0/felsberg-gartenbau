@@ -6,6 +6,7 @@ linkInNavigation:
   order: 3
   visible: true
 ---
+
 # Über uns
 
 Am 1. April 2008 haben meine Eltern mir, Marco Felsberg, das von ihnen 1982 gegründete Gartenbauunternehmen übergeben. Durch die Übernahme wurde die Firma in eine GmbH umgewandelt.
@@ -20,9 +21,7 @@ Für unverbindliche Beratungen und Offerten stehen wir Ihnen gerne zur Verfügun
 
 [Wir freuen uns auf Ihre Kontaktaufnahme.](/kontakt/)
 
-**Ihre Gartenbau Felsberg GmbH**
-
-
+Ihre Gartenbau Felsberg GmbH
 
 ## Mitgliedschaft
 

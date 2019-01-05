@@ -8,9 +8,12 @@ const CMS_HTML = styled.div`
   max-width: 800px;
   margin: 0 auto;
 
-  h1,
-  h2 {
+  h1 {
     margin: 20px 0;
+  }
+
+  h2 {
+    margin: 100px 0 20px 0;
   }
 
   p {
@@ -19,11 +22,16 @@ const CMS_HTML = styled.div`
 
   a {
     ${LinkStyle};
+    display: inline;
   }
 
   strong,
   b {
     ${FONTS.STANDARD_TEXT_BOLD};
+  }
+
+  img {
+    max-width: 100%;
   }
 `
 
