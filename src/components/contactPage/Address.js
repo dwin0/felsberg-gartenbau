@@ -17,7 +17,7 @@ const Address = ({ address: { name, street, city, googleMapsLink } }) => (
   <Container>
     <p>Unsere Adresse lautet:</p>
     <address>
-      <Link href={googleMapsLink}>
+      <Link href={googleMapsLink} target="_blank" rel="noopener noreferrer">
         <span>{name}</span>
         <span>{street}</span>
         <span>{city}</span>

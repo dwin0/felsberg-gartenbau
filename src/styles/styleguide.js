@@ -9,6 +9,7 @@ const COLORS = {
   BLACK: '#252525',
   GREY: '#8d8c8c',
   RED: '#B21C0E',
+  YELLOW: '#ffe900',
 }
 
 const BREAKPOINTS = {

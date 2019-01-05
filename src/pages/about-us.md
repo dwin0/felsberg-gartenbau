@@ -25,6 +25,6 @@ Ihre Gartenbau Felsberg GmbH
 
 ## Mitgliedschaft
 
-Wir sind Mitglied im [Unternehmerverband Gärtner Schweiz](http://www.jardinsuisse.ch/):
+Wir sind Mitglied im <a href="https://www.jardinsuisse.ch/" target="_blank" rel="noopener noreferrer">Unternehmerverband Gärtner Schweiz</a>:
 
-<a href="http://www.jardinsuisse.ch/"><img src="/assets/jardin-suisse.jpg" alt="Jardin Suisse Logo" title="Jardin Suisse" /></a>
+<a href="https://www.jardinsuisse.ch/" target="_blank" rel="noopener noreferrer"><img src="/assets/jardin-suisse.jpg" alt="Jardin Suisse Logo" title="Jardin Suisse" /></a>

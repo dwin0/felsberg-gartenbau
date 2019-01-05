@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 
-import { FONTS } from './styleguide'
+import { FONTS, COLORS } from './styleguide'
 import { HEADER_HEIGHT } from './constants'
 
 // https://www.styled-components.com/docs/api#createglobalstyle
@@ -25,6 +25,10 @@ const GlobalStyle = createGlobalStyle`
 
   address {
     font-style: normal;
+  }
+
+  ::selection {
+    background: ${COLORS.YELLOW};
   }
 `
 
