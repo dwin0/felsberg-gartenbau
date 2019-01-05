@@ -1,55 +1,59 @@
 import React from 'react'
-import { navigate } from 'gatsby'
 
-const encode = data => {
-  return Object.keys(data)
-    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+const encode = data =>
+  Object.keys(data)
+    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
     .join('&')
-}
 
 // https://iammatthias.com/blog/netlify-form-gatsby-v2-and-no-cache-1/
 // https://github.com/imorente/gatsby-netlify-form-example/blob/master/src/pages/recaptcha.js
 class ContactForm extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      name: '',
-      email: '',
-      message: '',
-    }
+  state = {
+    surname: '',
+    name: '',
+    email: '',
+    phone: '',
+    subject: '',
+    message: '',
+    formSuccess: null, // disable form elements and green
+    formError: null, // contact us via phone and red
   }
 
   handleSubmit = e => {
-    const form = e.target
+    // TODO: check if either phone or email
+
+    e.preventDefault()
 
     fetch('/kontakt?no-cache=1', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({ 'form-name': 'contact', ...this.state }),
     })
-      .then(() =>
-        navigate(form.getAttribute('action'), { state: { success: true } }),
-      )
-      .catch(error =>
-        navigate(form.getAttribute('action'), { state: { error } }),
-      )
-
-    e.preventDefault()
+      .then(() => () => this.setState({ formSuccess: true }))
+      .catch(() => this.setState({ formError: true }))
   }
 
   handleChange = e => this.setState({ [e.target.name]: e.target.value })
 
   render() {
-    const { name, email, message } = this.state
+    const {
+      surname,
+      name,
+      email,
+      phone,
+      subject,
+      message,
+      formSuccess,
+      formError,
+    } = this.state
+
     return (
       <form
-        name="contact"
-        action="/thanks/"
         data-netlify="true"
         data-netlify-honeypot="bot"
         onSubmit={this.handleSubmit}
       >
-        <input type="hidden" name="form-name" value="contact" />
+        {/* <input type="hidden" name="form-name" value="contact" /> */}
         <p>
           <label htmlFor="name">
             Your Name:{' '}
