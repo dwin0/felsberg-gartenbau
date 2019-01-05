@@ -1,7 +1,7 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 
-import { linkPrefixes } from '../contactPage/FurtherAddressInformation'
+import { linkPrefixes } from '../contactPage/constants'
 import {
   FooterElement,
   Address,

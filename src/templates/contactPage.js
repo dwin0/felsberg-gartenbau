@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import Image from 'gatsby-image'
 
 import Address, { addressPropTypes } from '../components/contactPage/Address'
 import FurtherAddressInformation, {
@@ -11,33 +10,31 @@ import ContactForm from '../components/contactPage/ContactForm'
 
 import Layout from '../components/Layout'
 import CMS_HTML from '../components/common/CMS_Html'
+import HeaderImage from '../components/common/HeaderImage'
 
-const ContactPage = ({ data: { markdownRemark } }) => {
-  const {
-    image,
-    address,
-    furtherAdressInformation,
-  } = markdownRemark.frontmatter
-  const { html } = markdownRemark
+const ContactPage = ({
+  data: {
+    markdownRemark: {
+      html,
+      frontmatter: { image, address, furtherAdressInformation },
+    },
+  },
+}) => (
+  <Layout>
+    <HeaderImage fluid={image.childImageSharp.fluid} />
 
-  return (
-    <Layout>
-      <Image fluid={image.childImageSharp.fluid} />
-
-      <Layout.ContentWrapper>
-        <ContactForm />
-
-        <CMS_HTML dangerouslySetInnerHTML={{ __html: html }} />
-        <Address address={address} />
-        {furtherAdressInformation && (
-          <FurtherAddressInformation
-            furtherAdressInformation={furtherAdressInformation}
-          />
-        )}
-      </Layout.ContentWrapper>
-    </Layout>
-  )
-}
+    <Layout.ContentWrapper>
+      <CMS_HTML dangerouslySetInnerHTML={{ __html: html }} />
+      <Address address={address} />
+      {furtherAdressInformation && (
+        <FurtherAddressInformation
+          furtherAdressInformation={furtherAdressInformation}
+        />
+      )}
+      <ContactForm />
+    </Layout.ContentWrapper>
+  </Layout>
+)
 
 export const pageQuery = graphql`
   query($id: String!) {

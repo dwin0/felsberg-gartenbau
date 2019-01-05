@@ -1,21 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
 
 import Link from '../common/Link'
-
-export const Container = styled.div`
-  text-align: center;
-  margin-bottom: 100px;
-
-  p {
-    margin: 0 0 20px 0;
-  }
-`
+import { Container, Text } from './AddressElements'
 
 const Address = ({ address: { name, street, city, googleMapsLink } }) => (
   <Container>
-    <p>Unsere Adresse lautet:</p>
+    <Text>Unsere Adresse lautet:</Text>
     <address>
       <Link href={googleMapsLink} target="_blank" rel="noopener noreferrer">
         <span>{name}</span>
