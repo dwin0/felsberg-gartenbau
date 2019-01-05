@@ -3,6 +3,8 @@ import React from 'react'
 import InputField from './InputField'
 import { Form, SubmitButton } from './FormElements'
 
+const FORM_NAME = 'kontaktV3'
+
 const encode = data =>
   Object.keys(data)
     .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
@@ -37,7 +39,7 @@ class ContactForm extends React.Component {
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({ 'form-name': 'kontaktV2', ...this.state }),
+      body: encode({ 'form-name': FORM_NAME, ...this.state }),
     })
       .then(() => this.setState({ formSuccess: true }))
       .catch(() => this.setState({ formError: true }))
@@ -75,6 +77,7 @@ class ContactForm extends React.Component {
         data-netlify-honeypot="bot"
         onSubmit={this.handleSubmit}
       >
+        <input type="hidden" name="form-name" value={FORM_NAME} />
         <InputField
           text="Name"
           id="surname"
