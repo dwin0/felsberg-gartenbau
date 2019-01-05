@@ -36,7 +36,7 @@ class ContactForm extends React.Component {
   handleSubmit = e => {
     // TODO: check if either phone or email
 
-    fetch('/', {
+    fetch('/?no-cache=1', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({ 'form-name': FORM_NAME, ...this.state }),
@@ -69,9 +69,7 @@ class ContactForm extends React.Component {
       currentFocus: currentFocus,
     }
 
-    return formSuccess ? (
-      <p>Success</p>
-    ) : (
+    return (
       <Form
         data-netlify="true"
         data-netlify-honeypot="bot"
@@ -123,6 +121,11 @@ class ContactForm extends React.Component {
         />
         <div data-netlify-recaptcha="true" />
         <SubmitButton type="submit">Senden</SubmitButton>
+        {formSuccess && (
+          <p style={{ background: 'green', color: 'white' }}>
+            Erfolgreich übermittelt.
+          </p>
+        )}
         {formError && (
           <p style={{ background: 'red', color: 'white' }}>
             Es ist ein Fehler aufgetreten.
