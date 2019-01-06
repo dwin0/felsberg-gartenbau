@@ -6,6 +6,7 @@ import {
   Form,
   SubmitButton,
   SuccessMessage,
+  WarningMessage,
   ErrorMessage,
 } from './FormElements'
 
@@ -26,13 +27,14 @@ class ContactForm extends React.Component {
       phone: '',
       subject: '',
       message: '',
+      'g-recaptcha-response': null,
     },
     emailRequired: true,
     phoneRequired: true,
     formSuccess: false,
     formError: false,
     currentFocus: null,
-    'g-recaptcha-response': null,
+    recaptchaWarning: false,
   }
 
   handleFocus = e => {
@@ -63,16 +65,21 @@ class ContactForm extends React.Component {
     }))
   }
 
-  handleRecaptcha = value => {
+  handleRecaptcha = value =>
     this.setState(prevState => ({
       fields: {
         ...prevState.fields,
         'g-recaptcha-response': value,
       },
     }))
-  }
 
   handleSubmit = e => {
+    if (!this.state.fields['g-recaptcha-response']) {
+      this.setState({ recaptchaWarning: true })
+      e.preventDefault()
+      return
+    }
+
     // https://iammatthias.com/blog/netlify-form-gatsby-v2-and-no-cache-1/
     fetch('/?no-cache=1', {
       method: 'POST',
@@ -101,6 +108,7 @@ class ContactForm extends React.Component {
     const {
       fields: { surname, name, email, phone, subject, message },
       formSuccess,
+      recaptchaWarning,
       formError,
       currentFocus,
       phoneRequired,
@@ -181,6 +189,12 @@ class ContactForm extends React.Component {
             <br />
             Bitte versuchen Sie es nochmal oder rufen Sie uns an!
           </ErrorMessage>
+        )}
+        {recaptchaWarning && (
+          <WarningMessage>
+            Bitte klicken Sie die reCAPTCHA Checkbox oberhalb des Senden-Buttons
+            an.
+          </WarningMessage>
         )}
         {formSuccess && (
           <SuccessMessage>

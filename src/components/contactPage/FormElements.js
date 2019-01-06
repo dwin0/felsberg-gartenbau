@@ -55,14 +55,20 @@ export const SubmitButton = styled.button`
 `
 
 const Message = styled.p`
-  color: ${COLORS.WHITE};
   padding: 20px;
 `
 
 export const SuccessMessage = styled(Message)`
   background: ${COLORS.GREEN};
+  color: ${COLORS.WHITE};
+`
+
+export const WarningMessage = styled(Message)`
+  background: ${COLORS.YELLOW};
+  color: ${COLORS.BLACK};
 `
 
 export const ErrorMessage = styled(Message)`
   background: ${COLORS.RED};
+  color: ${COLORS.WHITE};
 `
