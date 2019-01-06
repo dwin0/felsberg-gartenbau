@@ -1,4 +1,5 @@
 import React from 'react'
+import Recaptcha from 'react-google-recaptcha'
 
 import InputField from './InputField'
 import {
@@ -9,6 +10,7 @@ import {
 } from './FormElements'
 
 const FORM_NAME = 'kontaktV3'
+const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY
 
 const encode = data =>
   Object.keys(data)
@@ -30,6 +32,7 @@ class ContactForm extends React.Component {
     formSuccess: false,
     formError: false,
     currentFocus: null,
+    'g-recaptcha-response': null,
   }
 
   handleFocus = e => {
@@ -56,6 +59,15 @@ class ContactForm extends React.Component {
       fields: {
         ...prevState.fields,
         [field]: value,
+      },
+    }))
+  }
+
+  handleRecaptcha = value => {
+    this.setState(prevState => ({
+      fields: {
+        ...prevState.fields,
+        'g-recaptcha-response': value,
       },
     }))
   }
@@ -103,10 +115,12 @@ class ContactForm extends React.Component {
       disabled: formSuccess,
     }
 
+    // recaptcha: https://github.com/imorente/gatsby-netlify-form-example
     return (
       <Form
         name={FORM_NAME}
         data-netlify="true"
+        data-netlify-recaptcha="true"
         data-netlify-honeypot="bot"
         onSubmit={this.handleSubmit}
       >
@@ -156,7 +170,7 @@ class ContactForm extends React.Component {
           required
           {...commonProps}
         />
-        <div data-netlify-recaptcha="true" />
+        <Recaptcha sitekey={RECAPTCHA_KEY} onChange={this.handleRecaptcha} />
         <SubmitButton type="submit" disabled={formSuccess}>
           Senden
         </SubmitButton>
