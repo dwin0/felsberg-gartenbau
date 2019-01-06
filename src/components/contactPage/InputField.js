@@ -13,25 +13,25 @@ const InputField = ({
   onBlur,
   required,
   currentFocus,
-}) => {
-  return (
-    <Label htmlFor={id}>
-      <FieldName focus={currentFocus === id}>{text}</FieldName>
-      <Input
-        as={type === 'textarea' ? 'textarea' : 'input'}
-        type={type || 'text'}
-        name={id}
-        id={id}
-        value={value}
-        placeholder={text}
-        required={required}
-        onChange={onChange}
-        onFocus={onFocus}
-        onBlur={onBlur}
-      />
-    </Label>
-  )
-}
+  disabled,
+}) => (
+  <Label htmlFor={id}>
+    <FieldName focus={currentFocus === id}>{text}</FieldName>
+    <Input
+      as={type === 'textarea' ? 'textarea' : 'input'}
+      type={type || 'text'}
+      name={id}
+      id={id}
+      value={value}
+      placeholder={text}
+      required={required}
+      onChange={onChange}
+      onFocus={onFocus}
+      onBlur={onBlur}
+      disabled={disabled}
+    />
+  </Label>
+)
 
 InputField.propTypes = {
   type: PropTypes.string,
@@ -43,6 +43,7 @@ InputField.propTypes = {
   onBlur: PropTypes.func.isRequired,
   required: PropTypes.bool,
   currentFocus: PropTypes.string,
+  disabled: PropTypes.bool,
 }
 
 export default InputField

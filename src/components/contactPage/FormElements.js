@@ -7,7 +7,8 @@ const PADDING_LEFT = '30px'
 
 export const Form = styled.form`
   border: 1px solid grey;
-  padding: 10px;
+  border-radius: 15px;
+  padding: 20px;
 
   display: flex;
   flex-direction: column;
@@ -42,9 +43,26 @@ export const Input = styled.input`
   :focus {
     background: ${COLORS.GREEN_LIGHT};
   }
+
+  :disabled {
+    background: ${COLORS.WHITE};
+  }
 `
 
 export const SubmitButton = styled.button`
   ${buttonStyle};
   margin: 40px auto 20px;
+`
+
+const Message = styled.p`
+  color: ${COLORS.WHITE};
+  padding: 20px;
+`
+
+export const SuccessMessage = styled(Message)`
+  background: ${COLORS.GREEN};
+`
+
+export const ErrorMessage = styled(Message)`
+  background: ${COLORS.RED};
 `

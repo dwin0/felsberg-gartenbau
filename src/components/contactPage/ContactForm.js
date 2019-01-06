@@ -1,7 +1,12 @@
 import React from 'react'
 
 import InputField from './InputField'
-import { Form, SubmitButton } from './FormElements'
+import {
+  Form,
+  SubmitButton,
+  SuccessMessage,
+  ErrorMessage,
+} from './FormElements'
 
 const FORM_NAME = 'kontaktV3'
 
@@ -10,18 +15,20 @@ const encode = data =>
     .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
     .join('&')
 
-// https://iammatthias.com/blog/netlify-form-gatsby-v2-and-no-cache-1/
-// https://github.com/imorente/gatsby-netlify-form-example/blob/master/src/pages/recaptcha.js
 class ContactForm extends React.Component {
   state = {
-    surname: '',
-    name: '',
-    email: '',
-    phone: '',
-    subject: '',
-    message: '',
-    formSuccess: false, // disable form elements and green
-    formError: false, // contact us via phone and red
+    fields: {
+      surname: '',
+      name: '',
+      email: '',
+      phone: '',
+      subject: '',
+      message: '',
+    },
+    emailRequired: true,
+    phoneRequired: true,
+    formSuccess: false,
+    formError: false,
     currentFocus: null,
   }
 
@@ -33,33 +40,59 @@ class ContactForm extends React.Component {
     this.setState({ currentFocus: null })
   }
 
-  handleSubmit = e => {
-    // TODO: check if either phone or email
+  handleChange = e => {
+    const field = e.target.name
+    const value = e.target.value
 
+    // at least one communication way is required
+    if (field === 'email') {
+      this.setState({ phoneRequired: !value.length })
+    }
+    if (field === 'phone') {
+      this.setState({ emailRequired: !value.length })
+    }
+
+    this.setState(prevState => ({
+      fields: {
+        ...prevState.fields,
+        [field]: value,
+      },
+    }))
+  }
+
+  handleSubmit = e => {
+    // https://iammatthias.com/blog/netlify-form-gatsby-v2-and-no-cache-1/
     fetch('/?no-cache=1', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({ 'form-name': FORM_NAME, ...this.state }),
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: encode({
+        'form-name': FORM_NAME,
+        ...this.state.fields,
+      }),
     })
-      .then(() => this.setState({ formSuccess: true }))
-      .catch(() => this.setState({ formError: true }))
-
+      .then(() =>
+        this.setState({
+          formSuccess: true,
+        }),
+      )
+      .catch(() =>
+        this.setState({
+          formError: true,
+        }),
+      )
     e.preventDefault()
   }
 
-  handleChange = e => this.setState({ [e.target.name]: e.target.value })
-
   render() {
     const {
-      surname,
-      name,
-      email,
-      phone,
-      subject,
-      message,
+      fields: { surname, name, email, phone, subject, message },
       formSuccess,
       formError,
       currentFocus,
+      phoneRequired,
+      emailRequired,
     } = this.state
 
     const commonProps = {
@@ -67,6 +100,7 @@ class ContactForm extends React.Component {
       onFocus: this.handleFocus,
       onBlur: this.handleBlur,
       currentFocus: currentFocus,
+      disabled: formSuccess,
     }
 
     return (
@@ -96,6 +130,7 @@ class ContactForm extends React.Component {
           text="Email"
           id="email"
           value={email}
+          required={emailRequired}
           {...commonProps}
         />
         <InputField
@@ -103,6 +138,7 @@ class ContactForm extends React.Component {
           text="Telefonnummer"
           id="phone"
           value={phone}
+          required={phoneRequired}
           {...commonProps}
         />
         <InputField
@@ -121,16 +157,24 @@ class ContactForm extends React.Component {
           {...commonProps}
         />
         <div data-netlify-recaptcha="true" />
-        <SubmitButton type="submit">Senden</SubmitButton>
-        {formSuccess && (
-          <p style={{ background: 'green', color: 'white' }}>
-            Erfolgreich übermittelt.
-          </p>
-        )}
+        <SubmitButton type="submit" disabled={formSuccess}>
+          Senden
+        </SubmitButton>
         {formError && (
-          <p style={{ background: 'red', color: 'white' }}>
+          <ErrorMessage>
             Es ist ein Fehler aufgetreten.
-          </p>
+            <br />
+            <br />
+            Bitte versuchen Sie es nochmal oder rufen Sie uns an!
+          </ErrorMessage>
+        )}
+        {formSuccess && (
+          <SuccessMessage>
+            Erfolgreich übermittelt.
+            <br />
+            <br />
+            Wir antworten Ihnen sobald wie möglich.
+          </SuccessMessage>
         )}
       </Form>
     )
