@@ -1,6 +1,7 @@
 import styled from 'styled-components'
+import Recaptcha from 'react-google-recaptcha'
 
-import { COLORS } from '../../styles/styleguide'
+import { COLORS, media, BREAKPOINTS } from '../../styles/styleguide'
 import { buttonStyle } from '../common/Button'
 
 const PADDING_LEFT = '30px'
@@ -47,6 +48,20 @@ export const Input = styled.input`
   :disabled {
     background: ${COLORS.WHITE};
   }
+`
+
+export const ReponsiveRecaptcha = styled(Recaptcha)`
+  ${media.lessThan(BREAKPOINTS.SMALL_MINUS_ONE)`
+    transform:scale(0.75);
+    transform-origin:0 0;
+  `}
+  ${media.between(BREAKPOINTS.SMALL, BREAKPOINTS.MEDIUM_MINUS_ONE)`
+    transform:scale(0.90);
+    transform-origin: 0 0;
+  `}
+  ${media.greaterThan(BREAKPOINTS.MEDIUM)`
+    margin: 0 auto;
+  `}
 `
 
 export const SubmitButton = styled.button`

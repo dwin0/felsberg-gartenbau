@@ -1,14 +1,15 @@
-import React from 'react'
-import Recaptcha from 'react-google-recaptcha'
+import React, { Fragment } from 'react'
 
 import InputField from './InputField'
 import {
   Form,
+  ReponsiveRecaptcha,
   SubmitButton,
   SuccessMessage,
   WarningMessage,
   ErrorMessage,
 } from './FormElements'
+import Subtitle from '../common/Subtitle'
 
 const FORM_NAME = 'kontaktV3'
 const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY
@@ -126,88 +127,94 @@ class ContactForm extends React.Component {
 
     // recaptcha: https://github.com/imorente/gatsby-netlify-form-example
     return (
-      <Form
-        name={FORM_NAME}
-        data-netlify="true"
-        data-netlify-recaptcha="true"
-        data-netlify-honeypot="bot"
-        onSubmit={this.handleSubmit}
-      >
-        <input type="hidden" name="form-name" value={FORM_NAME} />
-        <InputField
-          text="Name"
-          id="surname"
-          value={surname}
-          required
-          {...commonProps}
-        />
-        <InputField
-          text="Vorname"
-          id="name"
-          value={name}
-          required
-          {...commonProps}
-        />
-        <InputField
-          type="email"
-          text="Email"
-          id="email"
-          value={email}
-          required={emailRequired}
-          {...commonProps}
-        />
-        <InputField
-          type="tel"
-          text="Telefonnummer"
-          id="phone"
-          value={phone}
-          required={phoneRequired}
-          {...commonProps}
-        />
-        <InputField
-          text="Betreff"
-          id="subject"
-          value={subject}
-          required
-          {...commonProps}
-        />
-        <InputField
-          type="textarea"
-          text="Mitteilung"
-          id="message"
-          value={message}
-          required
-          {...commonProps}
-        />
-        {formSuccess || (
-          <Recaptcha sitekey={RECAPTCHA_KEY} onChange={this.handleRecaptcha} />
-        )}
-        <SubmitButton type="submit" disabled={formSuccess}>
-          Senden
-        </SubmitButton>
-        {formError && (
-          <ErrorMessage>
-            Es ist ein Fehler aufgetreten.
-            <br />
-            <br />
-            Bitte versuchen Sie es nochmal oder rufen Sie uns an!
-          </ErrorMessage>
-        )}
-        {recaptchaWarning && (
-          <WarningMessage>
-            Bitte klicken Sie die reCAPTCHA Checkbox oberhalb des Senden-Buttons
-            an.
-          </WarningMessage>
-        )}
-        {formSuccess && (
-          <SuccessMessage>
-            Erfolgreich übermittelt.
-            <br />
-            <br />
-            Wir antworten Ihnen sobald wie möglich.
-          </SuccessMessage>
-        )}
-      </Form>
+      <Fragment>
+        <Subtitle>Kontaktformular</Subtitle>
+        <Form
+          name={FORM_NAME}
+          data-netlify="true"
+          data-netlify-recaptcha="true"
+          data-netlify-honeypot="bot"
+          onSubmit={this.handleSubmit}
+        >
+          <input type="hidden" name="form-name" value={FORM_NAME} />
+          <InputField
+            text="Name"
+            id="surname"
+            value={surname}
+            required
+            {...commonProps}
+          />
+          <InputField
+            text="Vorname"
+            id="name"
+            value={name}
+            required
+            {...commonProps}
+          />
+          <InputField
+            type="email"
+            text="Email"
+            id="email"
+            value={email}
+            required={emailRequired}
+            {...commonProps}
+          />
+          <InputField
+            type="tel"
+            text="Telefonnummer"
+            id="phone"
+            value={phone}
+            required={phoneRequired}
+            {...commonProps}
+          />
+          <InputField
+            text="Betreff"
+            id="subject"
+            value={subject}
+            required
+            {...commonProps}
+          />
+          <InputField
+            type="textarea"
+            text="Mitteilung"
+            id="message"
+            value={message}
+            required
+            {...commonProps}
+          />
+          {formSuccess || (
+            <ReponsiveRecaptcha
+              sitekey={RECAPTCHA_KEY}
+              onChange={this.handleRecaptcha}
+            />
+          )}
+          <SubmitButton type="submit" disabled={formSuccess}>
+            Senden
+          </SubmitButton>
+          {formError && (
+            <ErrorMessage>
+              Es ist ein Fehler aufgetreten.
+              <br />
+              <br />
+              Bitte versuchen Sie es nochmal oder rufen Sie uns an!
+            </ErrorMessage>
+          )}
+          {recaptchaWarning && (
+            <WarningMessage>
+              Bitte klicken Sie die reCAPTCHA Checkbox oberhalb des
+              Senden-Buttons an.
+            </WarningMessage>
+          )}
+          {formSuccess && (
+            <SuccessMessage>
+              Erfolgreich übermittelt.
+              <br />
+              <br />
+              Wir antworten Ihnen sobald wie möglich.
+            </SuccessMessage>
+          )}
+        </Form>
+      </Fragment>
     )
   }
 }

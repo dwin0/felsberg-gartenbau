@@ -4,6 +4,7 @@ import { StaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 
 import SingleProject from './SingleProject'
+import Subtitle from './Subtitle'
 import { media, BREAKPOINTS } from '../../styles/styleguide'
 
 export const ProjectsWrapper = styled.div`
@@ -14,18 +15,6 @@ export const ProjectsWrapper = styled.div`
   ${media.lessThan(BREAKPOINTS.MEDIUM_MINUS_ONE)`
     max-width: 500px;
     margin: auto;
-  `}
-`
-
-const ProjectTitle = styled.h2`
-  text-align: center;
-
-  ${media.lessThan(BREAKPOINTS.MEDIUM_MINUS_ONE)`
-    margin: 50px 0 20px;
-  `}
-
-  ${media.greaterThan(BREAKPOINTS.MEDIUM)`
-    margin: 100px 0 20px;
   `}
 `
 
@@ -63,7 +52,7 @@ const Projects = ({ projects }) => (
     `}
     render={({ allMarkdownRemark: { edges } }) => (
       <Fragment>
-        <ProjectTitle>Projekte</ProjectTitle>
+        <Subtitle>Projekte</Subtitle>
         <ProjectsWrapper>
           {edges
             .filter(({ node }) => projects.includes(node.frontmatter.title))
