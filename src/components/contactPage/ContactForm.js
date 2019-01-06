@@ -71,6 +71,7 @@ class ContactForm extends React.Component {
 
     return (
       <Form
+        name={FORM_NAME}
         data-netlify="true"
         data-netlify-honeypot="bot"
         onSubmit={this.handleSubmit}
