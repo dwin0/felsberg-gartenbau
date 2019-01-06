@@ -71,6 +71,7 @@ class ContactForm extends React.Component {
         ...prevState.fields,
         'g-recaptcha-response': value,
       },
+      recaptchaWarning: false,
     }))
 
   handleSubmit = e => {
@@ -178,7 +179,9 @@ class ContactForm extends React.Component {
           required
           {...commonProps}
         />
-        <Recaptcha sitekey={RECAPTCHA_KEY} onChange={this.handleRecaptcha} />
+        {formSuccess || (
+          <Recaptcha sitekey={RECAPTCHA_KEY} onChange={this.handleRecaptcha} />
+        )}
         <SubmitButton type="submit" disabled={formSuccess}>
           Senden
         </SubmitButton>
