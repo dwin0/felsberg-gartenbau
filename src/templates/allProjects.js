@@ -1,30 +1,11 @@
 import React, { Fragment } from 'react'
 import { graphql, StaticQuery } from 'gatsby'
-import styled from 'styled-components'
-
 import { FiFilter } from 'react-icons/fi'
 
 import Layout from '../components/Layout'
 import SingleProject from '../components/common/SingleProject'
-import ProjectSearch from '../components/common/ProjectSearch'
-import { GatsbyLink } from '../components/common/Link'
-
-import { ProjectsWrapper } from '../components/common/Projects'
-
-import { media, BREAKPOINTS } from '../styles/styleguide'
-
-const TagsLink = styled(GatsbyLink)`
-  margin-top: 20px;
-`
-
-const AllProjectsWrapper = styled(ProjectsWrapper)`
-  justify-content: center;
-  margin-top: 40px;
-
-  ${media.lessThan(BREAKPOINTS.MEDIUM_MINUS_ONE)`
-    margin-top: 20px;
-  `}
-`
+import ProjectSearch from '../components/allProjects/ProjectSearch'
+import { TagsLink, AllProjectsWrapper } from '../components/allProjects'
 
 const AllProjects = () => (
   <StaticQuery
