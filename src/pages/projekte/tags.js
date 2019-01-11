@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { graphql, StaticQuery } from 'gatsby'
 import { FiTag } from 'react-icons/fi'
 
 import Layout from '../../components/Layout'
+import Search from '../../components/common/Search'
 import { TagsLink } from '../../components/common/Link'
 import { TagsList } from '../../components/Tags'
 
@@ -21,27 +22,44 @@ const TagsPage = () => (
         }
       }
     `}
-    render={({ allMarkdownRemark: { group, totalCount: sumOfProjects } }) => (
+    render={({
+      allMarkdownRemark: { group: groups, totalCount: sumOfProjects },
+    }) => (
       <Layout>
         <Layout.ContentWrapper>
           <h1>Projekte nach Stichwort</h1>
 
+          <Search
+            collection={groups}
+            filterBy={group => group.fieldValue}
+            placeholder="Stichwort"
+          >
+            {({ filteredCollection, SearchField }) => (
+              <Fragment>
+                {SearchField}
 
-          <TagsList>
-            {group.map(({ fieldValue, totalCount }) => (
-              <li key={fieldValue}>
-                <TagsLink to={`projekte/tags/${fieldValue.toLowerCase()}/`}>
-                  <FiTag />
-                  &nbsp;
-                  {fieldValue}&nbsp;({totalCount})
-                </TagsLink>
-              </li>
-            ))}
-            <br />
-            <li>
-              <TagsLink to="projekte">Alle Projekte ({sumOfProjects})</TagsLink>
-            </li>
-          </TagsList>
+                <TagsList>
+                  {filteredCollection.map(({ fieldValue, totalCount }) => (
+                    <li key={fieldValue}>
+                      <TagsLink
+                        to={`projekte/tags/${fieldValue.toLowerCase()}/`}
+                      >
+                        <FiTag />
+                        &nbsp;
+                        {fieldValue}&nbsp;({totalCount})
+                      </TagsLink>
+                    </li>
+                  ))}
+                  <br />
+                  <li>
+                    <TagsLink to="projekte">
+                      Alle Projekte ({sumOfProjects})
+                    </TagsLink>
+                  </li>
+                </TagsList>
+              </Fragment>
+            )}
+          </Search>
         </Layout.ContentWrapper>
       </Layout>
     )}
