@@ -19,20 +19,7 @@ const AllProjects = () => (
               fields {
                 slug
               }
-              frontmatter {
-                title
-                tags
-                shortDescription
-                galleryImages {
-                  image {
-                    childImageSharp {
-                      fixed(width: 350, height: 350) {
-                        ...GatsbyImageSharpFixed_withWebp_tracedSVG
-                      }
-                    }
-                  }
-                }
-              }
+              ...FrontmatterProjectInformation
             }
           }
         }
@@ -44,18 +31,26 @@ const AllProjects = () => (
           <h1>Alle Projekte</h1>
           <Link to="/projekte/tags">Filtern nach Stichwort</Link>
           <ProjectsWrapper>
-            {edges.map(({ node }) => (
-              <SingleProject
-                key={node.fields.slug}
-                slug={node.fields.slug}
-                title={node.frontmatter.title}
-                images={node.frontmatter.galleryImages}
-                shortDescription={node.frontmatter.shortDescription}
-                tags={node.frontmatter.tags}
-              />
-            ))}
+            {edges.map(
+              ({
+                node: {
+                  fields: { slug },
+                  frontmatter: { title, mainImage, shortDescription, tags },
+                },
+              }) => (
+                <SingleProject
+                  key={slug}
+                  slug={slug}
+                  title={title}
+                  mainImage={mainImage}
+                  shortDescription={shortDescription}
+                  tags={tags}
+                />
+              ),
+            )}
           </ProjectsWrapper>
           <Link to="/projekte/tags">Alle Stichwörter</Link>
+          <p>Suchfeld nach Name</p>
         </Layout.ContentWrapper>
       </Layout>
     )}

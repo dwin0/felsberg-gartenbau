@@ -23,7 +23,7 @@ const Tags = ({ pageContext, data }) => {
               key={node.fields.slug}
               slug={node.fields.slug}
               title={node.frontmatter.title}
-              images={node.frontmatter.galleryImages}
+              mainImage={node.frontmatter.mainImage}
               shortDescription={node.frontmatter.shortDescription}
               tags={node.frontmatter.tags}
             />
@@ -87,20 +87,7 @@ export const pageQuery = graphql`
           fields {
             slug
           }
-          frontmatter {
-            title
-            tags
-            shortDescription
-            galleryImages {
-              image {
-                childImageSharp {
-                  fixed(width: 350, height: 350) {
-                    ...GatsbyImageSharpFixed_withWebp_tracedSVG
-                  }
-                }
-              }
-            }
-          }
+          ...FrontmatterProjectInformation
         }
       }
     }

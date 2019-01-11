@@ -30,7 +30,7 @@ class SingleProject extends React.Component {
     })
 
   render() {
-    const { title, slug, shortDescription, images, tags } = this.props
+    const { title, slug, shortDescription, mainImage, tags } = this.props
     const { hovered } = this.state
 
     return (
@@ -44,9 +44,7 @@ class SingleProject extends React.Component {
         <CardImageLink to={slug}>
           <CardImage
             style={{ width: '100%', height: '100%' }}
-            fixed={
-              !isEmpty(images) ? images[0].image.childImageSharp.fixed : null
-            }
+            fixed={mainImage.childImageSharp.fixed}
             hovered={hovered}
           />
         </CardImageLink>
@@ -74,15 +72,11 @@ SingleProject.propTypes = {
   title: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
   shortDescription: PropTypes.string.isRequired,
-  images: PropTypes.arrayOf(
-    PropTypes.shape({
-      image: PropTypes.shape({
-        childImageSharp: PropTypes.shape({
-          fixed: PropTypes.object.isRequired,
-        }).isRequired,
-      }).isRequired,
-    }),
-  ),
+  mainImage: PropTypes.shape({
+    childImageSharp: PropTypes.shape({
+      fixed: PropTypes.object.isRequired,
+    }).isRequired,
+  }).isRequired,
   tags: PropTypes.arrayOf(PropTypes.string.isRequired),
 }
 

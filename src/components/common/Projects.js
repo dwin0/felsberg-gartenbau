@@ -31,20 +31,7 @@ const Projects = ({ projects }) => (
               fields {
                 slug
               }
-              frontmatter {
-                title
-                tags
-                shortDescription
-                galleryImages {
-                  image {
-                    childImageSharp {
-                      fixed(width: 350, height: 350) {
-                        ...GatsbyImageSharpFixed_withWebp_tracedSVG
-                      }
-                    }
-                  }
-                }
-              }
+              ...FrontmatterProjectInformation
             }
           }
         }
@@ -60,14 +47,14 @@ const Projects = ({ projects }) => (
               ({
                 node: {
                   fields: { slug },
-                  frontmatter: { title, galleryImages, shortDescription, tags },
+                  frontmatter: { title, mainImage, shortDescription, tags },
                 },
               }) => (
                 <SingleProject
                   key={slug}
                   slug={slug}
                   title={title}
-                  images={galleryImages}
+                  mainImage={mainImage}
                   shortDescription={shortDescription}
                   tags={tags}
                 />
