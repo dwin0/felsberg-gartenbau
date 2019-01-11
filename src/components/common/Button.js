@@ -12,6 +12,7 @@ export const buttonStyle = css`
 
   color: ${COLORS.GREEN};
   border: ${COLORS.GREEN} 2px solid;
+  background: ${COLORS.WHITE};
 
   :hover,
   :not(&:disabled) {

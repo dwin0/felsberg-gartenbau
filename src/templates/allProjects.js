@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Link, graphql, StaticQuery } from 'gatsby'
+import styled from 'styled-components'
+
+import { FiFilter } from 'react-icons/fi'
 
 import Layout from '../components/Layout'
 import SingleProject from '../components/common/SingleProject'
-import { ProjectsWrapper } from '../components/common/Projects'
+import ProjectSearch from '../components/common/ProjectSearch'
+
+const Wrapper = styled.div`
+  display: flex;
+`
 
 const AllProjects = () => (
   <StaticQuery
@@ -29,26 +36,43 @@ const AllProjects = () => (
       <Layout>
         <Layout.ContentWrapper>
           <h1>Alle Projekte</h1>
-          <Link to="/projekte/tags">Filtern nach Stichwort</Link>
-          <ProjectsWrapper>
-            {edges.map(
-              ({
-                node: {
-                  fields: { slug },
-                  frontmatter: { title, mainImage, shortDescription, tags },
-                },
-              }) => (
-                <SingleProject
-                  key={slug}
-                  slug={slug}
-                  title={title}
-                  mainImage={mainImage}
-                  shortDescription={shortDescription}
-                  tags={tags}
-                />
-              ),
+          <Link to="/projekte/tags">
+            <FiFilter />
+            &nbsp; Filtern nach Stichwort
+          </Link>
+
+          <ProjectSearch projects={edges}>
+            {({ filteredProjects, SearchField }) => (
+              <Fragment>
+                {SearchField}
+                <Wrapper>
+                  {filteredProjects.map(
+                    ({
+                      node: {
+                        fields: { slug },
+                        frontmatter: {
+                          title,
+                          mainImage,
+                          shortDescription,
+                          tags,
+                        },
+                      },
+                    }) => (
+                      <SingleProject
+                        key={slug}
+                        slug={slug}
+                        title={title}
+                        mainImage={mainImage}
+                        shortDescription={shortDescription}
+                        tags={tags}
+                      />
+                    ),
+                  )}
+                </Wrapper>
+              </Fragment>
             )}
-          </ProjectsWrapper>
+          </ProjectSearch>
+
           <Link to="/projekte/tags">Alle Stichwörter</Link>
           <p>Suchfeld nach Name</p>
         </Layout.ContentWrapper>

@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react'
+import { FiSend } from 'react-icons/fi'
 
 import InputField from './InputField'
 import {
@@ -189,7 +190,8 @@ class ContactForm extends React.Component {
             />
           )}
           <SubmitButton type="submit" disabled={formSuccess}>
-            Senden
+            Senden&nbsp;
+            <FiSend />
           </SubmitButton>
           {formError && (
             <ErrorMessage>
