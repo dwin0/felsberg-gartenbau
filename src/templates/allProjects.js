@@ -4,7 +4,7 @@ import { FiFilter } from 'react-icons/fi'
 
 import Layout from '../components/Layout'
 import SingleProject from '../components/common/SingleProject'
-import ProjectSearch from '../components/allProjects/ProjectSearch'
+import ProjectSearch from '../components/common/ProjectSearch'
 import { TagsLink, AllProjectsWrapper } from '../components/allProjects'
 
 const AllProjects = () => (

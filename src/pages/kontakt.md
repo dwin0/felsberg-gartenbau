@@ -3,7 +3,7 @@ templateKey: contactPage
 title: Kontakt
 image: /assets/fahrzeuge.jpg
 linkInNavigation:
-  order: 3
+  order: 300
   visible: true
 address:
   city: 8566 Neuwilen

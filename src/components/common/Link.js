@@ -21,5 +21,6 @@ export const ExternalLink = styled.a`
 `
 
 export const GatsbyLink = styled(Link)`
-  ${LinkStyle}
+  ${LinkStyle};
+  align-items: center;
 `

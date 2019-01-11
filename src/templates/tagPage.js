@@ -1,39 +1,60 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
+import { FiTag } from 'react-icons/fi'
 
 import Layout from '../components/Layout'
 import SingleProject from '../components/common/SingleProject'
-import { ProjectsWrapper } from '../components/common/Projects'
+import ProjectSearch from '../components/common/ProjectSearch'
+import { TagsLink, AllProjectsWrapper } from '../components/allProjects'
 
-const Tags = ({ pageContext, data }) => {
-  const { tag } = pageContext
-  const { edges, totalCount } = data.allMarkdownRemark
-  const tagHeader = `${totalCount} Projekt${
-    totalCount === 1 ? '' : 'e'
-  } mit dem Stichwort "${tag}"`
+const Tags = ({
+  pageContext: { tag },
+  data: {
+    allMarkdownRemark: { edges, totalCount },
+  },
+}) => (
+  <Layout>
+    <Layout.ContentWrapper>
+      <h1>{`${totalCount} Projekt${
+        totalCount === 1 ? '' : 'e'
+      } mit dem Stichwort "${tag}"`}</h1>
 
-  return (
-    <Layout>
-      <Layout.ContentWrapper>
-        <h1>{tagHeader}</h1>
-        <ProjectsWrapper>
-          {edges.map(({ node }) => (
-            <SingleProject
-              key={node.fields.slug}
-              slug={node.fields.slug}
-              title={node.frontmatter.title}
-              mainImage={node.frontmatter.mainImage}
-              shortDescription={node.frontmatter.shortDescription}
-              tags={node.frontmatter.tags}
-            />
-          ))}
-        </ProjectsWrapper>
-        <Link to="/projekte/tags">Alle Stichwörter</Link>
-      </Layout.ContentWrapper>
-    </Layout>
-  )
-}
+      <ProjectSearch projects={edges}>
+        {({ filteredProjects, SearchField }) => (
+          <Fragment>
+            {SearchField}
+
+            <TagsLink to="/projekte/tags">
+              <FiTag />
+              &nbsp; Alle Stichwörter
+            </TagsLink>
+
+            <AllProjectsWrapper>
+              {filteredProjects.map(
+                ({
+                  node: {
+                    fields: { slug },
+                    frontmatter: { title, mainImage, shortDescription, tags },
+                  },
+                }) => (
+                  <SingleProject
+                    key={slug}
+                    slug={slug}
+                    title={title}
+                    mainImage={mainImage}
+                    shortDescription={shortDescription}
+                    tags={tags}
+                  />
+                ),
+              )}
+            </AllProjectsWrapper>
+          </Fragment>
+        )}
+      </ProjectSearch>
+    </Layout.ContentWrapper>
+  </Layout>
+)
 
 Tags.propTypes = {
   pageContext: PropTypes.shape({
@@ -52,15 +73,11 @@ Tags.propTypes = {
               title: PropTypes.string.isRequired,
               tags: PropTypes.arrayOf(PropTypes.string.isRequired),
               shortDescription: PropTypes.string.isRequired,
-              galleryImages: PropTypes.arrayOf(
-                PropTypes.shape({
-                  image: PropTypes.shape({
-                    childImageSharp: PropTypes.shape({
-                      fixed: PropTypes.object.isRequired,
-                    }).isRequired,
-                  }).isRequired,
-                }),
-              ).isRequired,
+              mainImage: PropTypes.shape({
+                childImageSharp: PropTypes.shape({
+                  fixed: PropTypes.object.isRequired,
+                }).isRequired,
+              }).isRequired,
             }),
           }),
         }).isRequired,

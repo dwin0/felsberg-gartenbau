@@ -3,7 +3,7 @@ templateKey: aboutUs
 title: Über uns
 image: /assets/fahrzeuge.jpg
 linkInNavigation:
-  order: 3
+  order: 200
   visible: true
 ---
 

@@ -65,8 +65,19 @@ const FONTS = {
   LARGE: css`
     font-family: Helvetica, sans-serif;
     font-weight: 400;
-    font-size: 40px;
     line-height: ${LINE_HEIGHTS.LARGE_LH};
+
+    ${media.lessThan(BREAKPOINTS.SMALL_MINUS_ONE)`
+      font-size: 32px;
+    `}
+
+    ${media.between(BREAKPOINTS.SMALL, BREAKPOINTS.MEDIUM_MINUS_ONE)`
+      font-size: 36px;
+    `}
+
+    ${media.greaterThan(BREAKPOINTS.MEDIUM)`
+      font-size: 40px;
+    `}
   `,
   LARGE_BOLD: css`
     font-family: Helvetica, sans-serif;
