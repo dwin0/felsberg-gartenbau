@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import isEmpty from 'lodash/fp/isEmpty'
+import { FiTag } from 'react-icons/fi'
 
 import {
   Card,
@@ -58,7 +59,8 @@ class SingleProject extends React.Component {
           <TagsContainer>
             {tags.map(tag => (
               <Tag key={tag} to={`projekte/tags/${tag.toLowerCase()}`}>
-                {tag}
+                <FiTag />
+                &nbsp;{tag}
               </Tag>
             ))}
           </TagsContainer>

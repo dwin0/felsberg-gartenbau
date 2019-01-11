@@ -1,18 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Link from '../common/Link'
+import { ExternalLink } from '../common/Link'
 import { Container, Text } from './AddressElements'
 
 const Address = ({ address: { name, street, city, googleMapsLink } }) => (
   <Container>
     <Text>Unsere Adresse lautet:</Text>
     <address>
-      <Link href={googleMapsLink} target="_blank" rel="noopener noreferrer">
+      <ExternalLink
+        href={googleMapsLink}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <span>{name}</span>
         <span>{street}</span>
         <span>{city}</span>
-      </Link>
+      </ExternalLink>
     </address>
   </Container>
 )

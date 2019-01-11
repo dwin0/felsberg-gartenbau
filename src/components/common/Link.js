@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import { Link } from 'gatsby'
 
 import { FONTS, COLORS } from '../../styles/styleguide'
 
@@ -7,15 +8,18 @@ export const LinkStyle = css`
   text-decoration: none;
   color: ${COLORS.GREEN};
   display: flex;
-  flex-direction: column;
 
   :hover {
     text-decoration: underline;
+    cursor: pointer;
   }
 `
 
-const Link = styled.a`
-  ${LinkStyle}
+export const ExternalLink = styled.a`
+  ${LinkStyle};
+  flex-direction: column;
 `
 
-export default Link
+export const GatsbyLink = styled(Link)`
+  ${LinkStyle}
+`

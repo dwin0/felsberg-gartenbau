@@ -21,11 +21,7 @@ export const Card = styled.div`
   `}
 
   ${media.greaterThan(BREAKPOINTS.MEDIUM)`
-    margin: 30px 0 30px 4%;
-
-    :first-of-type {
-      margin-left: 0;
-    }
+    margin: 30px 2% 30px 2%;
   `}
 `
 
@@ -125,6 +121,8 @@ export const TagsContainer = styled.div`
 `
 
 export const Tag = styled(Link)`
+  display: flex;
+  align-items: center;
   ${FONTS.SMALL_BOLD}
   color: ${COLORS.GREY};
 

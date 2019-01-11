@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { Link, graphql, StaticQuery } from 'gatsby'
+import { graphql, StaticQuery } from 'gatsby'
 import styled from 'styled-components'
 
 import { FiFilter } from 'react-icons/fi'
@@ -7,9 +7,23 @@ import { FiFilter } from 'react-icons/fi'
 import Layout from '../components/Layout'
 import SingleProject from '../components/common/SingleProject'
 import ProjectSearch from '../components/common/ProjectSearch'
+import { GatsbyLink } from '../components/common/Link'
 
-const Wrapper = styled.div`
-  display: flex;
+import { ProjectsWrapper } from '../components/common/Projects'
+
+import { media, BREAKPOINTS } from '../styles/styleguide'
+
+const TagsLink = styled(GatsbyLink)`
+  margin-top: 20px;
+`
+
+const AllProjectsWrapper = styled(ProjectsWrapper)`
+  justify-content: center;
+  margin-top: 40px;
+
+  ${media.lessThan(BREAKPOINTS.MEDIUM_MINUS_ONE)`
+    margin-top: 20px;
+  `}
 `
 
 const AllProjects = () => (
@@ -36,16 +50,18 @@ const AllProjects = () => (
       <Layout>
         <Layout.ContentWrapper>
           <h1>Alle Projekte</h1>
-          <Link to="/projekte/tags">
-            <FiFilter />
-            &nbsp; Filtern nach Stichwort
-          </Link>
 
           <ProjectSearch projects={edges}>
             {({ filteredProjects, SearchField }) => (
               <Fragment>
                 {SearchField}
-                <Wrapper>
+
+                <TagsLink to="/projekte/tags">
+                  <FiFilter />
+                  &nbsp; Filtern nach Stichwort
+                </TagsLink>
+
+                <AllProjectsWrapper>
                   {filteredProjects.map(
                     ({
                       node: {
@@ -68,13 +84,10 @@ const AllProjects = () => (
                       />
                     ),
                   )}
-                </Wrapper>
+                </AllProjectsWrapper>
               </Fragment>
             )}
           </ProjectSearch>
-
-          <Link to="/projekte/tags">Alle Stichwörter</Link>
-          <p>Suchfeld nach Name</p>
         </Layout.ContentWrapper>
       </Layout>
     )}

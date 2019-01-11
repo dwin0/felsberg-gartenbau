@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import Link from '../common/Link'
+import { ExternalLink } from '../common/Link'
 import { media, BREAKPOINTS } from '../../styles/styleguide'
 
 export const Container = styled.div`
@@ -12,7 +12,7 @@ export const Text = styled.p`
   margin-bottom: 20px;
 `
 
-export const FurtherAddressLink = styled(Link)`
+export const FurtherAddressLink = styled(ExternalLink)`
   display: inline-block;
 `
 
