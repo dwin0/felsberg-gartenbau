@@ -5,8 +5,9 @@ import { FiTag } from 'react-icons/fi'
 
 import Layout from '../components/Layout'
 import SingleProject from '../components/common/SingleProject'
-import ProjectSearch from '../components/common/ProjectSearch'
-import { TagsLink, AllProjectsWrapper } from '../components/allProjects'
+import Search from '../components/common/Search'
+import { AllProjectsWrapper } from '../components/allProjects'
+import { TagsLink } from '../components/common/Link'
 
 const Tags = ({
   pageContext: { tag },
@@ -20,8 +21,12 @@ const Tags = ({
         totalCount === 1 ? '' : 'e'
       } mit dem Stichwort "${tag}"`}</h1>
 
-      <ProjectSearch projects={edges}>
-        {({ filteredProjects, SearchField }) => (
+      <Search
+        collection={edges}
+        filterBy={({ node: project }) => project.frontmatter.title}
+        placeholder="Projektname"
+      >
+        {({ filteredCollection, SearchField }) => (
           <Fragment>
             {SearchField}
 
@@ -31,7 +36,7 @@ const Tags = ({
             </TagsLink>
 
             <AllProjectsWrapper>
-              {filteredProjects.map(
+              {filteredCollection.map(
                 ({
                   node: {
                     fields: { slug },
@@ -51,7 +56,7 @@ const Tags = ({
             </AllProjectsWrapper>
           </Fragment>
         )}
-      </ProjectSearch>
+      </Search>
     </Layout.ContentWrapper>
   </Layout>
 )

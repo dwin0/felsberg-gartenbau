@@ -24,3 +24,7 @@ export const GatsbyLink = styled(Link)`
   ${LinkStyle};
   align-items: center;
 `
+
+export const TagsLink = styled(GatsbyLink)`
+  margin-top: 20px;
+`

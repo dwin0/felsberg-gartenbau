@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import { StyledInput, InputWrapper, SearchIcon } from './SearchElements'
 
-class ProjectSearch extends React.Component {
+class Search extends React.Component {
   state = {
     searchTerm: '',
   }
@@ -11,20 +11,22 @@ class ProjectSearch extends React.Component {
   onInputChange = e => this.setState({ searchTerm: e.target.value })
 
   render() {
-    const filteredProjects = this.props.projects.filter(({ node }) =>
-      node.frontmatter.title
+    const { collection, filterBy, placeholder, children } = this.props
+
+    const filteredCollection = collection.filter(item =>
+      filterBy(item)
         .toLowerCase()
         .includes(this.state.searchTerm.toLowerCase()),
     )
 
-    return this.props.children({
-      filteredProjects,
+    return children({
+      filteredCollection,
       SearchField: (
         <InputWrapper>
           <StyledInput
             onChange={this.onInputChange}
             value={this.state.searchTerm}
-            placeholder="Projektname"
+            placeholder={placeholder}
           />
           <SearchIcon />
         </InputWrapper>
@@ -33,16 +35,11 @@ class ProjectSearch extends React.Component {
   }
 }
 
-ProjectSearch.propTypes = {
-  projects: PropTypes.arrayOf(
-    PropTypes.shape({
-      node: PropTypes.shape({
-        frontmatter: PropTypes.shape({ title: PropTypes.string.isRequired })
-          .isRequired,
-      }).isRequired,
-    }),
-  ).isRequired,
+Search.propTypes = {
+  collection: PropTypes.array.isRequired,
+  filterBy: PropTypes.func.isRequired,
+  placeholder: PropTypes.string,
   children: PropTypes.func.isRequired,
 }
 
-export default ProjectSearch
+export default Search

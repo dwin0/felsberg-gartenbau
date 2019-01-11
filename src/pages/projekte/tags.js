@@ -1,7 +1,10 @@
 import React from 'react'
-import { Link, graphql, StaticQuery } from 'gatsby'
+import { graphql, StaticQuery } from 'gatsby'
+import { FiTag } from 'react-icons/fi'
 
 import Layout from '../../components/Layout'
+import { TagsLink } from '../../components/common/Link'
+import { TagsList } from '../../components/Tags'
 
 const TagsPage = () => (
   <StaticQuery
@@ -24,18 +27,21 @@ const TagsPage = () => (
           <h1>Projekte nach Stichwort</h1>
 
 
-          <ul>
+          <TagsList>
             {group.map(({ fieldValue, totalCount }) => (
               <li key={fieldValue}>
-                <Link to={`projekte/tags/${fieldValue.toLowerCase()}/`}>
-                  {fieldValue} ({totalCount})
-                </Link>
+                <TagsLink to={`projekte/tags/${fieldValue.toLowerCase()}/`}>
+                  <FiTag />
+                  &nbsp;
+                  {fieldValue}&nbsp;({totalCount})
+                </TagsLink>
               </li>
             ))}
+            <br />
             <li>
-              <Link to="projekte">Alle Projekte ({sumOfProjects})</Link>
+              <TagsLink to="projekte">Alle Projekte ({sumOfProjects})</TagsLink>
             </li>
-          </ul>
+          </TagsList>
         </Layout.ContentWrapper>
       </Layout>
     )}

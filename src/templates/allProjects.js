@@ -4,8 +4,9 @@ import { FiFilter } from 'react-icons/fi'
 
 import Layout from '../components/Layout'
 import SingleProject from '../components/common/SingleProject'
-import ProjectSearch from '../components/common/ProjectSearch'
-import { TagsLink, AllProjectsWrapper } from '../components/allProjects'
+import Search from '../components/common/Search'
+import { AllProjectsWrapper } from '../components/allProjects'
+import { TagsLink } from '../components/common/Link'
 
 const AllProjects = () => (
   <StaticQuery
@@ -32,8 +33,12 @@ const AllProjects = () => (
         <Layout.ContentWrapper>
           <h1>Alle Projekte</h1>
 
-          <ProjectSearch projects={edges}>
-            {({ filteredProjects, SearchField }) => (
+          <Search
+            collection={edges}
+            filterBy={({ node: project }) => project.frontmatter.title}
+            placeholder="Projektname"
+          >
+            {({ filteredCollection, SearchField }) => (
               <Fragment>
                 {SearchField}
 
@@ -43,7 +48,7 @@ const AllProjects = () => (
                 </TagsLink>
 
                 <AllProjectsWrapper>
-                  {filteredProjects.map(
+                  {filteredCollection.map(
                     ({
                       node: {
                         fields: { slug },
@@ -68,7 +73,7 @@ const AllProjects = () => (
                 </AllProjectsWrapper>
               </Fragment>
             )}
-          </ProjectSearch>
+          </Search>
         </Layout.ContentWrapper>
       </Layout>
     )}

@@ -2,7 +2,7 @@ import { css } from 'styled-components'
 import { generateMedia } from 'styled-media-query'
 
 const COLORS = {
-  GREEN: '#194a19',
+  GREEN: '#245d24',
   GREEN_LIGHT: '#cfdecf',
   WHITE: '#ffffff',
   BLACK_TRANSPARENT: '#5f5f5f26',
