@@ -17,12 +17,12 @@
     }
   },
   "env": {
-    "es6": true
+    "es6": true,
+    "node": true
   },
   "globals": {
     "fetch": true,
-    "document": true,
-    "process": true
+    "document": true
   },
   "settings": {
     "react": {
