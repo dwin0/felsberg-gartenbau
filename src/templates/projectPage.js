@@ -1,26 +1,23 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
 import Gallery from 'react-photo-gallery'
-import isEmpty from 'lodash/fp/isEmpty'
+import ImageGallery from 'react-image-gallery'
+import 'react-image-gallery/styles/css/image-gallery.css'
+import { FiPlay, FiPause, FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 
 import Layout from '../components/Layout'
 import CMS_HTML from '../components/common/CMS_Html'
-
-import ImageGallery from 'react-image-gallery'
-import 'react-image-gallery/styles/css/image-gallery.css'
-
 import {
   GalleryWrapper,
   CloseButton,
   Controls,
   ControlButton,
 } from '../components/projectPage/GalleryElements'
-import PhotoWithText from '../components/projectPage/PhotoWithTextSlide'
+import PhotoWithTextSlide from '../components/projectPage/PhotoWithTextSlide'
 import ImageComponent from '../components/projectPage/ImageComponent'
+import TagList from '../components/projectPage/TagList'
 import { isValidEvent } from '../components/projectPage/helper'
-
-import { FiPlay, FiPause, FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 
 class ProjectPage extends React.Component {
   constructor(props) {
@@ -55,7 +52,11 @@ class ProjectPage extends React.Component {
     this.setState({ isImageGalleryOpen: true, startImage: index })
 
   closeGallery = () =>
-    this.setState({ isImageGalleryOpen: false, startImage: null })
+    this.setState({
+      isImageGalleryOpen: false,
+      startImage: null,
+      isPlaying: false,
+    })
 
   showNextSlide = () => {
     const gallery = this.imageGalleryRef.current
@@ -84,7 +85,7 @@ class ProjectPage extends React.Component {
     const { isImageGalleryOpen, startImage, isPlaying } = this.state
     const {
       html,
-      frontmatter: { galleryImages },
+      frontmatter: { galleryImages, tags },
     } = this.props.data.markdownRemark
 
     return (
@@ -97,7 +98,7 @@ class ProjectPage extends React.Component {
                 <ImageGallery
                   ref={this.imageGalleryRef}
                   items={galleryImages}
-                  renderItem={PhotoWithText}
+                  renderItem={PhotoWithTextSlide}
                   startIndex={startImage}
                   showThumbnails={false}
                   showFullscreenButton={false}
@@ -119,6 +120,8 @@ class ProjectPage extends React.Component {
             </GalleryWrapper>
           )}
 
+          <TagList tags={tags} />
+
           <CMS_HTML dangerouslySetInnerHTML={{ __html: html }} />
 
           <Gallery
@@ -126,51 +129,11 @@ class ProjectPage extends React.Component {
             ImageComponent={ImageComponent}
             onClick={this.handleEvents}
           />
-
-          {/* {isEmpty(tags) ? (
-            <div>
-              <p>Keine Stichwörter</p>
-            </div>
-          ) : (
-            <div>
-              <p>Stichwörter</p>
-              <ul>
-                {tags.map(tag => (
-                  <li key={tag}>
-                    <Link to={`projekte/tags/${tag.toLowerCase()}`}>{tag}</Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )} */}
         </Layout.ContentWrapper>
       </Layout>
     )
   }
 }
-
-export const pageQuery = graphql`
-  query($id: String!) {
-    markdownRemark(id: { eq: $id }) {
-      frontmatter {
-        title
-        tags
-        galleryImages {
-          imageText
-          imageDescription
-          image {
-            childImageSharp {
-              fluid(maxWidth: 700) {
-                ...GatsbyImageSharpFluid_withWebp_tracedSVG
-              }
-            }
-          }
-        }
-      }
-      html
-    }
-  }
-`
 
 ProjectPage.propTypes = {
   data: PropTypes.shape({
@@ -194,5 +157,28 @@ ProjectPage.propTypes = {
     }).isRequired,
   }).isRequired,
 }
+
+export const pageQuery = graphql`
+  query($id: String!) {
+    markdownRemark(id: { eq: $id }) {
+      frontmatter {
+        title
+        tags
+        galleryImages {
+          imageText
+          imageDescription
+          image {
+            childImageSharp {
+              fluid(maxWidth: 1000) {
+                ...GatsbyImageSharpFluid_withWebp_tracedSVG
+              }
+            }
+          }
+        }
+      }
+      html
+    }
+  }
+`
 
 export default ProjectPage

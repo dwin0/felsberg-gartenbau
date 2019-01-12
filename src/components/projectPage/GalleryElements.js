@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { FiX } from 'react-icons/fi'
 
-import { COLORS } from '../../styles/styleguide'
+import { COLORS, media, BREAKPOINTS } from '../../styles/styleguide'
 
 export const GalleryWrapper = styled.div`
   position: fixed;
@@ -12,17 +12,16 @@ export const GalleryWrapper = styled.div`
   width: 100vw;
   height: 100vh;
   z-index: 10;
-  margin: auto;
   background: ${COLORS.BLACK_TRANSPARENT_SLIDESHOW};
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
 GalleryWrapper.Inner = styled.div`
-  position: absolute;
+  position: relative;
   width: 90%;
-  left: 5%;
-  top: 50%;
-  transform: translateY(-50%);
-  max-width: 1000px; /* TODO: */
+  max-width: 1000px; /* when this is changed, also change the graphQL query */
 `
 
 const StyledButton = styled.button`
@@ -34,8 +33,8 @@ const StyledButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: ${COLORS.GREEN_LIGHT};
-  border: none;
+  background: ${COLORS.WHITE};
+  border: 1px solid ${COLORS.GREY};
   width: 40px;
   height: 40px;
 `
@@ -57,13 +56,34 @@ export const Controls = styled.div`
 
 export const ControlButton = styled.button`
   flex: 1 1 33%;
+  height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 40px;
   background: ${COLORS.WHITE};
   border-left: ${props => (props.center ? `1px solid ${COLORS.GREY}` : 'none')};
   border-right: ${props =>
     props.center ? `1px solid ${COLORS.GREY}` : 'none'};
   outline: none;
+`
+
+export const SingleSlideWrapper = styled.div`
+  max-height: 70vh;
+  overflow: scroll;
+`
+
+export const ImageDescription = styled.p`
+  line-height: 1;
+  white-space: normal;
+  overflow: scroll;
+  min-height: 100px;
+  max-height: 100px;
+
+  ${media.lessThan(BREAKPOINTS.MEDIUM_MINUS_ONE)`
+    padding: 20px;
+  `}
+
+  ${media.greaterThan(BREAKPOINTS.MEDIUM)`
+    padding: 20px 80px;
+  `}
 `

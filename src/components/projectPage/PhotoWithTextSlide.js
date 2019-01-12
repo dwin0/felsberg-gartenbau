@@ -1,29 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Image from 'gatsby-image'
-import styled from 'styled-components'
 
-const Description = styled.p`
-  line-height: 1;
-  white-space: normal;
-  padding: 20px;
-  overflow: scroll;
-  min-height: 100px;
-  max-height: 100px;
-`
+import { SingleSlideWrapper, ImageDescription } from './GalleryElements'
 
-const PhotoWithText = ({ image, imageDescription, imageText }) => (
-  <div>
+const PhotoWithTextSlide = ({ image, imageDescription, imageText }) => (
+  <SingleSlideWrapper>
     <Image
       fluid={image.childImageSharp.fluid}
       title={imageDescription}
       alt={imageDescription}
     />
-    {imageText && <Description>{imageText}</Description>}
-  </div>
+    {imageText && <ImageDescription>{imageText}</ImageDescription>}
+  </SingleSlideWrapper>
 )
 
-PhotoWithText.propTypes = {
+PhotoWithTextSlide.propTypes = {
   image: PropTypes.shape({
     childImageSharp: PropTypes.shape({
       fluid: PropTypes.object.isRequired,
@@ -33,4 +25,4 @@ PhotoWithText.propTypes = {
   imageText: PropTypes.string,
 }
 
-export default PhotoWithText
+export default PhotoWithTextSlide
