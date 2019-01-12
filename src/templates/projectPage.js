@@ -3,82 +3,83 @@ import PropTypes from 'prop-types'
 import { graphql, Link } from 'gatsby'
 import Gallery from 'react-photo-gallery'
 import isEmpty from 'lodash/fp/isEmpty'
-import Image from 'gatsby-image'
 
 import Layout from '../components/Layout'
 import CMS_HTML from '../components/common/CMS_Html'
 
-// https://github.com/neptunian/react-photo-gallery
-// http://neptunian.github.io/react-photo-gallery/
-const ImageComponent = ({ index, onClick, photo, margin, top, left }) => (
-  <div style={{ margin, top, left, height: photo.height, width: photo.width }}>
-    <Image
-      fluid={photo}
-      alt={photo.alt}
-      title={photo.alt}
-      onClick={() => onClick({ index, photo })}
-    />
-  </div>
-)
+import ImageGallery from 'react-image-gallery'
+import 'react-image-gallery/styles/css/image-gallery.css'
 
-ImageComponent.propTypes = {
-  index: PropTypes.number.isRequired,
-  onClick: PropTypes.func.isRequired,
-  photo: PropTypes.shape({
-    aspectRatio: PropTypes.number.isRequired,
-    sizes: PropTypes.string.isRequired,
-    src: PropTypes.string.isRequired,
-    srcSet: PropTypes.string.isRequired,
-    srcWebp: PropTypes.string.isRequired,
-    srcSetWebp: PropTypes.string.isRequired,
-    tracedSVG: PropTypes.string.isRequired,
-    width: PropTypes.number.isRequired,
-    height: PropTypes.number.isRequired,
-    alt: PropTypes.string.isRequired,
-  }).isRequired,
-  margin: PropTypes.number,
-  top: PropTypes.number,
-  left: PropTypes.number,
-}
+import GalleryWrapper from '../components/projectPage/GalleryWrapper'
+import PhotoWithText from '../components/projectPage/PhotoWithTextSlide'
+import ImageComponent from '../components/projectPage/ImageComponent'
+import { isValidEvent } from '../components/projectPage/helper'
 
 class ProjectPage extends React.Component {
   constructor(props) {
     super(props)
 
-    const { galleryImages } = this.props.data.markdownRemark.frontmatter
+    this.photos = this.props.data.markdownRemark.frontmatter.galleryImages.map(
+      ({ image, imageDescription }, index) => ({
+        ...image.childImageSharp.fluid,
+        imageDescription,
+        width: image.childImageSharp.fluid.aspectRatio,
+        height: 1,
+        index,
+      }),
+    )
 
     this.state = {
-      photos: galleryImages.map(galleryImage => {
-        const image = galleryImage.image.childImageSharp.fluid
-
-        return {
-          aspectRatio: image.aspectRatio,
-          sizes: image.sizes,
-          src: image.src,
-          srcSet: image.srcSet,
-          srcWebp: image.srcWebp,
-          srcSetWebp: image.srcSetWebp,
-          tracedSVG: image.tracedSVG,
-          width: image.aspectRatio,
-          height: 1,
-          alt: galleryImage.imageDescription,
-        }
-      }),
+      currentImage: null,
     }
   }
 
+  handleEvents = (event, { index }) => {
+    if (!isValidEvent(event)) return
+
+    this.setState({
+      currentImage: index,
+    })
+  }
+
+  closeGallery = () => this.setState({ currentImage: null })
+
+  galleryClickHandler = e => e.stopPropagation()
+
   render() {
+    const { currentImage } = this.state
     const {
       html,
-      frontmatter: { tags },
+      frontmatter: { galleryImages },
     } = this.props.data.markdownRemark
-
-    const { photos } = this.state
 
     return (
       <Layout>
         <Layout.ContentWrapper>
-          {isEmpty(tags) ? (
+          {currentImage !== null && (
+            <GalleryWrapper onClick={this.closeGallery}>
+              <GalleryWrapper.Inner onClick={this.galleryClickHandler}>
+                <button onClick={this.closeGallery}>Close</button>
+                <ImageGallery
+                  items={galleryImages}
+                  renderItem={PhotoWithText}
+                  startIndex={currentImage}
+                  showThumbnails={false}
+                  showFullscreenButton={false}
+                />
+              </GalleryWrapper.Inner>
+            </GalleryWrapper>
+          )}
+
+          <CMS_HTML dangerouslySetInnerHTML={{ __html: html }} />
+
+          <Gallery
+            photos={this.photos}
+            ImageComponent={ImageComponent}
+            onClick={this.handleEvents}
+          />
+
+          {/* {isEmpty(tags) ? (
             <div>
               <p>Keine Stichwörter</p>
             </div>
@@ -93,15 +94,7 @@ class ProjectPage extends React.Component {
                 ))}
               </ul>
             </div>
-          )}
-
-          <CMS_HTML dangerouslySetInnerHTML={{ __html: html }} />
-
-          <Gallery
-            photos={photos}
-            ImageComponent={ImageComponent}
-            onClick={() => {}}
-          />
+          )} */}
         </Layout.ContentWrapper>
       </Layout>
     )

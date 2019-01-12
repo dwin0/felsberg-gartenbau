@@ -5,6 +5,7 @@ const COLORS = {
   GREEN: '#245d24',
   GREEN_LIGHT: '#cfdecf',
   WHITE: '#ffffff',
+  WHITE_TRANSPARENT: '#ffffff91',
   BLACK_TRANSPARENT: '#5f5f5f26',
   BLACK_TRANSPARENT_IMAGE: '#2525255e',
   BLACK: '#252525',
