@@ -5,7 +5,7 @@ import { FiX } from 'react-icons/fi'
 
 import { COLORS } from '../../styles/styleguide'
 
-const GalleryWrapper = styled.div`
+export const GalleryWrapper = styled.div`
   position: fixed;
   left: 0;
   top: 0;
@@ -13,7 +13,7 @@ const GalleryWrapper = styled.div`
   height: 100vh;
   z-index: 10;
   margin: auto;
-  background: ${COLORS.WHITE_TRANSPARENT};
+  background: ${COLORS.BLACK_TRANSPARENT_SLIDESHOW};
 `
 
 GalleryWrapper.Inner = styled.div`
@@ -37,7 +37,7 @@ const StyledButton = styled.button`
   background: ${COLORS.GREEN_LIGHT};
   border: none;
   width: 40px;
-  height: 30px;
+  height: 40px;
 `
 
 export const CloseButton = ({ onClick }) => (
@@ -50,4 +50,20 @@ CloseButton.propTypes = {
   onClick: PropTypes.func.isRequired,
 }
 
-export default GalleryWrapper
+export const Controls = styled.div`
+  display: flex;
+  border-top: 1px solid ${COLORS.GREY};
+`
+
+export const ControlButton = styled.button`
+  flex: 1 1 33%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  background: ${COLORS.WHITE};
+  border-left: ${props => (props.center ? `1px solid ${COLORS.GREY}` : 'none')};
+  border-right: ${props =>
+    props.center ? `1px solid ${COLORS.GREY}` : 'none'};
+  outline: none;
+`

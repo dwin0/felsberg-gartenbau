@@ -10,12 +10,17 @@ import CMS_HTML from '../components/common/CMS_Html'
 import ImageGallery from 'react-image-gallery'
 import 'react-image-gallery/styles/css/image-gallery.css'
 
-import GalleryWrapper, {
+import {
+  GalleryWrapper,
   CloseButton,
-} from '../components/projectPage/GalleryWrapper'
+  Controls,
+  ControlButton,
+} from '../components/projectPage/GalleryElements'
 import PhotoWithText from '../components/projectPage/PhotoWithTextSlide'
 import ImageComponent from '../components/projectPage/ImageComponent'
 import { isValidEvent } from '../components/projectPage/helper'
+
+import { FiPlay, FiPause, FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 
 class ProjectPage extends React.Component {
   constructor(props) {
@@ -31,25 +36,52 @@ class ProjectPage extends React.Component {
       }),
     )
 
+    this.imageGalleryRef = React.createRef()
+
     this.state = {
-      currentImage: null,
+      startImage: null,
+      isImageGalleryOpen: false,
+      isPlaying: false,
     }
   }
 
   handleEvents = (event, { index }) => {
-    if (!isValidEvent(event)) return
-
-    this.setState({
-      currentImage: index,
-    })
+    if (isValidEvent(event)) {
+      this.openGallery(index)
+    }
   }
 
-  closeGallery = () => this.setState({ currentImage: null })
+  openGallery = index =>
+    this.setState({ isImageGalleryOpen: true, startImage: index })
+
+  closeGallery = () =>
+    this.setState({ isImageGalleryOpen: false, startImage: null })
+
+  showNextSlide = () => {
+    const gallery = this.imageGalleryRef.current
+    gallery.slideToIndex(gallery.getCurrentIndex() + 1)
+  }
+
+  showPrevSlide = () => {
+    const gallery = this.imageGalleryRef.current
+    gallery.slideToIndex(gallery.getCurrentIndex() - 1)
+  }
+
+  togglePlay = () => {
+    const gallery = this.imageGalleryRef.current
+
+    this.setState(prevState => {
+      prevState.isPlaying ? gallery.pause() : gallery.play()
+      return {
+        isPlaying: !prevState.isPlaying,
+      }
+    })
+  }
 
   galleryClickHandler = e => e.stopPropagation()
 
   render() {
-    const { currentImage } = this.state
+    const { isImageGalleryOpen, startImage, isPlaying } = this.state
     const {
       html,
       frontmatter: { galleryImages },
@@ -58,17 +90,31 @@ class ProjectPage extends React.Component {
     return (
       <Layout>
         <Layout.ContentWrapper>
-          {currentImage !== null && (
+          {isImageGalleryOpen && (
             <GalleryWrapper onClick={this.closeGallery}>
               <GalleryWrapper.Inner onClick={this.galleryClickHandler}>
                 <CloseButton onClick={this.closeGallery} />
                 <ImageGallery
+                  ref={this.imageGalleryRef}
                   items={galleryImages}
                   renderItem={PhotoWithText}
-                  startIndex={currentImage}
+                  startIndex={startImage}
                   showThumbnails={false}
                   showFullscreenButton={false}
+                  showPlayButton={false}
+                  showNav={false}
                 />
+                <Controls>
+                  <ControlButton onClick={this.showPrevSlide}>
+                    <FiChevronLeft />
+                  </ControlButton>
+                  <ControlButton center onClick={this.togglePlay}>
+                    {isPlaying ? <FiPause /> : <FiPlay />}
+                  </ControlButton>
+                  <ControlButton onClick={this.showNextSlide}>
+                    <FiChevronRight />
+                  </ControlButton>
+                </Controls>
               </GalleryWrapper.Inner>
             </GalleryWrapper>
           )}

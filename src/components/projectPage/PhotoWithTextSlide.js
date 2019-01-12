@@ -6,7 +6,10 @@ import styled from 'styled-components'
 const Description = styled.p`
   line-height: 1;
   white-space: normal;
-  padding: 20px 10px;
+  padding: 20px;
+  overflow: scroll;
+  min-height: 100px;
+  max-height: 100px;
 `
 
 const PhotoWithText = ({ image, imageDescription, imageText }) => (
@@ -16,7 +19,7 @@ const PhotoWithText = ({ image, imageDescription, imageText }) => (
       title={imageDescription}
       alt={imageDescription}
     />
-    <Description>{imageText}</Description>
+    {imageText && <Description>{imageText}</Description>}
   </div>
 )
 
