@@ -34,7 +34,7 @@ const StyledButton = styled.button`
   justify-content: center;
   align-items: center;
   background: ${COLORS.WHITE};
-  border: 1px solid ${COLORS.GREY};
+  border: none;
   width: 40px;
   height: 40px;
 `
@@ -78,6 +78,7 @@ export const ImageDescription = styled.p`
   overflow: scroll;
   min-height: 100px;
   max-height: 100px;
+  background: ${COLORS.WHITE};
 
   ${media.lessThan(BREAKPOINTS.MEDIUM_MINUS_ONE)`
     padding: 20px;

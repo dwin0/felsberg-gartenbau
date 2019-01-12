@@ -20,7 +20,9 @@
     "es6": true
   },
   "globals": {
-    "fetch": false
+    "fetch": true,
+    "document": true,
+    "process": true
   },
   "settings": {
     "react": {

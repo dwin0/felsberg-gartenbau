@@ -17,7 +17,10 @@ import {
 import PhotoWithTextSlide from '../components/projectPage/PhotoWithTextSlide'
 import ImageComponent from '../components/projectPage/ImageComponent'
 import TagList from '../components/projectPage/TagList'
-import { isValidEvent } from '../components/projectPage/helper'
+import {
+  isGalleryOpenEvent,
+  isGalleryCloseEvent,
+} from '../components/projectPage/helper'
 
 class ProjectPage extends React.Component {
   constructor(props) {
@@ -42,21 +45,32 @@ class ProjectPage extends React.Component {
     }
   }
 
-  handleEvents = (event, { index }) => {
-    if (isValidEvent(event)) {
+  handleOpenEvents = (event, { index }) => {
+    if (isGalleryOpenEvent(event)) {
       this.openGallery(index)
+
+      document.addEventListener('keydown', this.handleCloseEvents)
+    }
+  }
+
+  handleCloseEvents = event => {
+    if (isGalleryCloseEvent(event)) {
+      this.closeGallery()
     }
   }
 
   openGallery = index =>
     this.setState({ isImageGalleryOpen: true, startImage: index })
 
-  closeGallery = () =>
+  closeGallery = () => {
     this.setState({
       isImageGalleryOpen: false,
       startImage: null,
       isPlaying: false,
     })
+
+    document.removeEventListener('keydown', this.handleCloseEvents)
+  }
 
   showNextSlide = () => {
     const gallery = this.imageGalleryRef.current
@@ -80,6 +94,10 @@ class ProjectPage extends React.Component {
   }
 
   galleryClickHandler = e => e.stopPropagation()
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.handleCloseEvents)
+  }
 
   render() {
     const { isImageGalleryOpen, startImage, isPlaying } = this.state
@@ -127,7 +145,7 @@ class ProjectPage extends React.Component {
           <Gallery
             photos={this.photos}
             ImageComponent={ImageComponent}
-            onClick={this.handleEvents}
+            onClick={this.handleOpenEvents}
           />
         </Layout.ContentWrapper>
       </Layout>
