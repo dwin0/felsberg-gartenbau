@@ -10,6 +10,8 @@ class Search extends React.Component {
 
   onInputChange = e => this.setState({ searchTerm: e.target.value })
 
+  onSubmit = e => e.preventDefault()
+
   render() {
     const { collection, filterBy, placeholder, children } = this.props
 
@@ -22,14 +24,19 @@ class Search extends React.Component {
     return children({
       filteredCollection,
       SearchField: (
-        <InputWrapper>
-          <StyledInput
-            onChange={this.onInputChange}
-            value={this.state.searchTerm}
-            placeholder={placeholder}
-          />
-          <SearchIcon />
-        </InputWrapper>
+        <form onSubmit={this.onSubmit}>
+          <noscript>
+            Die Suche funktioniert nur, wenn JavaScript aktiviert ist.
+          </noscript>
+          <InputWrapper>
+            <StyledInput
+              onChange={this.onInputChange}
+              value={this.state.searchTerm}
+              placeholder={placeholder}
+            />
+            <SearchIcon />
+          </InputWrapper>
+        </form>
       ),
     })
   }
