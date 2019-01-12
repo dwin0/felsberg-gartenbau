@@ -67,6 +67,7 @@ export const CardContent = styled.div`
   ${media.greaterThan(BREAKPOINTS.MEDIUM)`
     position: absolute;
     bottom: 50px;
+    left: 0;
     background: white;
   `}
 `

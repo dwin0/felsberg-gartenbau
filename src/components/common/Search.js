@@ -4,13 +4,22 @@ import PropTypes from 'prop-types'
 import { StyledInput, InputWrapper, SearchIcon } from './SearchElements'
 
 class Search extends React.Component {
-  state = {
-    searchTerm: '',
+  constructor(props) {
+    super(props)
+
+    this.inputFieldRef = React.createRef()
+
+    this.state = {
+      searchTerm: '',
+    }
   }
 
   onInputChange = e => this.setState({ searchTerm: e.target.value })
 
-  onSubmit = e => e.preventDefault()
+  onSubmit = e => {
+    e.preventDefault()
+    this.inputFieldRef.current.blur()
+  }
 
   render() {
     const { collection, filterBy, placeholder, children } = this.props
@@ -33,6 +42,7 @@ class Search extends React.Component {
               onChange={this.onInputChange}
               value={this.state.searchTerm}
               placeholder={placeholder}
+              ref={this.inputFieldRef}
             />
             <SearchIcon />
           </InputWrapper>
