@@ -4,7 +4,9 @@ import Image from 'gatsby-image'
 import styled from 'styled-components'
 
 const Description = styled.p`
-  display: none; /* TODO: */
+  line-height: 1;
+  white-space: normal;
+  padding: 20px 10px;
 `
 
 const PhotoWithText = ({ image, imageDescription, imageText }) => (

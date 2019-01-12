@@ -10,7 +10,9 @@ import CMS_HTML from '../components/common/CMS_Html'
 import ImageGallery from 'react-image-gallery'
 import 'react-image-gallery/styles/css/image-gallery.css'
 
-import GalleryWrapper from '../components/projectPage/GalleryWrapper'
+import GalleryWrapper, {
+  CloseButton,
+} from '../components/projectPage/GalleryWrapper'
 import PhotoWithText from '../components/projectPage/PhotoWithTextSlide'
 import ImageComponent from '../components/projectPage/ImageComponent'
 import { isValidEvent } from '../components/projectPage/helper'
@@ -59,7 +61,7 @@ class ProjectPage extends React.Component {
           {currentImage !== null && (
             <GalleryWrapper onClick={this.closeGallery}>
               <GalleryWrapper.Inner onClick={this.galleryClickHandler}>
-                <button onClick={this.closeGallery}>Close</button>
+                <CloseButton onClick={this.closeGallery} />
                 <ImageGallery
                   items={galleryImages}
                   renderItem={PhotoWithText}
