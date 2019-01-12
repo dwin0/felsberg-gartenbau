@@ -4,6 +4,9 @@ backend:
 media_folder: static/assets
 public_folder: assets
 
+editor:
+  preview: false
+
 collections:
   - name: pages
     label: Hauptseiten
