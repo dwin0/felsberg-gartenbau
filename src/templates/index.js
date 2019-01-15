@@ -56,7 +56,6 @@ IndexPage.propTypes = {
   data: PropTypes.shape({
     markdownRemark: PropTypes.shape({
       frontmatter: PropTypes.shape({
-        title: PropTypes.string.isRequired,
         image: PropTypes.object.isRequired,
       }).isRequired,
       html: PropTypes.string.isRequired,

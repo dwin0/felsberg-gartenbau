@@ -1,6 +1,5 @@
 ---
 templateKey: index
-title: Herzlich Willkommen
 image: /assets/garten-home.jpg
 ---
 
