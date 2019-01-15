@@ -115,6 +115,7 @@ export const TagsContainer = styled.div`
   ${media.greaterThan(BREAKPOINTS.MEDIUM)`
     position: absolute;
     bottom: 0;
+    left: 0;
     align-items: center;
     padding: 0 20px 20px 20px;
     box-sizing: border-box;
