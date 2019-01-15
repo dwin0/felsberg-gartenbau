@@ -42,7 +42,7 @@ const AllProjects = () => (
               <Fragment>
                 {SearchField}
 
-                <TagsLink to="/projekte/tags">
+                <TagsLink to="/projekte/tags/">
                   <FiFilter />
                   &nbsp; Filtern nach Stichwort
                 </TagsLink>

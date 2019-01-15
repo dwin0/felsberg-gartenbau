@@ -38,7 +38,7 @@ const TagList = ({ tags }) =>
       <List>
         {tags.map(tag => (
           <ListItem key={tag}>
-            <GatsbyLink to={`projekte/tags/${tag.toLowerCase()}`}>
+            <GatsbyLink to={`/projekte/tags/${tag.toLowerCase()}/`}>
               <FiTag />
               &nbsp;{tag}
             </GatsbyLink>

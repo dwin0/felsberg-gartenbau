@@ -14,8 +14,7 @@ export const buttonStyle = css`
   border: ${COLORS.GREEN} 2px solid;
   background: ${COLORS.WHITE};
 
-  :hover,
-  :not(&:disabled) {
+  :hover:not(:disabled) {
     background: ${COLORS.GREEN};
     color: ${COLORS.WHITE};
     transition-property: background, color;

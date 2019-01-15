@@ -58,7 +58,7 @@ class SingleProject extends React.Component {
         {!isEmpty(tags) && (
           <TagsContainer>
             {tags.map(tag => (
-              <Tag key={tag} to={`projekte/tags/${tag.toLowerCase()}`}>
+              <Tag key={tag} to={`/projekte/tags/${tag.toLowerCase()}/`}>
                 <FiTag />
                 &nbsp;{tag}
               </Tag>

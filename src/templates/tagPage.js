@@ -30,7 +30,7 @@ const Tags = ({
           <Fragment>
             {SearchField}
 
-            <TagsLink to="/projekte/tags">
+            <TagsLink to="/projekte/tags/">
               <FiTag />
               &nbsp; Alle Stichwörter
             </TagsLink>

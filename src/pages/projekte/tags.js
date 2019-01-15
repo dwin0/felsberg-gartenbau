@@ -42,7 +42,7 @@ const TagsPage = () => (
                   {filteredCollection.map(({ fieldValue, totalCount }) => (
                     <li key={fieldValue}>
                       <TagsLink
-                        to={`projekte/tags/${fieldValue.toLowerCase()}/`}
+                        to={`/projekte/tags/${fieldValue.toLowerCase()}/`}
                       >
                         <FiTag />
                         &nbsp;
@@ -52,7 +52,7 @@ const TagsPage = () => (
                   ))}
                   <br />
                   <li>
-                    <TagsLink to="projekte">
+                    <TagsLink to="/projekte/">
                       Alle Projekte ({sumOfProjects})
                     </TagsLink>
                   </li>
