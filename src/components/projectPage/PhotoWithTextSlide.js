@@ -10,6 +10,7 @@ const PhotoWithTextSlide = ({ image, imageDescription, imageText }) => (
       fluid={image.childImageSharp.fluid}
       title={imageDescription}
       alt={imageDescription}
+      style={{ width: '100%' }}
     />
     {imageText && <ImageDescription>{imageText}</ImageDescription>}
   </SingleSlideWrapper>
