@@ -1,10 +1,27 @@
 import React from 'react'
 import Layout from '../components/Layout'
+import styled from 'styled-components'
+
+const CenterTextWrapper = styled.div`
+  text-align: center;
+
+  > * {
+    margin-bottom: 20px;
+  }
+`
 
 const NotFoundPage = () => (
   <Layout>
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+    <Layout.ContentWrapper>
+      <CenterTextWrapper>
+        <h1>404</h1>
+        <h1>Diese Seite ist leider nicht verfügbar.</h1>
+        <p>
+          Haben Sie Anregungen für weitere Seiteninhalte? Wir freuen uns Ihre
+          Meinung zu hören.
+        </p>
+      </CenterTextWrapper>
+    </Layout.ContentWrapper>
   </Layout>
 )
 
