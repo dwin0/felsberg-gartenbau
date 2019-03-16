@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: 'Gartenbau Felsberg GmbH',
-    siteUrl: 'https://felsberg-gartenbau.netlify.com/', // TODO: change to real URL
+    siteUrl: 'https://www.felsberg-gartenbau.ch/',
     description: 'Homepage der Gartenbau Felsberg GmbH in Neuwilen',
     keywords:
       'Gartenbau Felsberg GmbH, Neuanlagen, Gartenumgestaltung, Grabpflege, Neuwilen',
@@ -40,8 +40,5 @@ module.exports = {
       },
     },
     'gatsby-plugin-netlify-cms',
-    // TODO: this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.app/offline
-    // 'gatsby-plugin-offline',
   ],
 }
