@@ -16,11 +16,16 @@ shortDescription: >-
   Braucht Ihr Garten eine Auffrischung oder Veränderung? Bei Planung und
   Umsetzung von Ihrem neuen Garten sind wir gerne für Sie da.
 ---
-
 # Gartenbau
 
-Die Gartenbau Felsberg GmbH verhilft Ihnen zu einem schönen Garten. Als Allrounder übernehmen wir sowohl die Neugestaltung Ihres Gartens sowie Gartengestaltung und Gartenumänderungen.
+Unser Team verhilft Ihnen zu einem schönen Garten. Als gelernte Gartenbauer mit jahrelanger Erfahrung übernehmen wir sowohl die Neugestaltung Ihres Gartens und Gartenumänderungen.
 
-Wir führen Steinarbeiten wie Böschungssicherungen und Steinplätze aus. Die Rasensaat wie auch die Neupflanzung gehören zur Auftragsausführung und werden durch uns fachmännisch umgesetzt.
+Dazu gehören unter anderem folgende Arbeiten:
 
-Biotope können Ihrer Gartenlandschaft eine individuelle Note geben und machen den Garten zu einer Wohlfühloase.
+* Natursteinarbeiten
+* Sitzplätze
+* Mauern
+* Sichtschutz
+* Teiche
+* Rasen
+* Bepflanzungen
