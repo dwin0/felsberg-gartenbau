@@ -13,9 +13,8 @@ projects:
   - Testprojekt 2
   - Testprojekt 3
 shortDescription: >-
-  Die Gartenbau Felsberg GmbH verhilft Ihnen zu einem schönen Garten. Als
-  Allrounder übernehmen wir sowohl die Neugestaltung Ihres Gartens sowie
-  Gartengestaltung und Gartenumänderungen.
+  Braucht Ihr Garten eine Auffrischung oder Veränderung? Bei Planung und
+  Umsetzung von Ihrem neuen Garten sind wir gerne für Sie da.
 ---
 
 # Gartenbau
