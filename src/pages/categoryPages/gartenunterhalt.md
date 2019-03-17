@@ -13,7 +13,15 @@ shortDescription: >-
   Unsere Leistungen umfassen unter anderem Rasen mähen, Rabatten pflegen oder
   Bäume schneiden. Damit können Sie Ihren Garten sorgenfrei geniessen.
 ---
-
 # Gartenunterhalt
 
-Für Liegenschaften übernehmen wir den Umgebungs- und Gartenunterhalt im Dauerauftrag. Zu unseren Leistungen gehören die Rabatten- sowie die Rasenpflege. In den Sommermonaten mähen wir Ihren Rasen, bepflanzen Blumenrabatten, jäten Ihren Garten oder bepflanzen Balkonkästen.
+Wir pflegen und unterhalten Ihren Garten fachmännisch, damit Sie das ganze Jahr Freude an ihm haben. Damit Sie Ihren Garten geniessen können, bieten wir Rundumbetreuung oder eine regelmässige Pflege an. Gerne gehen wir auf Ihre Wünsche ein.
+
+Folgende Arbeiten erledigen wir für Sie:
+
+* Rasenpflege
+* Rabattenpflege
+* Bäume und Sträucher schneiden
+* Heckenschnitt
+* Bepflanzungen
+* Schädlingsbekämpfung und Pflanzenschutz
