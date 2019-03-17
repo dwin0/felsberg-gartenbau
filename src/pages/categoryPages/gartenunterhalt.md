@@ -9,9 +9,9 @@ linkInNavigation:
   visible: true
 image: /assets/garten.jpg
 shortDescription: >-
-  Für Liegenschaften übernehmen wir den Umgebungs- und Gartenunterhalt im
-  Dauerauftrag. Zu unseren Leistungen gehören die Rabatten- sowie die
-  Rasenpflege.
+  Wollen Sie Ihren Garten professionell gepflegt haben? Wir sind die Lösung.
+  Unsere Leistungen umfassen unter anderem Rasen mähen, Rabatten pflegen oder
+  Bäume schneiden. Damit können Sie Ihren Garten sorgenfrei geniessen.
 ---
 
 # Gartenunterhalt
