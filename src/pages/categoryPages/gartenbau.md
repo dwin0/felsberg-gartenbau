@@ -15,6 +15,8 @@ shortDescription: >-
 galleryImages:
   - image: /assets/biotop.jpg
     imageDescription: Biotop
+  - image: /assets/staudenrabatte.jpg
+    imageDescription: Staudenrabatte
 ---
 
 # Gartenbau
