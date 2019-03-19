@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { COLORS, FONTS } from '../../styles/styleguide'
+import { COLORS, FONTS, media, BREAKPOINTS } from '../../styles/styleguide'
 
 export const ImageTitleWrapper = styled.div`
   position: relative;
@@ -20,6 +20,9 @@ export const Title = styled.h1`
   white-space: nowrap;
   width: 100%;
   max-width: 800px;
+  ${media.lessThan(BREAKPOINTS.MEDIUM_MINUS_ONE)`
+    display: none;
+  `}
 
   ::before {
     content: '';
