@@ -12,6 +12,9 @@ projects: []
 shortDescription: >-
   Braucht Ihr Garten eine Auffrischung oder Veränderung? Bei Planung und
   Umsetzung von Ihrem neuen Garten sind wir gerne für Sie da.
+galleryImages:
+  - image: /assets/biotop.jpg
+    imageDescription: Biotop
 ---
 
 # Gartenbau
