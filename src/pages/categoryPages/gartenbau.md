@@ -13,10 +13,22 @@ shortDescription: >-
   Braucht Ihr Garten eine Auffrischung oder Veränderung? Bei Planung und
   Umsetzung von Ihrem neuen Garten sind wir gerne für Sie da.
 galleryImages:
+  - image: /assets/brunnen.jpg
+    imageDescription: Brunnen
+  - image: /assets/neuanlage.jpg
+    imageDescription: Neuanlage
+  - image: /assets/sichtschutzwand.jpg
+    imageDescription: Sichtschutzwand
+  - image: /assets/sitzplatz_mit_porphyrplattenweg.jpg
+    imageDescription: Sitzplatz
+  - image: /assets/grillstelle.jpg
+    imageDescription: Grillstelle
+  - image: /assets/sitzplatz.jpg
+    imageDescription: Sitzplatz
   - image: /assets/biotop.jpg
     imageDescription: Biotop
-  - image: /assets/staudenrabatte.jpg
-    imageDescription: Staudenrabatte
+  - image: /assets/biotop2.jpg
+    imageDescription: Biotop
 ---
 
 # Gartenbau
