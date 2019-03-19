@@ -6,9 +6,8 @@ linkInNavigation:
   order: 200
   visible: true
 ---
+
 # Über uns
-
-
 
 ## Firmengeschichte
 
@@ -23,8 +22,6 @@ Die Grabpflege ist ein wichtiges Standbein. In Alterswilen, Kreuzlingen und Täg
 Für unverbindliche Beratungen und Offerten stehen wir Ihnen gerne zur Verfügung.
 
 [Wir freuen uns auf Ihre Kontaktaufnahme.](/kontakt)
-
-
 
 ## Mitgliedschaft
 
