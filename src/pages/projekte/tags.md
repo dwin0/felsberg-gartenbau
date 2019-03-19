@@ -1,4 +1,6 @@
-import React, { Fragment } from 'react'
+# TODO: projekte - uncomment and rename to tags.js
+
+<!-- import React, { Fragment } from 'react'
 import { graphql, StaticQuery } from 'gatsby'
 import { FiTag } from 'react-icons/fi'
 
@@ -9,19 +11,7 @@ import { TagsList } from '../../components/Tags'
 
 const TagsPage = () => (
   <StaticQuery
-    query={graphql`
-      query {
-        allMarkdownRemark(
-          filter: { frontmatter: { templateKey: { eq: "projectPage" } } }
-        ) {
-          group(field: frontmatter___tags) {
-            fieldValue
-            totalCount
-          }
-          totalCount
-        }
-      }
-    `}
+    query={graphql`// query { // allMarkdownRemark( // filter: { frontmatter: { templateKey: { eq: "projectPage" } } } // ) { // group(field: frontmatter___tags) { // fieldValue // totalCount // } // totalCount // } // } //`}
     render={({
       allMarkdownRemark: { group: groups, totalCount: sumOfProjects },
     }) => (
@@ -66,4 +56,4 @@ const TagsPage = () => (
   />
 )
 
-export default TagsPage
+export default TagsPage -->

@@ -30,6 +30,7 @@ export const NavigationWrapper = styled.nav`
 export const NavigationEntry = styled(Link)`
   color: ${COLORS.BLACK};
   text-decoration: none;
+  text-align: center;
 
   &.${activeClassName} {
     background: ${COLORS.GREEN};
@@ -38,7 +39,6 @@ export const NavigationEntry = styled(Link)`
 
   ${media.lessThan(BREAKPOINTS.MEDIUM_MINUS_ONE)`
     width: 100%;
-    text-align: center;
     padding: 20px 0;
 
     :first-of-type {

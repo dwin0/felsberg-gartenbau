@@ -26,6 +26,7 @@ const CategoryPage = ({
   </Layout>
 )
 
+// TODO: projekte - add project to query and uncomment rest of the file
 export const pageQuery = graphql`
   query($id: String!) {
     markdownRemark(id: { eq: $id }) {

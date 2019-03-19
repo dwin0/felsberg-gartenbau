@@ -61,41 +61,51 @@ exports.createPages = ({ actions, graphql }) => {
 
     const pages = result.data.allMarkdownRemark.edges
 
-    pages.forEach(({ node }) => {
-      createPage({
-        path: node.fields.slug,
-        component: path.resolve(
-          `src/templates/${String(node.frontmatter.templateKey)}.js`,
-        ),
-        // additional data can be passed via context: this.props.pageContext
-        context: {
-          id: node.id,
-          slug: node.fields.slug,
-          templateKey: node.frontmatter.templateKey,
-        },
-      })
-    })
-
-    const tags = pages
+    // TODO: projekte - remove filter
+    pages
       .filter(
-        ({ node: { frontmatter } }) =>
-          frontmatter.templateKey === 'projectPage' &&
-          frontmatter.tags &&
-          frontmatter.tags.length,
+        ({
+          node: {
+            fields: { slug },
+          },
+        }) => !slug.includes('projekt'),
       )
-      .reduce((acc, { node }) => {
-        const newTags = node.frontmatter.tags.filter(tag => !acc.includes(tag))
-        return [...acc, ...newTags]
-      }, [])
-
-    tags.forEach(tag => {
-      createPage({
-        path: `/projekte/tags/${tag.toLowerCase()}/`,
-        component: path.resolve('src/templates/tagPage.js'),
-        context: {
-          tag,
-        },
+      .forEach(({ node }) => {
+        createPage({
+          path: node.fields.slug,
+          component: path.resolve(
+            `src/templates/${String(node.frontmatter.templateKey)}.js`,
+          ),
+          // additional data can be passed via context: this.props.pageContext
+          context: {
+            id: node.id,
+            slug: node.fields.slug,
+            templateKey: node.frontmatter.templateKey,
+          },
+        })
       })
-    })
+
+    // TODO: projekte - uncomment
+    // const tags = pages
+    //   .filter(
+    //     ({ node: { frontmatter } }) =>
+    //       frontmatter.templateKey === 'projectPage' &&
+    //       frontmatter.tags &&
+    //       frontmatter.tags.length,
+    //   )
+    //   .reduce((acc, { node }) => {
+    //     const newTags = node.frontmatter.tags.filter(tag => !acc.includes(tag))
+    //     return [...acc, ...newTags]
+    //   }, [])
+
+    // tags.forEach(tag => {
+    //   createPage({
+    //     path: `/projekte/tags/${tag.toLowerCase()}/`,
+    //     component: path.resolve('src/templates/tagPage.js'),
+    //     context: {
+    //       tag,
+    //     },
+    //   })
+    // })
   })
 }
