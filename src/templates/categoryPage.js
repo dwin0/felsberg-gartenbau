@@ -36,7 +36,12 @@ const CategoryPage = ({
 
       {!isEmpty(images) && (
         <GalleryWrapper>
-          <ImageGallery items={images} showThumbnails={false} showBullets />
+          <ImageGallery
+            items={images}
+            showThumbnails={false}
+            showBullets
+            lazyLoad
+          />
         </GalleryWrapper>
       )}
     </Layout>
