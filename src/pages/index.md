@@ -1,6 +1,6 @@
 ---
 templateKey: index
-image: /assets/garten-home.jpg
+image: /assets/grillstelle.jpg
 ---
 
 # Willkommen
