@@ -168,6 +168,17 @@ collections:
           widget: text,
         }
       - { label: Seiteninhalt, name: body, widget: markdown }
+      - label: Galleriebilder
+        name: galleryImages
+        widget: list
+        fields:
+          - { label: Bild, name: image, widget: image }
+          - {
+              label: Bildbeschreibung,
+              name: imageDescription,
+              hint: 'Was ist auf dem Bild zu sehen? Text für Screenreader',
+              widget: string,
+            }
 
   - name: projectPages
     label: Projektseiten
