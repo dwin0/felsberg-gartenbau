@@ -16,4 +16,9 @@ export const GalleryWrapper = styled.div`
       color: ${COLORS.YELLOW};
     }
   }
+
+  .image-gallery-slide-wrapper {
+    max-width: 100vw;
+    max-height: 100vh;
+  }
 `
