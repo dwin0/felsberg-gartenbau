@@ -7,11 +7,8 @@ categoryOnHomepage:
 linkInNavigation:
   order: 1
   visible: true
-image: /assets/teich.jpg
-projects:
-  - Testprojekt
-  - Testprojekt 2
-  - Testprojekt 3
+image: /assets/biotop.jpg
+projects: []
 shortDescription: >-
   Braucht Ihr Garten eine Auffrischung oder Veränderung? Bei Planung und
   Umsetzung von Ihrem neuen Garten sind wir gerne für Sie da.
