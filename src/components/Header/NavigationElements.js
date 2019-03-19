@@ -52,7 +52,7 @@ export const NavigationEntry = styled(Link)`
   ${media.greaterThan(BREAKPOINTS.MEDIUM)`
     display: flex;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 .9vw;
     border-left: 1px solid ${COLORS.BLACK_TRANSPARENT};
     position: relative;
 
@@ -76,5 +76,9 @@ export const NavigationEntry = styled(Link)`
     &.${activeClassName}::after {
       opacity: 1;
     }
+  `}
+
+  ${media.greaterThan(BREAKPOINTS.LARGE)`
+    padding: 0 20px;
   `}
 `
