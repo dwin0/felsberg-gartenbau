@@ -7,7 +7,7 @@ categoryOnHomepage:
 linkInNavigation:
   order: 3
   visible: true
-image: /assets/grab.jpg
+image: /assets/graeber.jpg
 projects: []
 shortDescription: >-
   Wir führen Grabpflegearbeiten durch, indem wir die Gräber in regelmässigen
