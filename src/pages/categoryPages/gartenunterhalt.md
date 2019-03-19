@@ -12,7 +12,13 @@ shortDescription: >-
   Wollen Sie Ihren Garten professionell gepflegt haben? Wir sind die Lösung.
   Unsere Leistungen umfassen unter anderem Rasen mähen, Rabatten pflegen oder
   Bäume schneiden. Damit können Sie Ihren Garten sorgenfrei geniessen.
-galleryImages: []
+galleryImages:
+  - image: /assets/garten_hang.jpg
+    imageDescription: Garten
+  - image: /assets/blumen_mit_schmetterling.jpg
+    imageDescription: Blume mit Schmetterling
+  - image: /assets/staudenrabatte.jpg
+    imageDescription: Staudenrabatte
 ---
 
 # Gartenunterhalt
