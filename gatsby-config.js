@@ -36,7 +36,7 @@ module.exports = {
         background_color: '#165f26',
         theme_color: '#165f26',
         display: 'standalone',
-        icon: 'src/images/gatsby-icon.png', // This path is relative to the root of the site. TODO: Change icon
+        icon: 'src/images/felsberg-icon-round.png',
       },
     },
     'gatsby-plugin-netlify-cms',
