@@ -41,7 +41,7 @@ const Inner3 = styled(Inner)`
 const HamburgerButton = ({ clickHandler, isOpen }) => (
   <Button
     onClick={clickHandler}
-    ariaLabel={isOpen ? 'Schliesse Menu' : 'Öffne Menu'}
+    aria-label={isOpen ? 'Schliesse Menu' : 'Öffne Menu'}
   >
     <Inner1 isOpen={isOpen} />
     <Inner2 isOpen={isOpen} />
