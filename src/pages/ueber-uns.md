@@ -13,7 +13,7 @@ linkInNavigation:
 
 Unser Betrieb wurde 1982 von Manfred Felsberg gegründet.
 
-Nach seiner Pensionierung übernahm ich den Betrieb 2008 und änderte den Namen in Gartenbau Felsberg GmbH. Mit einem geschulten Team und einem professionellen Maschinenpark führen wir sämtliche Arbeiten im Bereich Gartenbau und Gartenpflege aus.
+Nach seiner Pensionierung übernahm ich, Marco Felsberg, den Betrieb 2008 und änderte den Namen in Gartenbau Felsberg GmbH. Mit einem geschulten Team und einem professionellen Maschinenpark führen wir sämtliche Arbeiten im Bereich Gartenbau und Gartenpflege aus.
 
 Wir empfehlen uns für alle Arbeiten, die rund um den Garten anfallen. Dazu gehören Neuanlagen, Umänderungen, Pflege und Unterhalt. Hauptsächlich führen wir Aufträge von Privatpersonen aus, auch umliegende Gemeinden sowie vereinzelte Gewerbefirmen gehören zu unserer Kundschaft.
 
@@ -27,4 +27,4 @@ Für unverbindliche Beratungen und Offerten stehen wir Ihnen gerne zur Verfügun
 
 Wir sind Mitglied im <a href="https://www.jardinsuisse.ch/" target="_blank" rel="noopener noreferrer">Unternehmerverband Gärtner Schweiz</a>:
 
-<a href="https://www.jardinsuisse.ch/" target="_blank" rel="noopener noreferrer"><img src="/assets/jardin-suisse.jpg" alt="Jardin Suisse Logo" title="Jardin Suisse" /></a>
+<a href="https://www.jardinsuisse.ch/" target="_blank" rel="noopener noreferrer"><img src="/assets/Mitglied_dt_RGB_compressed.svg" style="width: 400px; margin-top: -30px;" alt="Jardin Suisse Logo" title="Jardin Suisse" /></a>
