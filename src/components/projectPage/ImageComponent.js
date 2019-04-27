@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Image from 'gatsby-image'
+import Image from 'gatsby-image/withIEPolyfill'
 
 const ImageComponent = props => {
   // according to the library examples, the event must be fired like this
