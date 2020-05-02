@@ -1,5 +1,5 @@
 import React from 'react'
-import ReactHelmet from 'react-helmet'
+import { Helmet as ReactHelmet } from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 
 const Helmet = () => (

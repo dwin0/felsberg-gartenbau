@@ -4,7 +4,7 @@ module.exports = {
     siteUrl: 'https://www.felsberg-gartenbau.ch/',
     description: 'Homepage der Gartenbau Felsberg GmbH in Neuwilen',
     keywords:
-      'Gartenbau Felsberg GmbH, Neuanlagen, Gartenumgestaltung, Grabpflege, Neuwilen',
+      'Gartenbau Felsberg GmbH, Neuanlagen, Gartenumgestaltung, Grabpflege, Kreuzlingen, Neuwilen',
   },
   plugins: [
     'gatsby-plugin-react-helmet', // lets you control your document head
