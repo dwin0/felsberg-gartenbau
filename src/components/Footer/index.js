@@ -1,5 +1,5 @@
 import React from 'react'
-import { StaticQuery, graphql } from 'gatsby'
+import { StaticQuery, graphql, Link } from 'gatsby'
 
 import { linkPrefixes } from '../contactPage/constants'
 import {
@@ -55,6 +55,10 @@ const Footer = () => (
             {addressInfo.name}: {addressInfo.contactInfo}
           </FooterLink>
         ))}
+
+        <FooterLink as={Link} to="/datenschutz">
+          Datenschutz
+        </FooterLink>
       </FooterElement>
     )}
   />
