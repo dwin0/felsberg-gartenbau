@@ -3,6 +3,10 @@
   "description": "Felsberg Gartenbau Homepage",
   "version": "1.0.0",
   "author": "david windler",
+  "engines": {
+    "node": ">=12.16.1",
+    "npm": ">=6.13.4"
+  },
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.0",
     "gatsby": "^2.1.35",
