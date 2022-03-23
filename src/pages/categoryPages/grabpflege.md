@@ -23,7 +23,6 @@ Sie können bei uns Daueraufträge für die Grabpflege in Auftrag geben. Im Somm
 Diese Arbeiten führen wir auf folgenden Friedhöfen aus:
 
 * Alterswilen
-* Kreuzlingen
 * Tägerwilen
 
 Gerne beraten wir Sie und gehen auf Ihre individuellen Wünsche ein.
