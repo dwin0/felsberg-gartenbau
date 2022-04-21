@@ -1,5 +1,5 @@
 import { Link } from 'gatsby'
-import Image from 'gatsby-image/withIEPolyfill'
+import { GatsbyImage as Image } from 'gatsby-plugin-image'
 import styled from 'styled-components'
 
 import { COLORS, FONTS, media, BREAKPOINTS } from '../../styles/styleguide'

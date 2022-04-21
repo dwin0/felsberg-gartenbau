@@ -45,7 +45,8 @@ class SingleProject extends React.Component {
         <CardImageLink to={slug}>
           <CardImage
             style={{ width: '100%', height: '100%' }}
-            fixed={mainImage.childImageSharp.fixed}
+            image={mainImage.childImageSharp.gatsbyImageData}
+            alt=""
             hovered={hovered}
           />
         </CardImageLink>
@@ -76,7 +77,7 @@ SingleProject.propTypes = {
   shortDescription: PropTypes.string.isRequired,
   mainImage: PropTypes.shape({
     childImageSharp: PropTypes.shape({
-      fixed: PropTypes.object.isRequired,
+      gatsbyImageData: PropTypes.object.isRequired,
     }).isRequired,
   }).isRequired,
   tags: PropTypes.arrayOf(PropTypes.string.isRequired),

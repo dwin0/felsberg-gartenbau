@@ -1,4 +1,4 @@
-import Image from 'gatsby-image/withIEPolyfill'
+import { GatsbyImage as Image } from 'gatsby-plugin-image'
 import styled from 'styled-components'
 
 import { media, BREAKPOINTS } from '../../../styles/styleguide'

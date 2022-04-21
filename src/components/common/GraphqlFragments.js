@@ -8,9 +8,13 @@ export const FrontmatterProjectInformation = graphql`
       shortDescription
       mainImage {
         childImageSharp {
-          fixed(width: 350, height: 350) {
-            ...GatsbyImageSharpFixed_withWebp_tracedSVG
-          }
+          gatsbyImageData(
+            layout: FIXED
+            formats: [AUTO, WEBP]
+            placeholder: TRACED_SVG
+            width: 350
+            height: 350
+          )
         }
       }
     }

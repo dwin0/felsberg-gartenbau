@@ -11,13 +11,13 @@ const Category = ({ image, shortDescription, slug, title }) => (
     <InnerContainer>
       <CategoryTitle>{title}</CategoryTitle>
       <MobileImageLink to={slug}>
-        <CategoryImage fluid={image.childImageSharp.fluid} />
+        <CategoryImage image={image.childImageSharp.gatsbyImageData} alt="" />
       </MobileImageLink>
       <CategoryText>{shortDescription}</CategoryText>
       <ButtonLink to={slug}>Mehr</ButtonLink>
     </InnerContainer>
     <DesktopImageLink to={slug}>
-      <CategoryImage fluid={image.childImageSharp.fluid} />
+      <CategoryImage image={image.childImageSharp.gatsbyImageData} alt="" />
     </DesktopImageLink>
   </CategoryContainer>
 )

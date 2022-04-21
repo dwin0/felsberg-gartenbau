@@ -5,13 +5,13 @@
  */
 
 const path = require('path')
+const { fmImagesToRelative } = require('gatsby-remark-relative-images-v2')
 const { createFilePath } = require('gatsby-source-filesystem')
-const { fmImagesToRelative } = require('gatsby-remark-relative-images')
 
 // You want to use each markdown file name to create the page slug. So pandas.md will become /pandas/.
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
-  fmImagesToRelative(node) // convert image paths for gatsby images. IMPORTANT for gatsby-image to work.
+  fmImagesToRelative(node)
 
   if (node.internal.type === 'MarkdownRemark') {
     let slug = createFilePath({ node, getNode, basePath: 'pages' })
@@ -54,7 +54,7 @@ exports.createPages = ({ actions, graphql }) => {
         }
       }
     }
-  `).then(result => {
+  `).then((result) => {
     if (result.errors) {
       return Promise.reject(result.errors)
     }
