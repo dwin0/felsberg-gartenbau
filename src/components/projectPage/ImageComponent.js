@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Image from 'gatsby-image/withIEPolyfill'
 
-const ImageComponent = props => {
+const ImageComponent = (props) => {
   // according to the library examples, the event must be fired like this
-  const eventHandler = e =>
+  const eventHandler = (e) =>
     props.onClick(e, {
       index: props.index,
     })

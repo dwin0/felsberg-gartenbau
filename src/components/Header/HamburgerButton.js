@@ -27,14 +27,14 @@ const Inner = styled.span`
 `
 
 const Inner1 = styled(Inner)`
-  transform: ${props =>
+  transform: ${(props) =>
     props.isOpen ? 'translateY(6px) rotate(45deg)' : 'none'};
 `
 const Inner2 = styled(Inner)`
-  transform: ${props => (props.isOpen ? 'scale(0)' : 'none')};
+  transform: ${(props) => (props.isOpen ? 'scale(0)' : 'none')};
 `
 const Inner3 = styled(Inner)`
-  transform: ${props =>
+  transform: ${(props) =>
     props.isOpen ? 'translateY(-10px) rotate(-45deg)' : 'none'};
 `
 

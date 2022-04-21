@@ -30,7 +30,7 @@ const IndexPage = ({ data }) => {
 
 // id is provided by the context set in gatsby-node.js
 export const pageQuery = graphql`
-  query($id: String!) {
+  query ($id: String!) {
     markdownRemark(id: { eq: $id }) {
       frontmatter {
         title

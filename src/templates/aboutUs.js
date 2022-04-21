@@ -24,7 +24,7 @@ const AboutUsPage = ({
 )
 
 export const pageQuery = graphql`
-  query($id: String!) {
+  query ($id: String!) {
     markdownRemark(id: { eq: $id }) {
       frontmatter {
         image {

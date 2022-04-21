@@ -14,9 +14,9 @@ class Search extends React.Component {
     }
   }
 
-  onInputChange = e => this.setState({ searchTerm: e.target.value })
+  onInputChange = (e) => this.setState({ searchTerm: e.target.value })
 
-  onSubmit = e => {
+  onSubmit = (e) => {
     e.preventDefault()
     this.inputFieldRef.current.blur()
   }
@@ -24,7 +24,7 @@ class Search extends React.Component {
   render() {
     const { collection, filterBy, placeholder, children } = this.props
 
-    const filteredCollection = collection.filter(item =>
+    const filteredCollection = collection.filter((item) =>
       filterBy(item)
         .toLowerCase()
         .includes(this.state.searchTerm.toLowerCase()),

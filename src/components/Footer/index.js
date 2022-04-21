@@ -47,7 +47,7 @@ const Footer = () => (
           </Address>
         </FooterLink>
 
-        {furtherAdressInformation.map(addressInfo => (
+        {furtherAdressInformation.map((addressInfo) => (
           <FooterLink
             key={addressInfo.contactInfo}
             href={`${linkPrefixes[addressInfo.type]}${addressInfo.contactInfo}`}

@@ -3,8 +3,20 @@
   "description": "Felsberg Gartenbau Homepage",
   "version": "1.0.0",
   "author": "david windler",
+  "keywords": [
+    "gatsby, styled components, react"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "start": "npm run develop",
+    "format": "prettier --write \"src/**/*.{js,jsx,css,json}\"",
+    "lint": "eslint \"src/**/*.{js,jsx}\"",
+    "update": "npx npm-check -u"
+  },
   "dependencies": {
-    "babel-plugin-styled-components": "^1.10.0",
+    "babel-plugin-styled-components": "^2.0.7",
     "gatsby": "^2.1.35",
     "gatsby-image": "^2.0.40",
     "gatsby-plugin-catch-links": "^2.0.13",
@@ -21,7 +33,6 @@
     "gatsby-transformer-sharp": "^2.1.18",
     "lodash": "^4.17.11",
     "netlify-cms": "^2.6.1",
-    "prop-types": "^15.7.2",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-google-recaptcha": "^2.0.1",
@@ -33,29 +44,17 @@
     "styled-media-query": "^2.1.1",
     "styled-normalize": "^8.0.6"
   },
-  "keywords": [
-    "gatsby, styled components, react"
-  ],
-  "license": "MIT",
-  "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "start": "npm run develop",
-    "format": "prettier --write \"src/**/*.{js,jsx,css,json}\"",
-    "lint": "eslint \"src/**/*.{js,jsx}\"",
-    "update": "npx npm-check -u"
-  },
   "devDependencies": {
-    "babel-eslint": "^10.0.1",
-    "eslint": "^6.8.0",
-    "eslint-config-babel": "^9.0.0",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-babel": "^5.3.0",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jsx-a11y": "^6.1.2",
-    "eslint-plugin-prettier": "^3.0.1",
-    "eslint-plugin-react": "^7.12.4",
-    "prettier": "^2.0.5"
+    "@babel/core": "^7.17.9",
+    "@babel/eslint-parser": "^7.17.0",
+    "@babel/preset-react": "^7.16.7",
+    "eslint": "^8.13.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react-hooks": "^4.4.0",
+    "prettier": "^2.6.2",
+    "prop-types": "^15.8.1"
   },
   "repository": {
     "type": "git",

@@ -53,13 +53,13 @@ class ProjectPage extends React.Component {
     }
   }
 
-  handleCloseEvents = event => {
+  handleCloseEvents = (event) => {
     if (isGalleryCloseEvent(event)) {
       this.closeGallery()
     }
   }
 
-  openGallery = index =>
+  openGallery = (index) =>
     this.setState({ isImageGalleryOpen: true, startImage: index })
 
   closeGallery = () => {
@@ -85,7 +85,7 @@ class ProjectPage extends React.Component {
   togglePlay = () => {
     const gallery = this.imageGalleryRef.current
 
-    this.setState(prevState => {
+    this.setState((prevState) => {
       prevState.isPlaying ? gallery.pause() : gallery.play()
       return {
         isPlaying: !prevState.isPlaying,
@@ -93,7 +93,7 @@ class ProjectPage extends React.Component {
     })
   }
 
-  galleryClickHandler = e => e.stopPropagation()
+  galleryClickHandler = (e) => e.stopPropagation()
 
   componentWillUnmount() {
     document.removeEventListener('keydown', this.handleCloseEvents)
@@ -177,7 +177,7 @@ ProjectPage.propTypes = {
 }
 
 export const pageQuery = graphql`
-  query($id: String!) {
+  query ($id: String!) {
     markdownRemark(id: { eq: $id }) {
       frontmatter {
         title

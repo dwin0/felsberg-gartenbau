@@ -14,7 +14,7 @@ class Navigation extends React.Component {
   }
 
   toggleNavigation = () =>
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       isVisible: !prevState.isVisible,
     }))
 

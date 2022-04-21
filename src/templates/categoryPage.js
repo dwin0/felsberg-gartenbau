@@ -50,7 +50,7 @@ const CategoryPage = ({
 
 // TODO: projekte - add project to query and uncomment rest of the file
 export const pageQuery = graphql`
-  query($id: String!) {
+  query ($id: String!) {
     markdownRemark(id: { eq: $id }) {
       frontmatter {
         image {

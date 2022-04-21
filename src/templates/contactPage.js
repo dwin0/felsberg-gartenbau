@@ -37,7 +37,7 @@ const ContactPage = ({
 )
 
 export const pageQuery = graphql`
-  query($id: String!) {
+  query ($id: String!) {
     markdownRemark(id: { eq: $id }) {
       frontmatter {
         image {
@@ -69,8 +69,8 @@ ContactPage.propTypes = {
     markdownRemark: PropTypes.shape({
       frontmatter: PropTypes.shape({
         image: PropTypes.object.isRequired,
-        ...addressPropTypes,
-        ...furtherAdressInformationPropTypes,
+        address: addressPropTypes,
+        furtherAdressInformation: furtherAdressInformationPropTypes,
       }).isRequired,
       html: PropTypes.string.isRequired,
     }).isRequired,

@@ -28,12 +28,12 @@ export const FieldName = styled.span`
   padding-left: ${PADDING_LEFT};
   margin: 5px 0;
 
-  color: ${props => (props.focus ? COLORS.GREEN : 'initial')};
-  font-weight: ${props => (props.focus ? 'bold' : 'initial')};
+  color: ${(props) => (props.focus ? COLORS.GREEN : 'initial')};
+  font-weight: ${(props) => (props.focus ? 'bold' : 'initial')};
 `
 
 export const Input = styled.input`
-  height: ${props => (props.type === 'textarea' ? '100px' : '30px')};
+  height: ${(props) => (props.type === 'textarea' ? '100px' : '30px')};
   border-radius: 25px;
   background: lightgray;
 

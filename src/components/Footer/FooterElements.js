@@ -1,7 +1,5 @@
 import styled from 'styled-components'
-import { COLORS, FONTS } from '../../styles/styleguide'
-
-import { media, BREAKPOINTS } from '../../styles/styleguide'
+import { COLORS, FONTS, media, BREAKPOINTS } from '../../styles/styleguide'
 
 export const FooterElement = styled.footer`
   ${FONTS.FOOTER}
