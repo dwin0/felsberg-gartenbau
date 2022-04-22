@@ -57,6 +57,7 @@ export const pageQuery = graphql`
           childImageSharp {
             gatsbyImageData(
               layout: FULL_WIDTH
+              breakpoints: [750, 1080, 1366, 1920, 2400, 3000]
               formats: [AUTO, WEBP]
               placeholder: TRACED_SVG
             )
@@ -70,7 +71,7 @@ export const pageQuery = graphql`
                 layout: CONSTRAINED
                 formats: [AUTO]
                 placeholder: TRACED_SVG
-                width: 600
+                width: 1200
               )
             }
           }
