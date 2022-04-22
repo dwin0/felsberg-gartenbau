@@ -8,7 +8,16 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-react-helmet', // lets you control your document head
-    'gatsby-transformer-remark', // parses Markdown files using Remark.
+    {
+      resolve: 'gatsby-transformer-remark', // parses Markdown files using Remark.,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-relative-images-v2`,
+          },
+        ],
+      },
+    },
     'gatsby-plugin-catch-links', // replaces markdown link behaviour <a> with gatsby link behaviour
     'gatsby-plugin-styled-components',
     {
@@ -25,6 +34,7 @@ module.exports = {
         path: `${__dirname}/src/pages`,
       },
     },
+    `gatsby-plugin-image`,
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sitemap',
@@ -52,6 +62,5 @@ module.exports = {
         icon: 'src/images/felsberg-icon-round.png',
       },
     },
-    'gatsby-plugin-netlify-cms',
   ],
 }

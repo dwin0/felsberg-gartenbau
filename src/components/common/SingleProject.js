@@ -45,7 +45,8 @@ class SingleProject extends React.Component {
         <CardImageLink to={slug}>
           <CardImage
             style={{ width: '100%', height: '100%' }}
-            fixed={mainImage.childImageSharp.fixed}
+            image={mainImage.childImageSharp.gatsbyImageData}
+            alt=""
             hovered={hovered}
           />
         </CardImageLink>
@@ -57,7 +58,7 @@ class SingleProject extends React.Component {
         </CardContent>
         {!isEmpty(tags) && (
           <TagsContainer>
-            {tags.map(tag => (
+            {tags.map((tag) => (
               <Tag key={tag} to={`/projekte/tags/${tag.toLowerCase()}/`}>
                 <FiTag />
                 &nbsp;{tag}
@@ -76,7 +77,7 @@ SingleProject.propTypes = {
   shortDescription: PropTypes.string.isRequired,
   mainImage: PropTypes.shape({
     childImageSharp: PropTypes.shape({
-      fixed: PropTypes.object.isRequired,
+      gatsbyImageData: PropTypes.object.isRequired,
     }).isRequired,
   }).isRequired,
   tags: PropTypes.arrayOf(PropTypes.string.isRequired),

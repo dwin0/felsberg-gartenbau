@@ -21,7 +21,7 @@ const ContactPage = ({
   },
 }) => (
   <Layout>
-    <HeaderImage fluid={image.childImageSharp.fluid} />
+    <HeaderImage image={image.childImageSharp.gatsbyImageData} alt="" />
 
     <Layout.ContentWrapper>
       <CMS_HTML dangerouslySetInnerHTML={{ __html: html }} />
@@ -37,14 +37,17 @@ const ContactPage = ({
 )
 
 export const pageQuery = graphql`
-  query($id: String!) {
+  query ($id: String!) {
     markdownRemark(id: { eq: $id }) {
       frontmatter {
         image {
           childImageSharp {
-            fluid(maxWidth: 2000) {
-              ...GatsbyImageSharpFluid_withWebp_tracedSVG
-            }
+            gatsbyImageData(
+              layout: FULL_WIDTH
+              breakpoints: [750, 1080, 1366, 1920, 2400, 3000]
+              formats: [AUTO, WEBP]
+              placeholder: TRACED_SVG
+            )
           }
         }
         address {
@@ -69,8 +72,8 @@ ContactPage.propTypes = {
     markdownRemark: PropTypes.shape({
       frontmatter: PropTypes.shape({
         image: PropTypes.object.isRequired,
-        ...addressPropTypes,
-        ...furtherAdressInformationPropTypes,
+        address: addressPropTypes,
+        furtherAdressInformation: furtherAdressInformationPropTypes,
       }).isRequired,
       html: PropTypes.string.isRequired,
     }).isRequired,

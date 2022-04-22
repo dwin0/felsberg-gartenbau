@@ -21,17 +21,15 @@ const Address = ({ address: { name, street, city, googleMapsLink } }) => (
   </Container>
 )
 
-export const addressPropTypes = {
-  address: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    street: PropTypes.string.isRequired,
-    city: PropTypes.string.isRequired,
-    googleMapsLink: PropTypes.string.isRequired,
-  }).isRequired,
-}
+export const addressPropTypes = PropTypes.shape({
+  name: PropTypes.string.isRequired,
+  street: PropTypes.string.isRequired,
+  city: PropTypes.string.isRequired,
+  googleMapsLink: PropTypes.string.isRequired,
+}).isRequired
 
 Address.propTypes = {
-  ...addressPropTypes,
+  address: addressPropTypes,
 }
 
 export default Address

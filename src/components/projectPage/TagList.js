@@ -36,7 +36,7 @@ const TagList = ({ tags }) =>
     <Wrapper>
       <p>{tags.length === 1 ? 'Stichwort' : 'Stichwörter'}:&nbsp;</p>
       <List>
-        {tags.map(tag => (
+        {tags.map((tag) => (
           <ListItem key={tag}>
             <GatsbyLink to={`/projekte/tags/${tag.toLowerCase()}/`}>
               <FiTag />

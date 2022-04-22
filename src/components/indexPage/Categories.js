@@ -25,9 +25,13 @@ const Categories = () => (
                 }
                 image {
                   childImageSharp {
-                    fluid(maxWidth: 350, maxHeight: 350) {
-                      ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                    }
+                    gatsbyImageData(
+                      layout: CONSTRAINED
+                      formats: [AUTO, WEBP]
+                      placeholder: TRACED_SVG
+                      width: 350
+                      height: 350
+                    )
                   }
                 }
                 shortDescription

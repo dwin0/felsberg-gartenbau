@@ -20,14 +20,14 @@ const CategoryPage = ({
   },
 }) => {
   const images = galleryImages.map(({ image, imageDescription }) => ({
-    original: image.childImageSharp.fullWidth.src,
+    original: image.childImageSharp.gatsbyImageData.images.fallback.src,
     originalAlt: imageDescription,
-    srcSet: image.childImageSharp.fullWidth.srcSet,
+    srcSet: image.childImageSharp.gatsbyImageData.images.fallback.srcSet,
   }))
 
   return (
     <Layout>
-      <HeaderImage fluid={image.childImageSharp.fluid} />
+      <HeaderImage image={image.childImageSharp.gatsbyImageData} alt="" />
 
       <Layout.ContentWrapper>
         <CMS_HTML dangerouslySetInnerHTML={{ __html: html }} />
@@ -50,23 +50,29 @@ const CategoryPage = ({
 
 // TODO: projekte - add project to query and uncomment rest of the file
 export const pageQuery = graphql`
-  query($id: String!) {
+  query ($id: String!) {
     markdownRemark(id: { eq: $id }) {
       frontmatter {
         image {
           childImageSharp {
-            fluid(maxWidth: 2000) {
-              ...GatsbyImageSharpFluid_withWebp_tracedSVG
-            }
+            gatsbyImageData(
+              layout: FULL_WIDTH
+              breakpoints: [750, 1080, 1366, 1920, 2400, 3000]
+              formats: [AUTO, WEBP]
+              placeholder: TRACED_SVG
+            )
           }
         }
         galleryImages {
           imageDescription
           image {
             childImageSharp {
-              fullWidth: fluid(maxWidth: 600) {
-                ...GatsbyImageSharpFluid_noBase64
-              }
+              gatsbyImageData(
+                layout: CONSTRAINED
+                formats: [AUTO]
+                placeholder: TRACED_SVG
+                width: 1200
+              )
             }
           }
         }
@@ -85,7 +91,7 @@ CategoryPage.propTypes = {
           PropTypes.shape({
             image: PropTypes.shape({
               childImageSharp: PropTypes.shape({
-                fullWidth: PropTypes.object.isRequired,
+                gatsbyImageData: PropTypes.object.isRequired,
               }).isRequired,
             }).isRequired,
             imageDescription: PropTypes.string.isRequired,

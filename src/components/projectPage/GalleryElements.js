@@ -61,8 +61,9 @@ export const ControlButton = styled.button`
   justify-content: center;
   align-items: center;
   background: ${COLORS.WHITE};
-  border-left: ${props => (props.center ? `1px solid ${COLORS.GREY}` : 'none')};
-  border-right: ${props =>
+  border-left: ${(props) =>
+    props.center ? `1px solid ${COLORS.GREY}` : 'none'};
+  border-right: ${(props) =>
     props.center ? `1px solid ${COLORS.GREY}` : 'none'};
   outline: none;
 `

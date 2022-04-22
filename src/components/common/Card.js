@@ -1,5 +1,5 @@
 import { Link } from 'gatsby'
-import Image from 'gatsby-image/withIEPolyfill'
+import { GatsbyImage as Image } from 'gatsby-plugin-image'
 import styled from 'styled-components'
 
 import { COLORS, FONTS, media, BREAKPOINTS } from '../../styles/styleguide'
@@ -44,7 +44,7 @@ export const CardImageLink = styled(Link)`
 
 export const CardImage = styled(Image)`
   ${media.greaterThan(BREAKPOINTS.MEDIUM)`
-    transform: ${props => (props.hovered ? 'scale(1.1)' : 'scale(1)')};
+    transform: ${(props) => (props.hovered ? 'scale(1.1)' : 'scale(1)')};
     transition: transform ${TRANSITION_DURATION} ease-in;
 
     ::after {
@@ -54,7 +54,7 @@ export const CardImage = styled(Image)`
       bottom: 0;
       left: 0;
       right: 0;
-      background: ${props =>
+      background: ${(props) =>
         props.hovered ? COLORS.BLACK_TRANSPARENT_IMAGE : 'none'};
       transition: background ${TRANSITION_DURATION} ease-in;
     }
@@ -94,9 +94,9 @@ export const CardText = styled.p`
   margin: 0;
 
   ${media.greaterThan(BREAKPOINTS.MEDIUM)`
-    height: ${props =>
+    height: ${(props) =>
       props.hovered ? '134.4px' : 0}; /* 22.4px (line-height) * 6 */
-    opacity: ${props => (props.hovered ? 1 : 0)};
+    opacity: ${(props) => (props.hovered ? 1 : 0)};
     transition: height ${TRANSITION_DURATION} ease-in,
       opacity ${TRANSITION_DURATION} linear;
     overflow: hidden;

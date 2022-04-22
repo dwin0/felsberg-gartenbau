@@ -28,9 +28,9 @@ class ProjectPage extends React.Component {
 
     this.photos = this.props.data.markdownRemark.frontmatter.galleryImages.map(
       ({ image, imageDescription }, index) => ({
-        ...image.childImageSharp.fluid,
+        ...image.childImageSharp.gatsbyImageData,
         imageDescription,
-        width: image.childImageSharp.fluid.aspectRatio,
+        width: image.childImageSharp.gatsbyImageData.aspectRatio,
         height: 1,
         index,
       }),
@@ -53,13 +53,13 @@ class ProjectPage extends React.Component {
     }
   }
 
-  handleCloseEvents = event => {
+  handleCloseEvents = (event) => {
     if (isGalleryCloseEvent(event)) {
       this.closeGallery()
     }
   }
 
-  openGallery = index =>
+  openGallery = (index) =>
     this.setState({ isImageGalleryOpen: true, startImage: index })
 
   closeGallery = () => {
@@ -85,7 +85,7 @@ class ProjectPage extends React.Component {
   togglePlay = () => {
     const gallery = this.imageGalleryRef.current
 
-    this.setState(prevState => {
+    this.setState((prevState) => {
       prevState.isPlaying ? gallery.pause() : gallery.play()
       return {
         isPlaying: !prevState.isPlaying,
@@ -93,7 +93,7 @@ class ProjectPage extends React.Component {
     })
   }
 
-  galleryClickHandler = e => e.stopPropagation()
+  galleryClickHandler = (e) => e.stopPropagation()
 
   componentWillUnmount() {
     document.removeEventListener('keydown', this.handleCloseEvents)
@@ -163,7 +163,7 @@ ProjectPage.propTypes = {
           PropTypes.shape({
             image: PropTypes.shape({
               childImageSharp: PropTypes.shape({
-                fluid: PropTypes.object.isRequired,
+                gatsbyImageData: PropTypes.object.isRequired,
               }).isRequired,
             }).isRequired,
             imageText: PropTypes.string,
@@ -177,7 +177,7 @@ ProjectPage.propTypes = {
 }
 
 export const pageQuery = graphql`
-  query($id: String!) {
+  query ($id: String!) {
     markdownRemark(id: { eq: $id }) {
       frontmatter {
         title
@@ -187,9 +187,11 @@ export const pageQuery = graphql`
           imageDescription
           image {
             childImageSharp {
-              fluid(maxWidth: 1000) {
-                ...GatsbyImageSharpFluid_withWebp_tracedSVG
-              }
+              gatsbyImageData(
+                layout: FULL_WIDTH
+                formats: [AUTO, WEBP]
+                placeholder: TRACED_SVG
+              )
             }
           }
         }

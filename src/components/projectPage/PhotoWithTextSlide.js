@@ -1,13 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Image from 'gatsby-image/withIEPolyfill'
+import { GatsbyImage as Image } from 'gatsby-plugin-image'
 
 import { SingleSlideWrapper, ImageDescription } from './GalleryElements'
 
 const PhotoWithTextSlide = ({ image, imageDescription, imageText }) => (
   <SingleSlideWrapper>
     <Image
-      fluid={image.childImageSharp.fluid}
+      image={image.childImageSharp.gatsbyImageData}
       title={imageDescription}
       alt={imageDescription}
       style={{ width: '100%' }}
@@ -19,7 +19,7 @@ const PhotoWithTextSlide = ({ image, imageDescription, imageText }) => (
 PhotoWithTextSlide.propTypes = {
   image: PropTypes.shape({
     childImageSharp: PropTypes.shape({
-      fluid: PropTypes.object.isRequired,
+      gatsbyImageData: PropTypes.object.isRequired,
     }).isRequired,
   }).isRequired,
   imageDescription: PropTypes.string.isRequired,

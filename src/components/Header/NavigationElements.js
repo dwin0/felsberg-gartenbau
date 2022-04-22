@@ -18,7 +18,7 @@ export const NavigationWrapper = styled.nav`
     flex-direction: column;
     align-items: center;
     background: ${COLORS.WHITE};
-    transform: ${props => (props.isVisible ? 'none' : 'translateX(100%)')};
+    transform: ${(props) => (props.isVisible ? 'none' : 'translateX(100%)')};
     transition: transform 0.3s ease-out;
   `}
 

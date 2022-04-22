@@ -38,13 +38,13 @@ const Header = () => (
     `}
     render={({ allMarkdownRemark, site }) => {
       const navigationEntries = allMarkdownRemark.edges
-        .filter(edge => edge.node.fields.slug !== '/projekte/')
+        .filter((edge) => edge.node.fields.slug !== '/projekte/')
         .sort(
           (edgeA, edgeB) =>
             edgeA.node.frontmatter.linkInNavigation.order -
             edgeB.node.frontmatter.linkInNavigation.order,
         )
-        .map(edge => ({
+        .map((edge) => ({
           link: edge.node.fields.slug,
           title: edge.node.frontmatter.title,
         }))

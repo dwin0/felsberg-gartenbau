@@ -16,7 +16,7 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <ImageTitleWrapper>
-        <HeaderImage fluid={image.childImageSharp.fluid} />
+        <HeaderImage image={image.childImageSharp.gatsbyImageData} alt="" />
         <Title>{title}</Title>
       </ImageTitleWrapper>
 
@@ -30,15 +30,18 @@ const IndexPage = ({ data }) => {
 
 // id is provided by the context set in gatsby-node.js
 export const pageQuery = graphql`
-  query($id: String!) {
+  query ($id: String!) {
     markdownRemark(id: { eq: $id }) {
       frontmatter {
         title
         image {
           childImageSharp {
-            fluid(maxWidth: 2000) {
-              ...GatsbyImageSharpFluid_withWebp_tracedSVG
-            }
+            gatsbyImageData(
+              layout: FULL_WIDTH
+              breakpoints: [750, 1080, 1366, 1920, 2400, 3000]
+              formats: [AUTO, WEBP]
+              placeholder: TRACED_SVG
+            )
           }
         }
       }

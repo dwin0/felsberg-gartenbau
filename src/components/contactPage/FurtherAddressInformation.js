@@ -14,7 +14,7 @@ const FurtherAddressInformation = ({ furtherAdressInformation }) => (
   <Container>
     <Text>Weitere Kontaktangaben:</Text>
     <List>
-      {furtherAdressInformation.map(addressInfo => (
+      {furtherAdressInformation.map((addressInfo) => (
         <ListItem key={addressInfo.contactInfo}>
           <span>{addressInfo.name}:&nbsp;</span>
           <FurtherAddressLink
@@ -28,18 +28,16 @@ const FurtherAddressInformation = ({ furtherAdressInformation }) => (
   </Container>
 )
 
-export const furtherAdressInformationPropTypes = {
-  furtherAdressInformation: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      contactInfo: PropTypes.string.isRequired,
-      type: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
-}
+export const furtherAdressInformationPropTypes = PropTypes.arrayOf(
+  PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    contactInfo: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+  }),
+).isRequired
 
 FurtherAddressInformation.propTypes = {
-  ...furtherAdressInformationPropTypes,
+  furtherAdressInformation: furtherAdressInformationPropTypes,
 }
 
 export default FurtherAddressInformation

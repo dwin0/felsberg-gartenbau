@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Image from 'gatsby-image/withIEPolyfill'
+import { GatsbyImage as Image } from 'gatsby-plugin-image'
 
-const ImageComponent = props => {
+const ImageComponent = (props) => {
   // according to the library examples, the event must be fired like this
-  const eventHandler = e =>
+  const eventHandler = (e) =>
     props.onClick(e, {
       index: props.index,
     })
@@ -22,7 +22,7 @@ const ImageComponent = props => {
       tabIndex="0"
     >
       <Image
-        fluid={props.photo}
+        image={props.photo}
         alt={props.photo.imageDescription}
         title={props.photo.imageDescription}
       />

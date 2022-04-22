@@ -15,9 +15,9 @@ import Subtitle from '../common/Subtitle'
 const FORM_NAME = 'kontaktV3'
 const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY
 
-const encode = data =>
+const encode = (data) =>
   Object.keys(data)
-    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+    .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
     .join('&')
 
 class ContactForm extends React.Component {
@@ -39,7 +39,7 @@ class ContactForm extends React.Component {
     recaptchaWarning: false,
   }
 
-  handleFocus = e => {
+  handleFocus = (e) => {
     this.setState({ currentFocus: e.target.name })
   }
 
@@ -47,7 +47,7 @@ class ContactForm extends React.Component {
     this.setState({ currentFocus: null })
   }
 
-  handleChange = e => {
+  handleChange = (e) => {
     const field = e.target.name
     const value = e.target.value
 
@@ -59,7 +59,7 @@ class ContactForm extends React.Component {
       this.setState({ emailRequired: !value.length })
     }
 
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       fields: {
         ...prevState.fields,
         [field]: value,
@@ -67,8 +67,8 @@ class ContactForm extends React.Component {
     }))
   }
 
-  handleRecaptcha = value =>
-    this.setState(prevState => ({
+  handleRecaptcha = (value) =>
+    this.setState((prevState) => ({
       fields: {
         ...prevState.fields,
         'g-recaptcha-response': value,
@@ -76,7 +76,7 @@ class ContactForm extends React.Component {
       recaptchaWarning: false,
     }))
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     if (!this.state.fields['g-recaptcha-response']) {
       this.setState({ recaptchaWarning: true })
       e.preventDefault()

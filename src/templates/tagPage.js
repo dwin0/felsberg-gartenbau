@@ -80,7 +80,7 @@ Tags.propTypes = {
               shortDescription: PropTypes.string.isRequired,
               mainImage: PropTypes.shape({
                 childImageSharp: PropTypes.shape({
-                  fixed: PropTypes.object.isRequired,
+                  gatsbyImageData: PropTypes.object.isRequired,
                 }).isRequired,
               }).isRequired,
             }),
@@ -94,7 +94,7 @@ Tags.propTypes = {
 export default Tags
 
 export const pageQuery = graphql`
-  query($tag: String) {
+  query ($tag: String) {
     allMarkdownRemark(
       filter: {
         frontmatter: {
