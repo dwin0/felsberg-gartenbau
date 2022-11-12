@@ -10,7 +10,7 @@ import { TagsLink } from '../../components/common/Link'
 import { TagsList } from '../../components/Tags'
 
 const TagsPage = () => (
-  <StaticQuery
+  <StaticQuery // TODO: change to useStaticQuery
     query={graphql`// query { // allMarkdownRemark( // filter: { frontmatter: { templateKey: { eq: "projectPage" } } } // ) { // group(field: frontmatter___tags) { // fieldValue // totalCount // } // totalCount // } // } //`}
     render={({
       allMarkdownRemark: { group: groups, totalCount: sumOfProjects },

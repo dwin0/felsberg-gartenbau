@@ -1,14 +1,14 @@
 import React from 'react'
-import { StaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby'
 
 import Logo from './Logo'
 import HeaderElement from './HeaderElement'
 import Navigation from './Navigation'
 
 // TODO: projekte - remove filter
-const Header = () => (
-  <StaticQuery
-    query={graphql`
+const Header = () => {
+  const { allMarkdownRemark, site } = useStaticQuery(
+    graphql`
       query {
         allMarkdownRemark(
           filter: {
@@ -35,28 +35,27 @@ const Header = () => (
           }
         }
       }
-    `}
-    render={({ allMarkdownRemark, site }) => {
-      const navigationEntries = allMarkdownRemark.edges
-        .filter((edge) => edge.node.fields.slug !== '/projekte/')
-        .sort(
-          (edgeA, edgeB) =>
-            edgeA.node.frontmatter.linkInNavigation.order -
-            edgeB.node.frontmatter.linkInNavigation.order,
-        )
-        .map((edge) => ({
-          link: edge.node.fields.slug,
-          title: edge.node.frontmatter.title,
-        }))
+    `,
+  )
 
-      return (
-        <HeaderElement>
-          <Logo to="/">{site.siteMetadata.title}</Logo>
-          <Navigation navigationEntries={navigationEntries} />
-        </HeaderElement>
-      )
-    }}
-  />
-)
+  const navigationEntries = allMarkdownRemark.edges
+    .filter((edge) => edge.node.fields.slug !== '/projekte/')
+    .sort(
+      (edgeA, edgeB) =>
+        edgeA.node.frontmatter.linkInNavigation.order -
+        edgeB.node.frontmatter.linkInNavigation.order,
+    )
+    .map((edge) => ({
+      link: edge.node.fields.slug,
+      title: edge.node.frontmatter.title,
+    }))
+
+  return (
+    <HeaderElement>
+      <Logo to="/">{site.siteMetadata.title}</Logo>
+      <Navigation navigationEntries={navigationEntries} />
+    </HeaderElement>
+  )
+}
 
 export default Header

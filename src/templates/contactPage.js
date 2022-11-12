@@ -16,11 +16,11 @@ const ContactPage = ({
   data: {
     markdownRemark: {
       html,
-      frontmatter: { image, address, furtherAdressInformation },
+      frontmatter: { image, address, furtherAdressInformation, title },
     },
   },
 }) => (
-  <Layout>
+  <Layout pageTitle={title}>
     <HeaderImage image={image.childImageSharp.gatsbyImageData} alt="" />
 
     <Layout.ContentWrapper>
@@ -61,6 +61,7 @@ export const pageQuery = graphql`
           contactInfo
           type
         }
+        title
       }
       html
     }
@@ -74,6 +75,7 @@ ContactPage.propTypes = {
         image: PropTypes.object.isRequired,
         address: addressPropTypes,
         furtherAdressInformation: furtherAdressInformationPropTypes,
+        title: PropTypes.string.isRequired,
       }).isRequired,
       html: PropTypes.string.isRequired,
     }).isRequired,

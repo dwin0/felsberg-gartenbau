@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import Gallery from 'react-photo-gallery'
+// import Gallery from 'react-photo-gallery'
 import ImageGallery from 'react-image-gallery'
 import 'react-image-gallery/styles/css/image-gallery.css'
 import { FiPlay, FiPause, FiChevronLeft, FiChevronRight } from 'react-icons/fi'
@@ -15,7 +15,7 @@ import {
   ControlButton,
 } from '../components/projectPage/GalleryElements'
 import PhotoWithTextSlide from '../components/projectPage/PhotoWithTextSlide'
-import ImageComponent from '../components/projectPage/ImageComponent'
+// import ImageComponent from '../components/projectPage/ImageComponent'
 import TagList from '../components/projectPage/TagList'
 import {
   isGalleryOpenEvent,
@@ -142,11 +142,12 @@ class ProjectPage extends React.Component {
 
           <CMS_HTML dangerouslySetInnerHTML={{ __html: html }} />
 
-          <Gallery
+          {/* TODO: find new gallery once project page is used */}
+          {/* <Gallery
             photos={this.photos}
             ImageComponent={ImageComponent}
             onClick={this.handleOpenEvents}
-          />
+          /> */}
         </Layout.ContentWrapper>
       </Layout>
     )

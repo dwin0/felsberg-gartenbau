@@ -9,9 +9,9 @@ import ContentWrapper from './ContentWrapper'
 import Main from './Main'
 import GlobalStyle from '../../styles/GlobalStyle'
 
-const Layout = ({ children }) => (
+const Layout = ({ children, pageTitle }) => (
   <>
-    <Helmet />
+    <Helmet pageTitle={pageTitle} />
     <Header />
     <Main>{children}</Main>
     <Footer />
@@ -24,6 +24,7 @@ Layout.ContentWrapper = ContentWrapper
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
+  pageTitle: PropTypes.string,
 }
 
 export default Layout
