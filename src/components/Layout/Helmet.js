@@ -1,8 +1,9 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Helmet as ReactHelmet } from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 
-const Helmet = () => (
+const Helmet = ({ pageTitle }) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -18,21 +19,29 @@ const Helmet = () => (
     `}
     render={({
       site: {
-        siteMetadata: { title, siteUrl, description, keywords },
+        siteMetadata: { title: mainTitle, siteUrl, description, keywords },
       },
-    }) => (
-      <ReactHelmet
-        title={title}
-        meta={[
-          { name: 'description', content: description },
-          { name: 'keywords', content: keywords },
-          { name: 'canonical', content: siteUrl },
-        ]}
-      >
-        <html lang="de" />
-      </ReactHelmet>
-    )}
+    }) => {
+      const headTitle = pageTitle ? `${pageTitle} | ${mainTitle}` : mainTitle
+
+      return (
+        <ReactHelmet
+          title={headTitle}
+          meta={[
+            { name: 'description', content: description },
+            { name: 'keywords', content: keywords },
+            { name: 'canonical', content: siteUrl },
+          ]}
+        >
+          <html lang="de" />
+        </ReactHelmet>
+      )
+    }}
   />
 )
+
+Helmet.propTypes = {
+  pageTitle: PropTypes.string,
+}
 
 export default Helmet

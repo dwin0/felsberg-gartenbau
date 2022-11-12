@@ -15,7 +15,7 @@ const CategoryPage = ({
   data: {
     markdownRemark: {
       html,
-      frontmatter: { image, galleryImages /* projects */ },
+      frontmatter: { image, galleryImages, title /* projects */ },
     },
   },
 }) => {
@@ -26,7 +26,7 @@ const CategoryPage = ({
   }))
 
   return (
-    <Layout>
+    <Layout pageTitle={title}>
       <HeaderImage image={image.childImageSharp.gatsbyImageData} alt="" />
 
       <Layout.ContentWrapper>
@@ -76,6 +76,7 @@ export const pageQuery = graphql`
             }
           }
         }
+        title
       }
       html
     }
@@ -97,6 +98,7 @@ CategoryPage.propTypes = {
             imageDescription: PropTypes.string.isRequired,
           }),
         ),
+        title: PropTypes.string.isRequired,
         // projects: PropTypes.arrayOf(PropTypes.string),
       }).isRequired,
       html: PropTypes.string.isRequired,
