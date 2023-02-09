@@ -176,9 +176,9 @@ const FONTS = {
       font-size: 16px;
     `}
 
-    ${media.greaterThan('800px')`
+    ${media.greaterThan('960px')`
       font-weight: 100;
-      font-size: 18px;
+      font-size: 20px;
     `}
   `,
 }

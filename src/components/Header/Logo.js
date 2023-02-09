@@ -19,10 +19,12 @@ const Logo = styled(Link)`
   `}
 
   ${media.greaterThan(BREAKPOINTS.MEDIUM)`
+    padding: 0 0 0 5px;
     font-size: 16px;
   `}
 
   ${media.greaterThan('800px')`
+    padding: 0 10px;
     font-size: 20px;
   `}
 `
