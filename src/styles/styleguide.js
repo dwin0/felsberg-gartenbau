@@ -161,6 +161,26 @@ const FONTS = {
       font-size: 18px;
     `}
   `,
+  NAVIGATION: css`
+    font-family: sans-serif;
+    letter-spacing: 0.2px;
+    line-height: ${LINE_HEIGHTS.STANDARD_TEXT_LH};
+
+    ${media.lessThan(BREAKPOINTS.MEDIUM_MINUS_ONE)`
+      font-weight: 400;
+      font-size: 18px;
+    `}
+
+    ${media.greaterThan(BREAKPOINTS.MEDIUM)`
+      font-weight: 100;
+      font-size: 16px;
+    `}
+
+    ${media.greaterThan('800px')`
+      font-weight: 100;
+      font-size: 18px;
+    `}
+  `,
 }
 
 export { COLORS, FONTS, media, BREAKPOINTS, LINE_HEIGHTS }

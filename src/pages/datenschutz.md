@@ -8,7 +8,7 @@ title: 'Datenschutz'
 Verantwortliche Stelle im Sinne der Datenschutzgesetze, insbesondere der EU-Datenschutzgrundverordnung (DSGVO), ist:
 
 - David Windler<br />
-  E-Mail: <a href="mailto:info@felsberg-gartenbau.ch">info@felsberg-gartenbau.ch</a>
+  E-Mail: info@felsberg-gartenbau.ch
 
 ## Datenschutzerklärung für SSL-/TLS-Verschlüsselung
 
