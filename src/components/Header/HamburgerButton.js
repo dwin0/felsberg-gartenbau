@@ -22,6 +22,7 @@ const Inner = styled.span`
   height: 4px;
   border-radius: 4px;
   margin: 4px 0;
+  padding: 1px 6px;
   background-color: ${COLORS.BLACK};
   transition: all 0.3s ease-in-out;
 `
