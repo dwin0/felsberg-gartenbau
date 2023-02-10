@@ -12,10 +12,20 @@ const Logo = styled(Link)`
   align-items: center;
   height: 100%;
   padding: 0 20px;
-  border-right: 1px solid ${COLORS.BLACK_TRANSPARENT};
 
   ${media.lessThan(BREAKPOINTS.LARGE_MINUS_ONE)`
     padding: 0 10px;
+    font-size: 20px;
+  `}
+
+  ${media.greaterThan(BREAKPOINTS.MEDIUM)`
+    padding: 0 0 0 5px;
+    font-size: 16px;
+  `}
+
+  ${media.greaterThan('800px')`
+    padding: 0 10px;
+    font-size: 20px;
   `}
 `
 

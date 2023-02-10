@@ -1,7 +1,7 @@
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 
-import { COLORS, media, BREAKPOINTS } from '../../styles/styleguide'
+import { COLORS, media, BREAKPOINTS, FONTS } from '../../styles/styleguide'
 import { HEADER_HEIGHT } from '../../styles/constants'
 
 export const activeClassName = 'nav-item-active'
@@ -28,6 +28,7 @@ export const NavigationWrapper = styled.nav`
 `
 
 export const NavigationEntry = styled(Link)`
+  ${FONTS.NAVIGATION};
   color: ${COLORS.BLACK};
   text-decoration: none;
   text-align: center;
@@ -52,7 +53,7 @@ export const NavigationEntry = styled(Link)`
   ${media.greaterThan(BREAKPOINTS.MEDIUM)`
     display: flex;
     align-items: center;
-    padding: 0 .9vw;
+    padding: 0 .8vw;
     border-left: 1px solid ${COLORS.BLACK_TRANSPARENT};
     position: relative;
 
@@ -76,6 +77,10 @@ export const NavigationEntry = styled(Link)`
     &.${activeClassName}::after {
       opacity: 1;
     }
+  `}
+
+  ${media.greaterThan('800px')`
+    padding: 0 1vw;
   `}
 
   ${media.greaterThan(BREAKPOINTS.LARGE)`

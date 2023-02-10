@@ -8,6 +8,7 @@ const Button = styled.button`
   width: 50px;
   min-width: 50px;
   margin: 10px;
+  padding: 1px 6px;
   border: none;
   background: none;
   outline: none;
