@@ -8,6 +8,7 @@ const Button = styled.button`
   width: 50px;
   min-width: 50px;
   margin: 10px;
+  padding: 1px 6px;
   border: none;
   background: none;
   outline: none;
@@ -22,7 +23,6 @@ const Inner = styled.span`
   height: 4px;
   border-radius: 4px;
   margin: 4px 0;
-  padding: 1px 6px;
   background-color: ${COLORS.BLACK};
   transition: all 0.3s ease-in-out;
 `
