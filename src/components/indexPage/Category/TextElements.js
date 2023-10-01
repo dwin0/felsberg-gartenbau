@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 import { media, BREAKPOINTS, FONTS, COLORS } from '../../../styles/styleguide'
 
-export const CategoryTitle = styled.p`
+export const CategoryTitle = styled.h2`
   ${FONTS.MEDIUM_BOLD}
   color: ${COLORS.GREEN};
 
