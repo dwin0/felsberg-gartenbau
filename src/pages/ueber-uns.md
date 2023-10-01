@@ -2,6 +2,7 @@
 templateKey: aboutUs
 title: Über uns
 image: /assets/fahrzeuge.jpg
+imageAlt: Zwei Lastwagen und ein Anhänger mit dem Firmenlogo des Gartenbau Felsbergs
 linkInNavigation:
   order: 200
   visible: true

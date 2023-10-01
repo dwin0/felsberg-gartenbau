@@ -10,12 +10,12 @@ const AboutUsPage = ({
   data: {
     markdownRemark: {
       html,
-      frontmatter: { image, title },
+      frontmatter: { image, imageAlt, title },
     },
   },
 }) => (
   <Layout pageTitle={title}>
-    <HeaderImage image={image.childImageSharp.gatsbyImageData} alt="" />
+    <HeaderImage image={image.childImageSharp.gatsbyImageData} alt={imageAlt} />
 
     <Layout.ContentWrapper>
       <CMS_HTML dangerouslySetInnerHTML={{ __html: html }} />
@@ -37,6 +37,7 @@ export const pageQuery = graphql`
             )
           }
         }
+        imageAlt
         title
       }
       html
@@ -49,6 +50,7 @@ AboutUsPage.propTypes = {
     markdownRemark: PropTypes.shape({
       frontmatter: PropTypes.shape({
         image: PropTypes.object.isRequired,
+        imageAlt: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
       }).isRequired,
       html: PropTypes.string.isRequired,

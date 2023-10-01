@@ -16,12 +16,18 @@ const ContactPage = ({
   data: {
     markdownRemark: {
       html,
-      frontmatter: { image, address, furtherAdressInformation, title },
+      frontmatter: {
+        image,
+        imageAlt,
+        address,
+        furtherAdressInformation,
+        title,
+      },
     },
   },
 }) => (
   <Layout pageTitle={title}>
-    <HeaderImage image={image.childImageSharp.gatsbyImageData} alt="" />
+    <HeaderImage image={image.childImageSharp.gatsbyImageData} alt={imageAlt} />
 
     <Layout.ContentWrapper>
       <CMS_HTML dangerouslySetInnerHTML={{ __html: html }} />
@@ -50,6 +56,7 @@ export const pageQuery = graphql`
             )
           }
         }
+        imageAlt
         address {
           name
           street
@@ -73,6 +80,7 @@ ContactPage.propTypes = {
     markdownRemark: PropTypes.shape({
       frontmatter: PropTypes.shape({
         image: PropTypes.object.isRequired,
+        imageAlt: PropTypes.string.isRequired,
         address: addressPropTypes,
         furtherAdressInformation: furtherAdressInformationPropTypes,
         title: PropTypes.string.isRequired,

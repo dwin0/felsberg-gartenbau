@@ -8,6 +8,7 @@ linkInNavigation:
   order: 2
   visible: true
 image: /assets/staudenrabatte.jpg
+imageAlt: Garten mit Staudenrabatte
 shortDescription: >-
   Wollen Sie Ihren Garten professionell gepflegt haben? Wir sind die Lösung.
   Unsere Leistungen umfassen unter anderem Rasen mähen, Rabatten pflegen oder

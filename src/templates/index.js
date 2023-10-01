@@ -10,13 +10,16 @@ import HeaderImage from '../components/common/HeaderImage'
 
 const IndexPage = ({ data }) => {
   const { title } = data.site.siteMetadata
-  const { image } = data.markdownRemark.frontmatter
+  const { image, imageAlt } = data.markdownRemark.frontmatter
   const { html } = data.markdownRemark
 
   return (
     <Layout>
       <ImageTitleWrapper>
-        <HeaderImage image={image.childImageSharp.gatsbyImageData} alt="" />
+        <HeaderImage
+          image={image.childImageSharp.gatsbyImageData}
+          alt={imageAlt}
+        />
         <Title>{title}</Title>
       </ImageTitleWrapper>
 
@@ -44,6 +47,7 @@ export const pageQuery = graphql`
             )
           }
         }
+        imageAlt
       }
       html
     }
@@ -60,6 +64,7 @@ IndexPage.propTypes = {
     markdownRemark: PropTypes.shape({
       frontmatter: PropTypes.shape({
         image: PropTypes.object.isRequired,
+        imageAlt: PropTypes.string.isRequired,
       }).isRequired,
       html: PropTypes.string.isRequired,
     }).isRequired,
