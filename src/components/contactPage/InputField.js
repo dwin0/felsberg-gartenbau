@@ -23,7 +23,6 @@ const InputField = ({
       name={id}
       id={id}
       value={value}
-      placeholder={text}
       required={required}
       onChange={onChange}
       onFocus={onFocus}
