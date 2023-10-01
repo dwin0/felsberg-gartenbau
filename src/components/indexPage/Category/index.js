@@ -2,22 +2,29 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { CategoryContainer, InnerContainer } from './Container'
-import { MobileImageLink, DesktopImageLink, ButtonLink } from './Links'
+import { MobileImageLink, DesktopImageLink } from './Links'
 import { CategoryTitle, CategoryText } from './TextElements'
 import CategoryImage from './CategoryImage'
+import { GatsbyLink } from '../../common/Link'
 
-const Category = ({ image, shortDescription, slug, title }) => (
+const Category = ({ image, imageAlt, shortDescription, slug, title }) => (
   <CategoryContainer>
     <InnerContainer>
       <CategoryTitle>{title}</CategoryTitle>
-      <MobileImageLink to={slug}>
-        <CategoryImage image={image.childImageSharp.gatsbyImageData} alt="" />
+      <MobileImageLink to={slug} tabindex="-1">
+        <CategoryImage
+          image={image.childImageSharp.gatsbyImageData}
+          alt={imageAlt}
+        />
       </MobileImageLink>
       <CategoryText>{shortDescription}</CategoryText>
-      <ButtonLink to={slug}>Mehr</ButtonLink>
+      <GatsbyLink to={slug}>Mehr über {title} erfahren</GatsbyLink>
     </InnerContainer>
-    <DesktopImageLink to={slug}>
-      <CategoryImage image={image.childImageSharp.gatsbyImageData} alt="" />
+    <DesktopImageLink to={slug} tabindex="-1">
+      <CategoryImage
+        image={image.childImageSharp.gatsbyImageData}
+        alt={imageAlt}
+      />
     </DesktopImageLink>
   </CategoryContainer>
 )
@@ -26,6 +33,7 @@ Category.propTypes = {
   image: PropTypes.shape({
     childImageSharp: PropTypes.object.isRequired,
   }).isRequired,
+  imageAlt: PropTypes.string.isRequired,
   shortDescription: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,

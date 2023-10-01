@@ -1,9 +1,8 @@
 ---
 templateKey: index
 image: /assets/grillstelle.jpg
+imageAlt: Garten mit Grillstelle
 ---
-
-# Willkommen
 
 Herzlich willkommen auf der Homepage der Gartenbau Felsberg GmbH in Neuwilen.
 

@@ -2,6 +2,7 @@
 templateKey: contactPage
 title: Kontakt
 image: /assets/fahrzeuge.jpg
+imageAlt: Zwei Lastwagen und ein Anhänger mit dem Firmenlogo des Gartenbau Felsbergs
 linkInNavigation:
   order: 300
   visible: true
@@ -18,4 +19,5 @@ furtherAdressInformation:
     name: Email
     type: email
 ---
+
 # Kontakt

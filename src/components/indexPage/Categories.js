@@ -36,6 +36,7 @@ const Categories = () => {
                     )
                   }
                 }
+                imageAlt
                 shortDescription
               }
             }
@@ -48,7 +49,7 @@ const Categories = () => {
   return edges.map(
     ({
       node: {
-        frontmatter: { title, image, shortDescription },
+        frontmatter: { title, image, imageAlt, shortDescription },
         fields: { slug },
       },
     }) => (
@@ -56,6 +57,7 @@ const Categories = () => {
         key={title}
         title={title}
         image={image}
+        imageAlt={imageAlt}
         shortDescription={shortDescription}
         slug={slug}
       />

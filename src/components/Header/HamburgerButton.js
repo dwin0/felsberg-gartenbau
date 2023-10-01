@@ -11,7 +11,6 @@ const Button = styled.button`
   padding: 1px 6px;
   border: none;
   background: none;
-  outline: none;
 
   ${media.greaterThan(BREAKPOINTS.MEDIUM)`
     display: none;

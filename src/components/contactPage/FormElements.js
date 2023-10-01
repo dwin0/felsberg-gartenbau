@@ -35,14 +35,11 @@ export const FieldName = styled.span`
 export const Input = styled.input`
   height: ${(props) => (props.type === 'textarea' ? '100px' : '30px')};
   border-radius: 25px;
-  background: lightgray;
-
-  border: none;
   padding: 10px ${PADDING_LEFT};
-  outline: none;
 
   :focus {
-    background: ${COLORS.GREEN_LIGHT};
+    background: ${COLORS.WHITE};
+    outline: solid ${COLORS.GREEN};
   }
 
   :disabled {
