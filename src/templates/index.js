@@ -3,25 +3,21 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 
 import Layout from '../components/Layout'
-import { ImageTitleWrapper, Title } from '../components/indexPage/Title'
 import Categories from '../components/indexPage/Categories'
 import CMS_HTML from '../components/common/CMS_Html'
 import HeaderImage from '../components/common/HeaderImage'
 
 const IndexPage = ({ data }) => {
-  const { title } = data.site.siteMetadata
   const { image, imageAlt } = data.markdownRemark.frontmatter
   const { html } = data.markdownRemark
 
   return (
     <Layout>
-      <ImageTitleWrapper>
-        <HeaderImage
-          image={image.childImageSharp.gatsbyImageData}
-          alt={imageAlt}
-        />
-        <Title>{title}</Title>
-      </ImageTitleWrapper>
+      <HeaderImage
+        image={image.childImageSharp.gatsbyImageData}
+        alt={imageAlt}
+        objectPosition="50% 80%"
+      />
 
       <Layout.ContentWrapper>
         <CMS_HTML dangerouslySetInnerHTML={{ __html: html }} />
@@ -36,7 +32,6 @@ export const pageQuery = graphql`
   query ($id: String!) {
     markdownRemark(id: { eq: $id }) {
       frontmatter {
-        title
         image {
           childImageSharp {
             gatsbyImageData(
@@ -51,11 +46,6 @@ export const pageQuery = graphql`
       }
       html
     }
-    site {
-      siteMetadata {
-        title
-      }
-    }
   }
 `
 
@@ -67,11 +57,6 @@ IndexPage.propTypes = {
         imageAlt: PropTypes.string.isRequired,
       }).isRequired,
       html: PropTypes.string.isRequired,
-    }).isRequired,
-    site: PropTypes.shape({
-      siteMetadata: PropTypes.shape({
-        title: PropTypes.string.isRequired,
-      }).isRequired,
     }).isRequired,
   }).isRequired,
 }

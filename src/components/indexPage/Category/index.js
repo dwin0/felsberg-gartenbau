@@ -11,7 +11,7 @@ const Category = ({ image, imageAlt, shortDescription, slug, title }) => (
   <CategoryContainer>
     <InnerContainer>
       <CategoryTitle>{title}</CategoryTitle>
-      <MobileImageLink to={slug} tabindex="-1">
+      <MobileImageLink to={slug} tabIndex="-1">
         <CategoryImage
           image={image.childImageSharp.gatsbyImageData}
           alt={imageAlt}
@@ -20,7 +20,7 @@ const Category = ({ image, imageAlt, shortDescription, slug, title }) => (
       <CategoryText>{shortDescription}</CategoryText>
       <GatsbyLink to={slug}>Mehr über {title} erfahren</GatsbyLink>
     </InnerContainer>
-    <DesktopImageLink to={slug} tabindex="-1">
+    <DesktopImageLink to={slug} tabIndex="-1">
       <CategoryImage
         image={image.childImageSharp.gatsbyImageData}
         alt={imageAlt}
