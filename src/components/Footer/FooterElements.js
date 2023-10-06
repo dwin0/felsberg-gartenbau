@@ -40,4 +40,8 @@ export const FooterLink = styled.a`
   ${media.greaterThan(BREAKPOINTS.MEDIUM)`
     padding: 5px 0;
   `}
+
+  :hover {
+    text-decoration: underline;
+  }
 `
