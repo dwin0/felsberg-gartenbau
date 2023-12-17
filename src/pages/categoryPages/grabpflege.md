@@ -9,7 +9,6 @@ linkInNavigation:
   visible: true
 image: /assets/graeber.jpg
 imageAlt: Dekoriertes Grab
-projects: []
 shortDescription: >-
   Wir führen Grabpflegearbeiten durch, indem wir die Gräber in regelmässigen
   Abständen neu bepflanzen und gestalten. Dabei gehen wir auf Ihre individuellen

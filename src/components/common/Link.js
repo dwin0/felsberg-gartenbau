@@ -28,7 +28,3 @@ export const GatsbyLink = styled(Link)`
 export const InlineGatsbyLink = styled(GatsbyLink)`
   display: inline;
 `
-
-export const TagsLink = styled(GatsbyLink)`
-  margin-top: 20px;
-`

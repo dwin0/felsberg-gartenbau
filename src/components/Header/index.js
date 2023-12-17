@@ -5,7 +5,6 @@ import Logo from './Logo'
 import HeaderElement from './HeaderElement'
 import Navigation from './Navigation'
 
-// TODO: projekte - remove filter
 const Header = () => {
   const { allMarkdownRemark, site } = useStaticQuery(
     graphql`
@@ -39,7 +38,6 @@ const Header = () => {
   )
 
   const navigationEntries = allMarkdownRemark.edges
-    .filter((edge) => edge.node.fields.slug !== '/projekte/')
     .sort(
       (edgeA, edgeB) =>
         edgeA.node.frontmatter.linkInNavigation.order -
