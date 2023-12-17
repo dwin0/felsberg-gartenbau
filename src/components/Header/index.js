@@ -6,36 +6,32 @@ import HeaderElement from './HeaderElement'
 import Navigation from './Navigation'
 
 const Header = () => {
-  const { allMarkdownRemark, site } = useStaticQuery(
-    graphql`
-      query {
-        allMarkdownRemark(
-          filter: {
-            frontmatter: { linkInNavigation: { visible: { eq: true } } }
-          }
-        ) {
-          edges {
-            node {
-              fields {
-                slug
-              }
-              frontmatter {
-                title
-                linkInNavigation {
-                  order
-                }
+  const { allMarkdownRemark, site } = useStaticQuery(graphql`
+    query {
+      allMarkdownRemark(
+        filter: { frontmatter: { linkInNavigation: { visible: { eq: true } } } }
+      ) {
+        edges {
+          node {
+            fields {
+              slug
+            }
+            frontmatter {
+              title
+              linkInNavigation {
+                order
               }
             }
           }
         }
-        site {
-          siteMetadata {
-            title
-          }
+      }
+      site {
+        siteMetadata {
+          title
         }
       }
-    `,
-  )
+    }
+  `)
 
   const navigationEntries = allMarkdownRemark.edges
     .sort(

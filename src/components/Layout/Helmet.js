@@ -1,9 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Helmet as ReactHelmet } from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 
-const Helmet = ({ pageTitle }) => {
+export const Head = ({
+  data: {
+    markdownRemark: {
+      frontmatter: { title: pageTitle },
+    },
+  },
+}) => {
   const {
     site: {
       siteMetadata: { title: mainTitle, siteUrl, description, keywords },
@@ -24,21 +29,22 @@ const Helmet = ({ pageTitle }) => {
   const headTitle = pageTitle ? `${pageTitle} | ${mainTitle}` : mainTitle
 
   return (
-    <ReactHelmet
-      title={headTitle}
-      meta={[
-        { name: 'description', content: description },
-        { name: 'keywords', content: keywords },
-        { name: 'canonical', content: siteUrl },
-      ]}
-    >
+    <>
       <html lang="de" />
-    </ReactHelmet>
+      <title>{headTitle}</title>
+      <meta name="description" content={description} />
+      <meta name="keywords" content={keywords} />
+      <meta name="canonical" content={siteUrl} />
+    </>
   )
 }
 
-Helmet.propTypes = {
-  pageTitle: PropTypes.string,
+Head.propTypes = {
+  data: PropTypes.shape({
+    markdownRemark: PropTypes.shape({
+      frontmatter: PropTypes.shape({
+        title: PropTypes.string,
+      }).isRequired,
+    }).isRequired,
+  }).isRequired,
 }
-
-export default Helmet

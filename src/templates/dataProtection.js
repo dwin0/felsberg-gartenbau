@@ -2,18 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 
+export { Head } from '../components/Layout/Helmet'
 import Layout from '../components/Layout'
 import CMS_HTML from '../components/common/CMS_Html'
 
 const DataProtection = ({
   data: {
-    markdownRemark: {
-      html,
-      frontmatter: { title },
-    },
+    markdownRemark: { html },
   },
 }) => (
-  <Layout pageTitle={title}>
+  <Layout>
     <Layout.ContentWrapper>
       <CMS_HTML dangerouslySetInnerHTML={{ __html: html }} />
     </Layout.ContentWrapper>
@@ -36,7 +34,7 @@ DataProtection.propTypes = {
     markdownRemark: PropTypes.shape({
       html: PropTypes.string.isRequired,
       frontmatter: PropTypes.shape({
-        title: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired, // Used in Head
       }).isRequired,
     }).isRequired,
   }).isRequired,
