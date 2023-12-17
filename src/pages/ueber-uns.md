@@ -18,7 +18,7 @@ Nach seiner Pensionierung übernahm ich, Marco Felsberg, den Betrieb 2008 und ä
 
 Wir empfehlen uns für alle Arbeiten, die rund um den Garten anfallen. Dazu gehören Neuanlagen, Umänderungen, Pflege und Unterhalt. Hauptsächlich führen wir Aufträge von Privatpersonen aus, auch umliegende Gemeinden sowie vereinzelte Gewerbefirmen gehören zu unserer Kundschaft.
 
-Die Grabpflege ist ein wichtiges Standbein. In Alterswilen, Kreuzlingen und Tägerwilen pflegen wir zahlreiche Gräber, die wir jedes Jahr bepflanzen und unterhalten.
+Die Grabpflege ist ein wichtiges Standbein. In Alterswilen und Tägerwilen pflegen wir zahlreiche Gräber, die wir jedes Jahr bepflanzen und unterhalten.
 
 Für unverbindliche Beratungen und Offerten stehen wir Ihnen gerne zur Verfügung.
 
