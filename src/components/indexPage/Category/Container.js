@@ -34,7 +34,7 @@ export const CategoryContainer = styled.div`
     max-width: 1000px;
     margin-top: 100px;
 
-    :nth-of-type(2n) > ${InnerContainer} {
+    &:nth-of-type(2n) > ${InnerContainer} {
       order: 1;
     }
   `}
