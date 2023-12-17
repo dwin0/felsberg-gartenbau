@@ -12,7 +12,7 @@ export const GalleryWrapper = styled.div`
   .image-gallery-left-nav,
   .image-gallery-play-button,
   .image-gallery-fullscreen-button {
-    :hover::before {
+    &:hover::before {
       color: ${COLORS.YELLOW};
     }
   }

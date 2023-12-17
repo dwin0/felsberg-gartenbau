@@ -28,8 +28,8 @@ export const FieldName = styled.span`
   padding-left: ${PADDING_LEFT};
   margin: 5px 0;
 
-  color: ${(props) => (props.focus ? COLORS.GREEN : 'initial')};
-  font-weight: ${(props) => (props.focus ? 'bold' : 'initial')};
+  color: ${(props) => (props.$focus ? COLORS.GREEN : 'initial')};
+  font-weight: ${(props) => (props.$focus ? 'bold' : 'initial')};
 `
 
 export const Input = styled.input`
@@ -37,12 +37,12 @@ export const Input = styled.input`
   border-radius: 25px;
   padding: 10px ${PADDING_LEFT};
 
-  :focus {
+  &:focus {
     background: ${COLORS.WHITE};
     outline: solid ${COLORS.GREEN};
   }
 
-  :disabled {
+  &:disabled {
     background: ${COLORS.WHITE};
   }
 `

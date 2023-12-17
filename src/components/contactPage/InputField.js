@@ -16,7 +16,7 @@ const InputField = ({
   disabled,
 }) => (
   <Label htmlFor={id}>
-    <FieldName focus={currentFocus === id}>{text}</FieldName>
+    <FieldName $focus={currentFocus === id}>{text}</FieldName>
     <Input
       as={type === 'textarea' ? 'textarea' : 'input'}
       type={type || 'text'}

@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 
+export { Head } from '../components/Layout/Helmet'
 import Layout from '../components/Layout'
 import CMS_HTML from '../components/common/CMS_Html'
 import HeaderImage from '../components/common/HeaderImage'
@@ -10,11 +11,11 @@ const AboutUsPage = ({
   data: {
     markdownRemark: {
       html,
-      frontmatter: { image, imageAlt, title },
+      frontmatter: { image, imageAlt },
     },
   },
 }) => (
-  <Layout pageTitle={title}>
+  <Layout>
     <HeaderImage image={image.childImageSharp.gatsbyImageData} alt={imageAlt} />
 
     <Layout.ContentWrapper>
@@ -29,12 +30,7 @@ export const pageQuery = graphql`
       frontmatter {
         image {
           childImageSharp {
-            gatsbyImageData(
-              layout: FULL_WIDTH
-              breakpoints: [750, 1080, 1366, 1920, 2400, 3000]
-              formats: [AUTO, WEBP]
-              placeholder: TRACED_SVG
-            )
+            gatsbyImageData(layout: FULL_WIDTH)
           }
         }
         imageAlt
@@ -51,7 +47,7 @@ AboutUsPage.propTypes = {
       frontmatter: PropTypes.shape({
         image: PropTypes.object.isRequired,
         imageAlt: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired, // Used in Head
       }).isRequired,
       html: PropTypes.string.isRequired,
     }).isRequired,

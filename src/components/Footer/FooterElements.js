@@ -22,7 +22,7 @@ export const Address = styled.address`
 
 export const AddressItem = styled.span`
   ${media.greaterThan(BREAKPOINTS.MEDIUM)`
-    :not(:first-child)::before {
+    &:not(:first-child)::before {
       content: '|';
       padding: 0 10px;
     }
@@ -41,7 +41,7 @@ export const FooterLink = styled.a`
     padding: 5px 0;
   `}
 
-  :hover {
+  &:hover {
     text-decoration: underline;
   }
 `

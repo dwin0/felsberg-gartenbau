@@ -28,7 +28,7 @@ class Navigation extends React.Component {
           clickHandler={this.toggleNavigation}
           isOpen={isVisible}
         />
-        <NavigationWrapper isVisible={isVisible}>
+        <NavigationWrapper $isVisible={isVisible}>
           {navigationEntries.map(({ link, title }) => (
             <NavigationEntry
               key={title}

@@ -18,7 +18,7 @@ export const NavigationWrapper = styled.nav`
     flex-direction: column;
     align-items: center;
     background: ${COLORS.WHITE};
-    transform: ${(props) => (props.isVisible ? 'none' : 'translateX(100%)')};
+    transform: ${(props) => (props.$isVisible ? 'none' : 'translateX(100%)')};
     transition: transform 0.3s ease-out;
   `}
 
@@ -42,10 +42,10 @@ export const NavigationEntry = styled(Link)`
     width: 100%;
     padding: 20px 0;
 
-    :first-of-type {
+    &:first-of-type {
       margin-top: 30px;
     }
-    :last-of-type {
+    &:last-of-type {
       margin-bottom: 30px;
     }
   `}
@@ -57,7 +57,7 @@ export const NavigationEntry = styled(Link)`
     border-left: 1px solid ${COLORS.BLACK_TRANSPARENT};
     position: relative;
 
-    ::after {
+    &::after {
       content: '';
       position: absolute;
       height: 5px;
@@ -69,11 +69,11 @@ export const NavigationEntry = styled(Link)`
       transition: opacity .3s ease-in-out;
     }
 
-    :hover:not(.${activeClassName}) {
+    &:hover:not(.${activeClassName}) {
       color: ${COLORS.GREEN};
     }
 
-    :hover::after,
+    &:hover::after,
     &.${activeClassName}::after {
       opacity: 1;
     }

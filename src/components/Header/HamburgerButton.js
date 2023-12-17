@@ -28,14 +28,14 @@ const Inner = styled.span`
 
 const Inner1 = styled(Inner)`
   transform: ${(props) =>
-    props.isOpen ? 'translateY(6px) rotate(45deg)' : 'none'};
+    props.$isOpen ? 'translateY(6px) rotate(45deg)' : 'none'};
 `
 const Inner2 = styled(Inner)`
-  transform: ${(props) => (props.isOpen ? 'scale(0)' : 'none')};
+  transform: ${(props) => (props.$isOpen ? 'scale(0)' : 'none')};
 `
 const Inner3 = styled(Inner)`
   transform: ${(props) =>
-    props.isOpen ? 'translateY(-10px) rotate(-45deg)' : 'none'};
+    props.$isOpen ? 'translateY(-10px) rotate(-45deg)' : 'none'};
 `
 
 const HamburgerButton = ({ clickHandler, isOpen }) => (
@@ -43,9 +43,9 @@ const HamburgerButton = ({ clickHandler, isOpen }) => (
     onClick={clickHandler}
     aria-label={isOpen ? 'Schliesse Menu' : 'Öffne Menu'}
   >
-    <Inner1 isOpen={isOpen} />
-    <Inner2 isOpen={isOpen} />
-    <Inner3 isOpen={isOpen} />
+    <Inner1 $isOpen={isOpen} />
+    <Inner2 $isOpen={isOpen} />
+    <Inner3 $isOpen={isOpen} />
   </Button>
 )
 

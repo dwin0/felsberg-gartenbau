@@ -7,7 +7,6 @@ module.exports = {
       'Gartenbau Felsberg GmbH, Neuanlagen, Gartenumgestaltung, Grabpflege, Kreuzlingen, Neuwilen',
   },
   plugins: [
-    'gatsby-plugin-react-helmet', // lets you control your document head
     {
       resolve: 'gatsby-transformer-remark', // parses Markdown files using Remark.,
       options: {
@@ -35,7 +34,16 @@ module.exports = {
       },
     },
     `gatsby-plugin-image`,
-    'gatsby-plugin-sharp',
+    {
+      resolve: 'gatsby-plugin-sharp',
+      options: {
+        defaults: {
+          formats: ['auto', 'webp'],
+          placeholder: 'blurred',
+          breakpoints: [750, 1080, 1366, 1920],
+        },
+      },
+    },
     'gatsby-transformer-sharp',
     {
       resolve: `gatsby-plugin-google-gtag`,

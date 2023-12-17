@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 
+export { Head } from '../components/Layout/Helmet'
 import Layout from '../components/Layout'
 import Categories from '../components/indexPage/Categories'
 import CMS_HTML from '../components/common/CMS_Html'
@@ -34,12 +35,7 @@ export const pageQuery = graphql`
       frontmatter {
         image {
           childImageSharp {
-            gatsbyImageData(
-              layout: FULL_WIDTH
-              breakpoints: [750, 1080, 1366, 1920, 2400, 3000]
-              formats: [AUTO, WEBP]
-              placeholder: TRACED_SVG
-            )
+            gatsbyImageData(layout: FULL_WIDTH)
           }
         }
         imageAlt

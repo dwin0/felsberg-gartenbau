@@ -6,45 +6,37 @@ import Category from './Category'
 const Categories = () => {
   const {
     allMarkdownRemark: { edges },
-  } = useStaticQuery(
-    graphql`
-      query {
-        allMarkdownRemark(
-          filter: {
-            frontmatter: { categoryOnHomepage: { visible: { eq: true } } }
-          }
-          sort: { frontmatter: { categoryOnHomepage: { order: ASC } } }
-        ) {
-          edges {
-            node {
-              fields {
-                slug
+  } = useStaticQuery(graphql`
+    query {
+      allMarkdownRemark(
+        filter: {
+          frontmatter: { categoryOnHomepage: { visible: { eq: true } } }
+        }
+        sort: { frontmatter: { categoryOnHomepage: { order: ASC } } }
+      ) {
+        edges {
+          node {
+            fields {
+              slug
+            }
+            frontmatter {
+              title
+              categoryOnHomepage {
+                order
               }
-              frontmatter {
-                title
-                categoryOnHomepage {
-                  order
+              image {
+                childImageSharp {
+                  gatsbyImageData(layout: CONSTRAINED, width: 350, height: 350)
                 }
-                image {
-                  childImageSharp {
-                    gatsbyImageData(
-                      layout: CONSTRAINED
-                      formats: [AUTO, WEBP]
-                      placeholder: TRACED_SVG
-                      width: 350
-                      height: 350
-                    )
-                  }
-                }
-                imageAlt
-                shortDescription
               }
+              imageAlt
+              shortDescription
             }
           }
         }
       }
-    `,
-  )
+    }
+  `)
 
   return edges.map(
     ({

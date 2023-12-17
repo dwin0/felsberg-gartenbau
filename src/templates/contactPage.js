@@ -8,6 +8,7 @@ import FurtherAddressInformation, {
 } from '../components/contactPage/FurtherAddressInformation'
 import ContactForm from '../components/contactPage/ContactForm'
 
+export { Head } from '../components/Layout/Helmet'
 import Layout from '../components/Layout'
 import CMS_HTML from '../components/common/CMS_Html'
 import HeaderImage from '../components/common/HeaderImage'
@@ -16,17 +17,11 @@ const ContactPage = ({
   data: {
     markdownRemark: {
       html,
-      frontmatter: {
-        image,
-        imageAlt,
-        address,
-        furtherAdressInformation,
-        title,
-      },
+      frontmatter: { image, imageAlt, address, furtherAdressInformation },
     },
   },
 }) => (
-  <Layout pageTitle={title}>
+  <Layout>
     <HeaderImage image={image.childImageSharp.gatsbyImageData} alt={imageAlt} />
 
     <Layout.ContentWrapper>
@@ -48,12 +43,7 @@ export const pageQuery = graphql`
       frontmatter {
         image {
           childImageSharp {
-            gatsbyImageData(
-              layout: FULL_WIDTH
-              breakpoints: [750, 1080, 1366, 1920, 2400, 3000]
-              formats: [AUTO, WEBP]
-              placeholder: TRACED_SVG
-            )
+            gatsbyImageData(layout: FULL_WIDTH)
           }
         }
         imageAlt
@@ -83,7 +73,7 @@ ContactPage.propTypes = {
         imageAlt: PropTypes.string.isRequired,
         address: addressPropTypes,
         furtherAdressInformation: furtherAdressInformationPropTypes,
-        title: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired, // Used in Head
       }).isRequired,
       html: PropTypes.string.isRequired,
     }).isRequired,

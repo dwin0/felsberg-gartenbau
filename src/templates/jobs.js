@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import styled from 'styled-components'
 
+export { Head } from '../components/Layout/Helmet'
 import { media, BREAKPOINTS } from '../styles/styleguide'
 import Layout from '../components/Layout'
 import CMS_HTML from '../components/common/CMS_Html'
@@ -31,11 +32,11 @@ const JobsPage = ({
   data: {
     markdownRemark: {
       html,
-      frontmatter: { image, title },
+      frontmatter: { image },
     },
   },
 }) => (
-  <Layout pageTitle={title}>
+  <Layout>
     <JobsHeaderImage image={image.childImageSharp.gatsbyImageData} alt="" />
 
     <Layout.ContentWrapper>
@@ -50,12 +51,7 @@ export const pageQuery = graphql`
       frontmatter {
         image {
           childImageSharp {
-            gatsbyImageData(
-              layout: FULL_WIDTH
-              breakpoints: [750, 1080, 1366, 1920, 2400, 3000]
-              formats: [AUTO, WEBP]
-              placeholder: TRACED_SVG
-            )
+            gatsbyImageData(layout: FULL_WIDTH)
           }
         }
         title
@@ -70,7 +66,7 @@ JobsPage.propTypes = {
     markdownRemark: PropTypes.shape({
       frontmatter: PropTypes.shape({
         image: PropTypes.object.isRequired,
-        title: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired, // Used in Head
       }).isRequired,
       html: PropTypes.string.isRequired,
     }).isRequired,

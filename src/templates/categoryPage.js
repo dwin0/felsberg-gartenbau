@@ -4,6 +4,7 @@ import { graphql } from 'gatsby'
 import ImageGallery from 'react-image-gallery'
 import 'react-image-gallery/styles/css/image-gallery.css'
 
+export { Head } from '../components/Layout/Helmet'
 import Layout from '../components/Layout'
 import CMS_HTML from '../components/common/CMS_Html'
 import HeaderImage from '../components/common/HeaderImage'
@@ -13,7 +14,7 @@ const CategoryPage = ({
   data: {
     markdownRemark: {
       html,
-      frontmatter: { image, imageAlt, galleryImages, title },
+      frontmatter: { image, imageAlt, galleryImages },
     },
   },
 }) => {
@@ -24,7 +25,7 @@ const CategoryPage = ({
   }))
 
   return (
-    <Layout pageTitle={title}>
+    <Layout>
       <HeaderImage
         image={image.childImageSharp.gatsbyImageData}
         alt={imageAlt}
@@ -54,12 +55,7 @@ export const pageQuery = graphql`
       frontmatter {
         image {
           childImageSharp {
-            gatsbyImageData(
-              layout: FULL_WIDTH
-              breakpoints: [750, 1080, 1366, 1920, 2400, 3000]
-              formats: [AUTO, WEBP]
-              placeholder: TRACED_SVG
-            )
+            gatsbyImageData(layout: FULL_WIDTH)
           }
         }
         imageAlt
@@ -67,12 +63,7 @@ export const pageQuery = graphql`
           imageDescription
           image {
             childImageSharp {
-              gatsbyImageData(
-                layout: CONSTRAINED
-                formats: [AUTO]
-                placeholder: TRACED_SVG
-                width: 1200
-              )
+              gatsbyImageData(layout: FULL_WIDTH)
             }
           }
         }
@@ -99,7 +90,7 @@ CategoryPage.propTypes = {
             imageDescription: PropTypes.string.isRequired,
           }),
         ),
-        title: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired, // Used in Head
       }).isRequired,
       html: PropTypes.string.isRequired,
     }).isRequired,
