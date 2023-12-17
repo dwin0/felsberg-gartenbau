@@ -3,19 +3,17 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import ImageGallery from 'react-image-gallery'
 import 'react-image-gallery/styles/css/image-gallery.css'
-import isEmpty from 'lodash/fp/isEmpty'
 
 import Layout from '../components/Layout'
 import CMS_HTML from '../components/common/CMS_Html'
 import HeaderImage from '../components/common/HeaderImage'
 import { GalleryWrapper } from '../components/categoryPage/galleryElements'
-// import Projects from '../components/common/Projects'
 
 const CategoryPage = ({
   data: {
     markdownRemark: {
       html,
-      frontmatter: { image, imageAlt, galleryImages, title /* projects */ },
+      frontmatter: { image, imageAlt, galleryImages, title },
     },
   },
 }) => {
@@ -34,10 +32,9 @@ const CategoryPage = ({
 
       <Layout.ContentWrapper>
         <CMS_HTML dangerouslySetInnerHTML={{ __html: html }} />
-        {/* {!isEmpty(projects) && <Projects projects={projects} />} */}
       </Layout.ContentWrapper>
 
-      {!isEmpty(images) && (
+      {images.length > 0 && (
         <GalleryWrapper>
           <ImageGallery
             items={images}
@@ -51,7 +48,6 @@ const CategoryPage = ({
   )
 }
 
-// TODO: projekte - add project to query and uncomment rest of the file
 export const pageQuery = graphql`
   query ($id: String!) {
     markdownRemark(id: { eq: $id }) {
@@ -104,7 +100,6 @@ CategoryPage.propTypes = {
           }),
         ),
         title: PropTypes.string.isRequired,
-        // projects: PropTypes.arrayOf(PropTypes.string),
       }).isRequired,
       html: PropTypes.string.isRequired,
     }).isRequired,

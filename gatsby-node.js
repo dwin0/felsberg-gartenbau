@@ -21,10 +21,6 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       slug = slug.replace('/categoryPages', '')
     }
 
-    if (node.frontmatter.templateKey === 'projectPage') {
-      slug = slug.replace('/projectPages', 'projekt')
-    }
-
     createNodeField({
       node,
       name: 'slug',
@@ -48,7 +44,6 @@ exports.createPages = ({ actions, graphql }) => {
             }
             frontmatter {
               templateKey
-              tags
             }
           }
         }
@@ -61,51 +56,19 @@ exports.createPages = ({ actions, graphql }) => {
 
     const pages = result.data.allMarkdownRemark.edges
 
-    // TODO: projekte - remove filter
-    pages
-      .filter(
-        ({
-          node: {
-            fields: { slug },
-          },
-        }) => !slug.includes('projekt'),
-      )
-      .forEach(({ node }) => {
-        createPage({
-          path: node.fields.slug,
-          component: path.resolve(
-            `src/templates/${String(node.frontmatter.templateKey)}.js`,
-          ),
-          // additional data can be passed via context: this.props.pageContext
-          context: {
-            id: node.id,
-            slug: node.fields.slug,
-            templateKey: node.frontmatter.templateKey,
-          },
-        })
+    pages.forEach(({ node }) => {
+      createPage({
+        path: node.fields.slug,
+        component: path.resolve(
+          `src/templates/${String(node.frontmatter.templateKey)}.js`,
+        ),
+        // additional data can be passed via context: this.props.pageContext
+        context: {
+          id: node.id,
+          slug: node.fields.slug,
+          templateKey: node.frontmatter.templateKey,
+        },
       })
-
-    // TODO: projekte - uncomment
-    // const tags = pages
-    //   .filter(
-    //     ({ node: { frontmatter } }) =>
-    //       frontmatter.templateKey === 'projectPage' &&
-    //       frontmatter.tags &&
-    //       frontmatter.tags.length,
-    //   )
-    //   .reduce((acc, { node }) => {
-    //     const newTags = node.frontmatter.tags.filter(tag => !acc.includes(tag))
-    //     return [...acc, ...newTags]
-    //   }, [])
-
-    // tags.forEach(tag => {
-    //   createPage({
-    //     path: `/projekte/tags/${tag.toLowerCase()}/`,
-    //     component: path.resolve('src/templates/tagPage.js'),
-    //     context: {
-    //       tag,
-    //     },
-    //   })
-    // })
+    })
   })
 }

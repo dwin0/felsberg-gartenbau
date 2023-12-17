@@ -9,7 +9,6 @@ linkInNavigation:
   visible: true
 image: /assets/biotop.jpg
 imageAlt: Teich, umrandet mit Steinen
-projects: []
 shortDescription: >-
   Braucht Ihr Garten eine Auffrischung oder Veränderung? Bei Planung und
   Umsetzung von Ihrem neuen Garten sind wir gerne für Sie da.
