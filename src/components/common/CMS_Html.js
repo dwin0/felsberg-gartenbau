@@ -4,7 +4,7 @@ import { FONTS } from '../../styles/styleguide'
 import { LinkStyle } from './Link'
 
 const CMS_HTML = styled.div`
-  text-align: center;
+  text-align: ${(props) => props.$align ?? 'center'};
   max-width: 800px;
   margin: 0 auto;
 

@@ -13,7 +13,7 @@ const DataProtection = ({
 }) => (
   <Layout>
     <Layout.ContentWrapper>
-      <CMS_HTML dangerouslySetInnerHTML={{ __html: html }} />
+      <CMS_HTML $align="left" dangerouslySetInnerHTML={{ __html: html }} />
     </Layout.ContentWrapper>
   </Layout>
 )
