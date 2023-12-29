@@ -23,6 +23,17 @@ const GlobalStyle = createGlobalStyle`
     ${FONTS.MEDIUM}
   }
 
+  button {
+    cursor: pointer;
+    border: none;
+    padding: 10px 15px;
+
+    &:hover {
+      background: ${COLORS.GREEN};
+      color: ${COLORS.WHITE};
+    }
+  }
+
   address {
     font-style: normal;
   }

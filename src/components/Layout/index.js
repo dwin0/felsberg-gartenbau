@@ -7,9 +7,11 @@ import Footer from '../Footer'
 import ContentWrapper from './ContentWrapper'
 import Main from './Main'
 import GlobalStyle from '../../styles/GlobalStyle'
+import CookieBanner from '../DataPrivacy/CookieBanner'
 
 const Layout = ({ children }) => (
   <>
+    <CookieBanner />
     <Header />
     <Main>{children}</Main>
     <Footer />
