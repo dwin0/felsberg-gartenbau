@@ -27,11 +27,6 @@ const GlobalStyle = createGlobalStyle`
     cursor: pointer;
     border: none;
     padding: 10px 15px;
-
-    &:hover {
-      background: ${COLORS.GREEN};
-      color: ${COLORS.WHITE};
-    }
   }
 
   address {

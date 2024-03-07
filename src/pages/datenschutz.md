@@ -52,13 +52,13 @@ Weitere Informationen finden Sie in den Datenschutzbestimmungen von Google.
 
 Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden alle Angaben aus dem Formular zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Für die Zustellung der Daten an uns wird der Dienst Netlify verwendet. Weitere Informationen zu den Datenschutzbestimmungen von Netlify finden sie hier: [https://www.netlify.com/gdpr-ccpa/](https://www.netlify.com/gdpr-ccpa/)
 
-<!-- ### PostHog Cloud EU
+### PostHog Cloud EU
 
 Diese Website verwendet Funktionen des Dienstes PostHog, um das Nutzerverhalten und die Nutzerfreundlichkeit unserer Seite zu analysieren und zu optimieren.
 
 Diese Funktionen werden angeboten durch PostHog Inc, 965 Mission Street, San Francisco, CA 94103 USA.
 
-PostHog kann Ihr Verhalten auf unserer Webseite aufzeichnen und wiedergeben. Die Speicherung dieser Daten ist zeitlich begrenzt. Weitere Informationen hierzu finden Sie in der Datenschutzerklärung von PostHog: [https://posthog.com/privacy](https://posthog.com/privacy) -->
+PostHog kann Ihr Verhalten auf unserer Webseite aufzeichnen und wiedergeben. Die Speicherung dieser Daten ist zeitlich begrenzt. Weitere Informationen hierzu finden Sie in der Datenschutzerklärung von PostHog: [https://posthog.com/privacy](https://posthog.com/privacy)
 
 ## Rechte der betroffenen Person
 

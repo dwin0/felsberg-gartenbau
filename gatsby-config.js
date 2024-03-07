@@ -46,18 +46,6 @@ module.exports = {
     },
     'gatsby-transformer-sharp',
     {
-      resolve: `gatsby-plugin-google-gtag`,
-      options: {
-        trackingIds: ['G-VLRRM9C75S'],
-        gtagConfig: {
-          anonymize_ip: true,
-        },
-        pluginConfig: {
-          head: false,
-        },
-      },
-    },
-    {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: 'Felsberg Gartenbau Tägerwilen',

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { posthog } from 'posthog-js'
 import { Link } from 'gatsby'
 import {
   AcceptDenyButton,
@@ -8,59 +9,37 @@ import {
   CloseButton,
 } from './BannerElements'
 
-// https://developers.google.com/tag-platform/security/guides/privacy#disable-analytics
-const googleAnalyticsDisbleString = 'ga-disable-G-VLRRM9C75S'
-
-export function initGoogleAnalyticsTracking() {
-  try {
-    const disableTracking =
-      localStorage.getItem(googleAnalyticsDisbleString) === 'true'
-    window[googleAnalyticsDisbleString] = disableTracking
-  } catch (error) {
-    console.error('Can not access local storage', error)
-  }
-}
-
-function googleAnalyticsOptIn() {
-  window[googleAnalyticsDisbleString] = false
-  try {
-    localStorage.setItem(googleAnalyticsDisbleString, 'false')
-  } catch (error) {
-    console.error('Can not access local storage', error)
-  }
-}
-function googleAnalyticsOptOut() {
-  window[googleAnalyticsDisbleString] = true
-  try {
-    localStorage.setItem(googleAnalyticsDisbleString, 'true')
-  } catch (error) {
-    console.error('Can not access local storage', error)
-  }
-}
+posthog.init('phc_4OBzYkXyWTaIvXLRTsoLibGmdOjlUd4gaH5lHyPJtLd', {
+  api_host: 'https://eu.posthog.com',
+})
 
 const CookieBanner = () => {
-  const [isHidden, setIsHidden] = useState(
-    () => localStorage.getItem(googleAnalyticsDisbleString) !== null,
+  const [hideBanner, setHideBanner] = useState(
+    posthog.has_opted_in_capturing() || posthog.has_opted_out_capturing(),
   )
 
   const optIn = () => {
-    googleAnalyticsOptIn()
-    setIsHidden(true)
+    posthog.opt_in_capturing()
+    setHideBanner(true)
   }
 
   const optOut = () => {
-    googleAnalyticsOptOut()
-    setIsHidden(true)
+    posthog.opt_out_capturing()
+    setHideBanner(true)
   }
 
-  if (isHidden) {
+  if (hideBanner) {
     return null
   }
 
   return (
     <Banner>
       <BannerTitle>Cookies verwalten</BannerTitle>
-      <CloseButton tabIndex="0" aria-label="Schliessen" onClick={optOut}>
+      <CloseButton
+        tabIndex="0"
+        aria-label="Ablehnen und Schliessen"
+        onClick={optOut}
+      >
         x
       </CloseButton>
       <p>

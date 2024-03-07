@@ -1,7 +1,7 @@
-const {
-  initGoogleAnalyticsTracking,
-} = require('./src/components/DataPrivacy/CookieBanner')
+import { posthog } from 'posthog-js'
 
-exports.onClientEntry = () => {
-  initGoogleAnalyticsTracking()
+export const onRouteUpdate = () => {
+  if (posthog) {
+    posthog.capture('$pageview')
+  }
 }
